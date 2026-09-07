@@ -269,42 +269,6 @@ findit-campus/
 
 ---
 
-## 📚 Concepts Implemented
-
-### Object-Oriented Programming
-
-* Encapsulation
-* Inheritance
-* Polymorphism
-* Abstraction
-
-### DBMS
-
-* ER Modelling
-* Relationships
-* Normalization
-* Constraints
-* Indexing
-
-### Computer Networks
-
-* Client-Server Architecture
-* HTTP/HTTPS
-* REST APIs
-* Authentication
-* Request-Response Lifecycle
-
-### SQL
-
-* CRUD Operations
-* JOIN
-* GROUP BY
-* ORDER BY
-* Aggregate Functions
-* Transactions
-
----
-
 ## 🤝 Contributing
 
 Contributions, feature suggestions, and improvements are welcome. Feel free to open an issue or submit a pull request.
