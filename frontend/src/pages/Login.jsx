@@ -1,16 +1,136 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
+  const navigate = useNavigate();
+
+  // ================= STATES =================
+
+  const [username, setUsername] = useState("");
+  const [rollNumber, setRollNumber] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [remember, setRemember] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  // ================= LOGIN FUNCTION =================
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    // Clear old messages
+    setMessage("");
+    setMessageType("");
+
+    // Remove extra spaces
+    const trimmedUsername = username.trim();
+    const trimmedRollNumber = rollNumber.trim();
+
+    // ================= VALIDATION =================
+
+    if (!trimmedUsername || !trimmedRollNumber || !password.trim()) {
+      setMessage("Please fill in all fields.");
+      setMessageType("error");
+      return;
+    }
+
+    // ================= GET REGISTERED USER =================
+
+    const savedUser = localStorage.getItem("registeredUser");
+
+    // User has never signed up
+    if (!savedUser) {
+      setMessage("No account found. Please create an account first.");
+      setMessageType("error");
+      return;
+    }
+
+    const userData = JSON.parse(savedUser);
+
+    // ================= CHECK CREDENTIALS =================
+
+    if (
+      trimmedUsername !== userData.username ||
+      trimmedRollNumber !== userData.rollNumber ||
+      password !== userData.password
+    ) {
+      setMessage("Invalid username, roll number, or password.");
+      setMessageType("error");
+      return;
+    }
+
+    // ================= LOADING =================
+
+    setLoading(true);
+
+    setTimeout(() => {
+      // Login status save
+      localStorage.setItem("isLoggedIn", "true");
+
+      // Current logged-in user
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          username: userData.username,
+          rollNumber: userData.rollNumber,
+          name: userData.name,
+        })
+      );
+
+      // Remember Me
+      if (remember) {
+        localStorage.setItem("rememberUser", "true");
+      } else {
+        localStorage.removeItem("rememberUser");
+      }
+
+      setLoading(false);
+
+      setMessage("Login successful! Redirecting...");
+      setMessageType("success");
+
+      // Redirect to Home
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }, 1000);
+  };
+
+  // ================= UNIVERSITY LOGIN =================
+
+  const universityLogin = () => {
+    alert(
+      "University Single Sign-On feature will be added later."
+    );
+  };
+
+  // ================= FORGOT PASSWORD =================
+
+  const handleForgotPassword = () => {
+    alert(
+      "Forgot Password feature will be added later."
+    );
+  };
+
+  // ================= JSX =================
+
   return (
     <div className="login-page">
 
       {/* ================= HEADER ================= */}
+
       <header className="login-header">
 
-        {/* LOGO */}
-        <div className="brand">
+        <Link to="/" className="brand">
 
           <div className="brand-logo">
+
             <div className="box box-one"></div>
             <div className="box box-two"></div>
             <div className="box box-three"></div>
@@ -22,30 +142,35 @@ function Login() {
               <br />
               FOUND
             </div>
+
           </div>
 
           <div className="brand-text">
             <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
+
+            <p>
+              Discover. Connect. Reclaim.
+            </p>
           </div>
 
-        </div>
+        </Link>
 
-
-        {/* MENU BUTTON */}
-        <button className="menu-button" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <Link
+          to="/signup"
+          className="header-signup"
+        >
+          Create Account
+        </Link>
 
       </header>
 
 
-      {/* ================= MAIN CONTENT ================= */}
+      {/* ================= MAIN ================= */}
+
       <main className="login-main">
 
-        {/* ================= LEFT SIDE ================= */}
+        {/* ================= LEFT HERO ================= */}
+
         <section className="hero-section">
 
           <div className="hero-content">
@@ -53,11 +178,9 @@ function Login() {
             <h2>
               Smart Campus
               <br />
-
               <span>Lost & Found</span>
             </h2>
 
-            {/* Static message */}
             <p className="hero-description">
               Find what's lost.
               <br />
@@ -67,7 +190,7 @@ function Login() {
           </div>
 
 
-          {/* FEATURES */}
+          {/* ================= FEATURES ================= */}
 
           <div className="features">
 
@@ -79,7 +202,10 @@ function Login() {
 
               <div>
                 <h3>Secure & Reliable</h3>
-                <p>Your data is safe with us.</p>
+
+                <p>
+                  Your data is safe with us.
+                </p>
               </div>
 
             </div>
@@ -93,7 +219,10 @@ function Login() {
 
               <div>
                 <h3>Community Driven</h3>
-                <p>Helping each other, every day.</p>
+
+                <p>
+                  Helping each other, every day.
+                </p>
               </div>
 
             </div>
@@ -107,7 +236,10 @@ function Login() {
 
               <div>
                 <h3>Quick & Easy</h3>
-                <p>Report, Search & Reclaim in minutes.</p>
+
+                <p>
+                  Report, Search & Reclaim in minutes.
+                </p>
               </div>
 
             </div>
@@ -118,11 +250,13 @@ function Login() {
 
 
         {/* ================= LOGIN SECTION ================= */}
+
         <section className="login-section">
 
           <div className="login-card">
 
-            {/* Heading */}
+            {/* ================= HEADING ================= */}
+
             <div className="login-heading">
 
               <h2>Welcome Back</h2>
@@ -134,26 +268,47 @@ function Login() {
             </div>
 
 
-            {/* FORM */}
-            <form>
+            {/* ================= MESSAGE ================= */}
 
-              {/* University Email */}
+            {message && (
+
+              <div
+                className={`login-message ${messageType}`}
+              >
+                {message}
+              </div>
+
+            )}
+
+
+            {/* ================= FORM ================= */}
+
+            <form onSubmit={handleLogin}>
+
+
+              {/* USERNAME */}
+
               <div className="input-group">
 
                 <label htmlFor="username">
-                  University Email/ID
+                  Username
                 </label>
 
                 <div className="input-wrapper">
 
                   <span className="input-icon">
-                    ♙
+                    👤
                   </span>
 
                   <input
                     type="text"
                     id="username"
-                    placeholder="Enter your University Email or ID"
+                    placeholder="Enter your username"
+                    value={username}
+                    onChange={(e) =>
+                      setUsername(e.target.value)
+                    }
+                    required
                   />
 
                 </div>
@@ -161,7 +316,38 @@ function Login() {
               </div>
 
 
-              {/* Password */}
+              {/* ROLL NUMBER */}
+
+              <div className="input-group">
+
+                <label htmlFor="rollNumber">
+                  Roll Number
+                </label>
+
+                <div className="input-wrapper">
+
+                  <span className="input-icon">
+                    #
+                  </span>
+
+                  <input
+                    type="text"
+                    id="rollNumber"
+                    placeholder="Enter your roll number"
+                    value={rollNumber}
+                    onChange={(e) =>
+                      setRollNumber(e.target.value)
+                    }
+                    required
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* PASSWORD */}
+
               <div className="input-group">
 
                 <label htmlFor="password">
@@ -175,52 +361,91 @@ function Login() {
                   </span>
 
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) =>
+                      setPassword(e.target.value)
+                    }
+                    required
                   />
 
-                  {/* Visual only for now */}
-                  <span className="eye-icon">
-                    👁
-                  </span>
+                  <button
+                    type="button"
+                    className="eye-button"
+                    onClick={() =>
+                      setShowPassword(!showPassword)
+                    }
+                    aria-label={
+                      showPassword
+                        ? "Hide password"
+                        : "Show password"
+                    }
+                  >
+                    {showPassword ? "🙈" : "👁"}
+                  </button>
 
                 </div>
 
               </div>
 
 
-              {/* Remember + Forgot */}
+              {/* ================= OPTIONS ================= */}
+
               <div className="login-options">
+
+                {/* REMEMBER ME */}
 
                 <label className="remember">
 
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={remember}
+                    onChange={(e) =>
+                      setRemember(e.target.checked)
+                    }
+                  />
 
-                  <span>Remember Me</span>
+                  <span>
+                    Remember Me
+                  </span>
 
                 </label>
 
 
-                <a href="#">
+                {/* FORGOT PASSWORD */}
+
+                <button
+                  type="button"
+                  className="forgot-password"
+                  onClick={handleForgotPassword}
+                >
                   Forgot Password?
-                </a>
+                </button>
 
               </div>
 
 
-              {/* Sign In Button */}
+              {/* ================= LOGIN BUTTON ================= */}
+
               <button
                 type="submit"
                 className="login-button"
+                disabled={loading}
               >
-                Sign In
+
+                {loading
+                  ? "Signing In..."
+                  : "Sign In"}
+
               </button>
 
             </form>
 
 
-            {/* DIVIDER */}
+            {/* ================= DIVIDER ================= */}
+
             <div className="divider">
 
               <span></span>
@@ -232,26 +457,30 @@ function Login() {
             </div>
 
 
-            {/* University Login */}
+            {/* ================= UNIVERSITY LOGIN ================= */}
 
-            <button className="university-button">
+            <button
+              type="button"
+              className="university-button"
+              onClick={universityLogin}
+            >
 
-              <span>♜</span>
+              <span>🎓</span>
 
               Continue with University Account
 
             </button>
 
 
-            {/* Sign Up */}
+            {/* ================= SIGNUP ================= */}
 
             <p className="signup-text">
 
-              Don't have an account?
+              Don't have an account?{" "}
 
-              <a href="#">
+              <Link to="/signup">
                 Sign Up
-              </a>
+              </Link>
 
             </p>
 

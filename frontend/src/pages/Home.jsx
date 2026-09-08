@@ -1,5 +1,4 @@
 import "./Home.css";
-
 function Home() {
   return (
     <div className="home-page">
@@ -62,7 +61,6 @@ function Home() {
             <h2>
               Smart Campus
               <br />
-
               <span>Lost & Found</span>
             </h2>
 
