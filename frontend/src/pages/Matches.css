@@ -1,0 +1,1007 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.matches-page {
+  min-height: 100vh;
+  width: 100%;
+
+  padding: 2rem;
+
+  font-family: Arial, sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(99, 102, 241, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(236, 72, 153, 0.1),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(6, 182, 212, 0.1),
+      transparent 30%
+    ),
+    #f8fafc;
+
+  color: #0f172a;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.matches-navbar {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  padding-bottom: 2rem;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.matches-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+.matches-brand-logo {
+  width: 50px;
+  height: 50px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matches-box {
+  position: absolute;
+
+  border-radius: 8px;
+}
+
+.matches-box-one {
+  width: 32px;
+  height: 32px;
+
+  top: 0;
+  left: 0;
+
+  background: #6366f1;
+}
+
+.matches-box-two {
+  width: 28px;
+  height: 28px;
+
+  bottom: 0;
+  right: 0;
+
+  background: #06b6d4;
+}
+
+.matches-box-three {
+  width: 20px;
+  height: 20px;
+
+  top: 5px;
+  right: 4px;
+
+  background: #ec4899;
+}
+
+.matches-logo-text {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 5px;
+
+  border-radius: 6px;
+
+  background: white;
+
+  font-size: 0.6rem;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  text-align: center;
+
+  color: #0f172a;
+}
+
+.matches-brand-name h2 {
+  margin: 0;
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #ec4899
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.matches-brand-name p {
+  margin: 3px 0 0;
+
+  font-size: 0.72rem;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.matches-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+.matches-nav-links a {
+  text-decoration: none;
+
+  color: #64748b;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  transition: 0.25s;
+}
+
+.matches-nav-links a:hover {
+  color: #6366f1;
+
+  background:
+    rgba(99, 102, 241, 0.08);
+}
+
+.matches-nav-links .active {
+  background:
+    rgba(99, 102, 241, 0.12);
+
+  color: #6366f1;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   SIGN OUT
+========================================================= */
+
+.matches-signout-btn {
+  flex-shrink: 0;
+
+  padding: 0.7rem 1.1rem;
+
+  border-radius: 10px;
+
+  border: 1px solid #e2e8f0;
+
+  background: white;
+
+  color: #475569;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.matches-signout-btn:hover {
+  background: #6366f1;
+
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.matches-main {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.matches-hero {
+  text-align: center;
+
+  padding: 3.5rem 2rem;
+
+  margin-bottom: 2rem;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  border:
+    1px solid rgba(226, 232, 240, 0.9);
+
+  border-radius: 28px;
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.06);
+}
+
+.matches-hero-badge {
+  display: inline-block;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(99, 102, 241, 0.1);
+
+  color: #6366f1;
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.matches-hero h1 {
+  margin: 1rem 0 0;
+
+  font-size: 3.3rem;
+
+  font-weight: 900;
+
+  letter-spacing: -1.5px;
+}
+
+.matches-hero h1 span {
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #ec4899,
+      #06b6d4
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.matches-hero > p {
+  max-width: 620px;
+
+  margin: 1rem auto 0;
+
+  color: #64748b;
+
+  line-height: 1.7;
+
+  font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.matches-stats {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1rem;
+
+  margin-top: 2rem;
+
+  flex-wrap: wrap;
+}
+
+.matches-stat {
+  min-width: 150px;
+
+  padding: 1rem 1.4rem;
+
+  border-radius: 16px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.3rem;
+}
+
+.matches-stat strong {
+  font-size: 1.3rem;
+
+  color: #6366f1;
+}
+
+.matches-stat span {
+  color: #64748b;
+
+  font-size: 0.72rem;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   MATCHES
+========================================================= */
+
+.matches-container {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+
+/* =========================================================
+   PREMIUM CARD
+========================================================= */
+
+.premium-match-card {
+  padding: 1.5rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  border:
+    1px solid #e2e8f0;
+
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.07);
+
+  transition: 0.3s ease;
+}
+
+.premium-match-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 25px 55px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.match-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding-bottom: 1.2rem;
+
+  margin-bottom: 1.5rem;
+
+  border-bottom:
+    1px solid #e2e8f0;
+}
+
+.match-number {
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  color: #6366f1;
+}
+
+.match-card-header h2 {
+  margin: 0.4rem 0 0;
+
+  font-size: 1.3rem;
+
+  font-weight: 800;
+}
+
+.match-confidence {
+  text-align: right;
+
+  padding: 0.8rem 1rem;
+
+  border-radius: 14px;
+
+  background:
+    rgba(99, 102, 241, 0.08);
+}
+
+.match-confidence span {
+  display: block;
+
+  color: #64748b;
+
+  font-size: 0.65rem;
+
+  font-weight: 700;
+}
+
+.match-confidence strong {
+  font-size: 1.4rem;
+
+  color: #6366f1;
+}
+
+
+/* =========================================================
+   COMPARISON
+========================================================= */
+
+.match-comparison {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    160px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 1.5rem;
+}
+
+
+/* =========================================================
+   ITEM CARD
+========================================================= */
+
+.premium-item-card {
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: white;
+
+  border:
+    1px solid #e2e8f0;
+}
+
+.lost-item-card {
+  border-top:
+    4px solid #ef4444;
+}
+
+.found-item-card {
+  border-top:
+    4px solid #10b981;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.item-status {
+  padding: 0.9rem 1rem;
+
+  font-size: 0.75rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+}
+
+.lost-status {
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.found-status {
+  background: #ecfdf5;
+
+  color: #059669;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.premium-image-box {
+  width: 100%;
+
+  height: 220px;
+
+  background: #f1f5f9;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.premium-image-box img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s;
+}
+
+.premium-item-card:hover img {
+  transform: scale(1.06);
+}
+
+.no-image-placeholder {
+  font-size: 4rem;
+}
+
+
+/* =========================================================
+   ITEM CONTENT
+========================================================= */
+
+.premium-item-content {
+  padding: 1.2rem;
+}
+
+.premium-item-content h3 {
+  margin: 0;
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+
+  color: #0f172a;
+}
+
+.item-description {
+  min-height: 55px;
+
+  margin: 0.7rem 0;
+
+  color: #64748b;
+
+  font-size: 0.82rem;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.item-details {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
+.detail-chip {
+  padding: 0.45rem 0.65rem;
+
+  border-radius: 8px;
+
+  background: #f8fafc;
+
+  color: #475569;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  border: 1px solid #e2e8f0;
+}
+
+
+/* =========================================================
+   MATCH CENTER
+========================================================= */
+
+.match-center {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.8rem;
+}
+
+.match-line {
+  width: 2px;
+
+  height: 35px;
+
+  background:
+    linear-gradient(
+      #ef4444,
+      #6366f1,
+      #10b981
+    );
+}
+
+.match-circle {
+  width: 120px;
+  height: 120px;
+
+  padding: 5px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #ec4899,
+      #06b6d4
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow:
+    0 15px 35px rgba(99, 102, 241, 0.25);
+}
+
+.match-circle-inner {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.match-circle-inner strong {
+  font-size: 1.7rem;
+
+  color: #6366f1;
+}
+
+.match-circle-inner span {
+  font-size: 0.62rem;
+
+  font-weight: 800;
+
+  color: #64748b;
+
+  letter-spacing: 1px;
+}
+
+.match-label {
+  font-size: 0.65rem;
+
+  font-weight: 800;
+
+  color: #6366f1;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   PRIVACY
+========================================================= */
+
+.match-privacy {
+  margin-top: 1.5rem;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 12px;
+
+  background:
+    rgba(99, 102, 241, 0.06);
+
+  color: #64748b;
+
+  text-align: center;
+
+  font-size: 0.75rem;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.premium-no-matches {
+  max-width: 650px;
+
+  margin: 3rem auto;
+
+  padding: 4rem 2rem;
+
+  text-align: center;
+
+  border-radius: 28px;
+
+  background:
+    rgba(255, 255, 255, 0.75);
+
+  border:
+    1px solid #e2e8f0;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.07);
+}
+
+.empty-icon {
+  width: 90px;
+  height: 90px;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(99, 102, 241, 0.1);
+
+  font-size: 2.5rem;
+}
+
+.premium-no-matches h2 {
+  margin: 1.5rem 0 0;
+
+  font-size: 1.8rem;
+}
+
+.premium-no-matches p {
+  max-width: 500px;
+
+  margin: 0.8rem auto 2rem;
+
+  color: #64748b;
+
+  line-height: 1.7;
+
+  font-size: 0.9rem;
+}
+
+.empty-actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1rem;
+}
+
+.empty-actions a {
+  padding: 0.8rem 1.3rem;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  transition: 0.25s;
+}
+
+.empty-lost-btn {
+  background: #6366f1;
+
+  color: white;
+}
+
+.empty-found-btn {
+  background: #ecfeff;
+
+  color: #0891b2;
+
+  border: 1px solid #a5f3fc;
+}
+
+.empty-actions a:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .matches-navbar {
+    flex-wrap: wrap;
+  }
+
+  .matches-nav-links {
+    order: 3;
+
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .match-comparison {
+    grid-template-columns: 1fr;
+
+    gap: 1rem;
+  }
+
+  .match-center {
+    flex-direction: row;
+  }
+
+  .match-line {
+    width: 50px;
+    height: 2px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .matches-page {
+    padding: 1rem;
+  }
+
+  .matches-navbar {
+    gap: 1rem;
+  }
+
+  .matches-nav-links {
+    justify-content: flex-start;
+
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    width: 100%;
+  }
+
+  .matches-nav-links a {
+    white-space: nowrap;
+  }
+
+  .matches-hero {
+    padding: 2.5rem 1.2rem;
+  }
+
+  .matches-hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .matches-stats {
+    flex-direction: column;
+  }
+
+  .matches-stat {
+    width: 100%;
+  }
+
+  .premium-match-card {
+    padding: 1rem;
+  }
+
+  .match-card-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .match-confidence {
+    width: 100%;
+
+    text-align: left;
+  }
+
+  .premium-image-box {
+    height: 200px;
+  }
+
+  .empty-actions {
+    flex-direction: column;
+  }
+
+  .empty-actions a {
+    width: 100%;
+  }
+
+}

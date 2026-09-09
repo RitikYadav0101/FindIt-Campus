@@ -1,15 +1,35 @@
 import "./Home.css";
+import { Link, useNavigate } from "react-router-dom";
+
 function Home() {
+  const navigate = useNavigate();
+
+  // ================= LOGOUT FUNCTION =================
+
+  const handleLogout = () => {
+    // Remove login session
+    localStorage.removeItem("isLoggedIn");
+
+    // Remove current user data
+    localStorage.removeItem("user");
+
+    // Redirect to login page
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="home-page">
 
       {/* ================= HEADER ================= */}
+
       <header className="home-header">
 
         {/* LOGO */}
-        <div className="home-brand">
+
+        <Link to="/" className="home-brand">
 
           <div className="home-brand-logo">
+
             <div className="home-box home-box-one"></div>
             <div className="home-box home-box-two"></div>
             <div className="home-box home-box-three"></div>
@@ -21,6 +41,7 @@ function Home() {
               <br />
               FOUND
             </div>
+
           </div>
 
           <div className="home-brand-text">
@@ -28,22 +49,46 @@ function Home() {
             <p>Discover. Connect. Reclaim.</p>
           </div>
 
-        </div>
+        </Link>
 
 
-        {/* NAVIGATION */}
+        {/* ================= NAVIGATION ================= */}
+
         <nav className="home-nav-links">
-          <a href="#" className="active">Home</a>
-          <a href="#">Lost</a>
-          <a href="#">Report Lost</a>
-          <a href="#">Found</a>
-          <a href="#">Report Found</a>
-          <a href="#">Profile</a>
+
+          <Link to="/" className="active">
+            Home
+          </Link>
+
+          <Link to="/lost">
+            Lost
+          </Link>
+
+          <Link to="/report-lost">
+            Report Lost
+          </Link>
+
+          <Link to="/found">
+            Found
+          </Link>
+
+          <Link to="/report-found">
+            Report Found
+          </Link>
+
+          <Link to="/profile">
+            Profile
+          </Link>
+
         </nav>
 
 
-        {/* SIGN OUT */}
-        <button className="home-signout-btn">
+        {/* ================= SIGN OUT ================= */}
+
+        <button
+          className="home-signout-btn"
+          onClick={handleLogout}
+        >
           Sign Out
         </button>
 
@@ -51,9 +96,11 @@ function Home() {
 
 
       {/* ================= MAIN ================= */}
+
       <main className="home-main">
 
         {/* ================= LEFT HERO ================= */}
+
         <section className="home-hero-section">
 
           <div className="home-hero-content">
@@ -73,7 +120,8 @@ function Home() {
           </div>
 
 
-          {/* FEATURES */}
+          {/* ================= FEATURES ================= */}
+
           <div className="home-features">
 
             <div className="home-feature">
@@ -123,6 +171,7 @@ function Home() {
 
 
         {/* ================= RIGHT ACTION PANEL ================= */}
+
         <section className="home-action-panel">
 
           <h2>Find & Recover</h2>
@@ -135,10 +184,16 @@ function Home() {
 
           <div className="home-action-buttons">
 
-            {/* LOST */}
-            <a href="#" className="home-action-card home-lost-card">
+
+            {/* ================= LOST ================= */}
+
+            <Link
+              to="/report-lost"
+              className="home-action-card home-lost-card"
+            >
 
               <div>
+
                 <span className="home-small-text">
                   Looking for something?
                 </span>
@@ -146,19 +201,25 @@ function Home() {
                 <h3>Lost</h3>
 
                 <p>Report your lost item</p>
+
               </div>
 
               <div className="home-action-icon">
                 📦
               </div>
 
-            </a>
+            </Link>
 
 
-            {/* FOUND */}
-            <a href="#" className="home-action-card home-found-card">
+            {/* ================= FOUND ================= */}
+
+            <Link
+              to="/report-found"
+              className="home-action-card home-found-card"
+            >
 
               <div>
+
                 <span className="home-small-text">
                   Found something?
                 </span>
@@ -166,26 +227,29 @@ function Home() {
                 <h3>Found</h3>
 
                 <p>Help someone get it back</p>
+
               </div>
 
               <div className="home-action-icon">
                 🔎
               </div>
 
-            </a>
+            </Link>
 
           </div>
 
 
+          {/* ================= QUICK LINKS ================= */}
+
           <div className="home-quick-links">
 
-            <a href="#">
+            <Link to="/lost">
               Browse Lost Items →
-            </a>
+            </Link>
 
-            <a href="#">
+            <Link to="/found">
               Browse Found Items →
-            </a>
+            </Link>
 
           </div>
 
@@ -195,9 +259,12 @@ function Home() {
 
 
       {/* ================= FOOTER ================= */}
+
       <footer className="home-footer">
 
+
         {/* BRAND */}
+
         <div className="home-footer-brand">
 
           <div className="home-brand-logo home-footer-logo">
@@ -225,56 +292,96 @@ function Home() {
 
 
         {/* SITE */}
+
         <div className="home-footer-section">
 
           <h4>Site</h4>
 
-          <a href="#">Lost</a>
-          <a href="#">Report Lost</a>
-          <a href="#">Found</a>
-          <a href="#">Report Found</a>
+          <Link to="/lost">
+            Lost
+          </Link>
+
+          <Link to="/report-lost">
+            Report Lost
+          </Link>
+
+          <Link to="/found">
+            Found
+          </Link>
+
+          <Link to="/report-found">
+            Report Found
+          </Link>
 
         </div>
 
 
         {/* HELP */}
+
         <div className="home-footer-section">
 
           <h4>Help</h4>
 
-          <a href="#">Customer Support</a>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
+          <a href="#">
+            Customer Support
+          </a>
+
+          <a href="#">
+            Terms & Conditions
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
 
         </div>
 
 
         {/* LINKS */}
+
         <div className="home-footer-section">
 
           <h4>Links</h4>
 
-          <a href="#">LinkedIn</a>
-          <a href="#">Facebook</a>
-          <a href="#">YouTube</a>
-          <a href="#">About Us</a>
+          <a href="#">
+            LinkedIn
+          </a>
+
+          <a href="#">
+            Facebook
+          </a>
+
+          <a href="#">
+            YouTube
+          </a>
+
+          <a href="#">
+            About Us
+          </a>
 
         </div>
 
 
         {/* CONTACT */}
+
         <div className="home-footer-section">
 
           <h4>Contact</h4>
 
           <p>Tel: +91 7416520690</p>
+
           <p>Email: info@yourdomain.com</p>
 
           <div className="home-socials">
+
             <span>𝕏</span>
+
             <span>f</span>
+
             <span>◎</span>
+
             <span>◉</span>
+
           </div>
 
         </div>
@@ -282,7 +389,8 @@ function Home() {
       </footer>
 
 
-      {/* COPYRIGHT */}
+      {/* ================= COPYRIGHT ================= */}
+
       <div className="home-copyright">
         © Copyright 2026 I FOUND. All Rights Reserved.
       </div>
