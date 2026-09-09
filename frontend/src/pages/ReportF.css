@@ -1,0 +1,1072 @@
+/* =========================================================
+   REPORT FOUND PAGE
+   Same visual system as Home page
+========================================================= */
+
+.reportf-page {
+  min-height: 100vh;
+  padding: 2rem;
+
+  font-family: Arial, sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(236, 72, 153, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(6, 182, 212, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #eef2ff
+    );
+
+  color: #0f172a;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.reportf-header {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 1rem;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.reportf-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reportf-brand-logo {
+  position: relative;
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.reportf-box {
+  position: absolute;
+  border-radius: 8px;
+}
+
+
+/* BLUE */
+.reportf-box-one {
+  width: 32px;
+  height: 32px;
+
+  background: #6366f1;
+
+  top: 0;
+  left: 0;
+
+  opacity: 0.9;
+}
+
+
+/* CYAN */
+.reportf-box-two {
+  width: 28px;
+  height: 28px;
+
+  background: #06b6d4;
+
+  bottom: 0;
+  right: 0;
+
+  opacity: 0.9;
+}
+
+
+/* PINK */
+.reportf-box-three {
+  width: 20px;
+  height: 20px;
+
+  background: #ec4899;
+
+  top: 6px;
+  right: 4px;
+
+  opacity: 0.85;
+}
+
+
+/* WHITE CENTER */
+.reportf-lost-box {
+  position: relative;
+  z-index: 5;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  padding: 5px;
+
+  border-radius: 6px;
+
+  font-size: 0.65rem;
+  font-weight: 800;
+
+  text-align: center;
+  line-height: 1.1;
+
+  color: #0f172a;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* BRAND TEXT */
+
+.reportf-brand-text h1 {
+  font-size: 1.25rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  margin: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #ec4899
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reportf-brand-text p {
+  margin: 4px 0 0;
+
+  font-size: 0.8rem;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.reportf-nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 1.2rem;
+}
+
+.reportf-nav-links a {
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  color: #64748b;
+
+  transition: 0.2s ease;
+}
+
+.reportf-nav-links a:hover {
+  color: #6366f1;
+}
+
+
+/* ACTIVE REPORT FOUND */
+
+.reportf-nav-links .active {
+  color: #6366f1;
+
+  background: rgba(99, 102, 241, 0.1);
+
+  padding: 8px 13px;
+
+  border-radius: 8px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SIGN OUT
+========================================================= */
+
+.reportf-signout-btn {
+  padding: 0.7rem 1.2rem;
+
+  background: white;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  color: #475569;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.reportf-signout-btn:hover {
+  background: #6366f1;
+
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.reportf-main {
+  width: 100%;
+  max-width: 850px;
+
+  margin: 1.5rem auto 3rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.reportf-heading {
+  text-align: center;
+
+  margin-bottom: 1.8rem;
+}
+
+.reportf-heading-line {
+  display: block;
+
+  width: 45px;
+  height: 4px;
+
+  margin: 0 auto 0.8rem;
+
+  border-radius: 10px;
+
+  /* background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #06b6d4,
+      #ec4899
+    ); */
+}
+
+.reportf-heading h2 {
+  margin: 0;
+
+  font-size: 3.1rem;
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  color: #0f172a;
+}
+
+.reportf-heading h2 span {
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #06b6d4
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reportf-heading p {
+  margin: 0.7rem 0 0;
+
+  font-size: 1rem;
+
+  color: #64748b;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.reportf-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 2rem;
+
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  border:
+    1px solid rgba(226, 232, 240, 0.95);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 50px -12px
+    rgba(15, 23, 42, 0.12);
+
+  backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.reportf-card-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding-bottom: 1.5rem;
+
+  margin-bottom: 1.5rem;
+
+  border-bottom:
+    1px solid rgba(226, 232, 240, 0.9);
+}
+
+.reportf-form-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: #e0e7ff;
+
+  color: #6366f1;
+
+  font-size: 1.7rem;
+
+  font-weight: 400;
+}
+
+.reportf-card-header h3 {
+  margin: 0 0 4px;
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+}
+
+.reportf-card-header p {
+  margin: 0;
+
+  font-size: 0.85rem;
+
+  color: #64748b;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.reportf-form {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  column-gap: 1.4rem;
+
+  row-gap: 1.3rem;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.reportf-form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.reportf-form-group label {
+  font-size: 0.88rem;
+
+  font-weight: 700;
+
+  color: #334155;
+}
+
+.reportf-form-group label span {
+  color: #ec4899;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.reportf-form-group input,
+.reportf-form-group select,
+.reportf-form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.85);
+
+  color: #0f172a;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.9rem;
+
+  outline: none;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* INPUT + SELECT */
+
+.reportf-form-group input,
+.reportf-form-group select {
+  height: 45px;
+
+  padding: 0 0.9rem;
+}
+
+
+/* TEXTAREA */
+
+.reportf-form-group textarea {
+  min-height: 110px;
+
+  padding: 0.8rem 0.9rem;
+
+  resize: vertical;
+
+  line-height: 1.5;
+}
+
+
+/* PLACEHOLDER */
+
+.reportf-form-group input::placeholder,
+.reportf-form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+
+/* FOCUS */
+
+.reportf-form-group input:focus,
+.reportf-form-group select:focus,
+.reportf-form-group textarea:focus {
+  border-color: #6366f1;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+/* FULL WIDTH */
+
+.reportf-full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   CHARACTER INFO
+========================================================= */
+
+.reportf-character-info {
+  margin-top: -0.15rem;
+
+  font-size: 0.72rem;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+.reportf-upload-area {
+  position: relative;
+
+  min-height: 95px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1.5px dashed #cbd5e1;
+
+  border-radius: 12px;
+
+  background:
+    rgba(248, 250, 252, 0.75);
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.reportf-upload-area:hover {
+  border-color: #6366f1;
+
+  background:
+    rgba(238, 242, 255, 0.6);
+}
+
+.reportf-upload-area input {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+.reportf-upload-content {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.8rem;
+}
+
+.reportf-upload-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #e0e7ff;
+
+  color: #6366f1;
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+}
+
+.reportf-upload-content strong {
+  display: block;
+
+  font-size: 0.9rem;
+
+  color: #334155;
+}
+
+.reportf-upload-content p {
+  margin: 4px 0 0;
+
+  font-size: 0.72rem;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.reportf-form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.8rem;
+
+  padding-top: 0.5rem;
+}
+
+
+/* SUBMIT */
+
+.reportf-submit-btn {
+  min-width: 145px;
+
+  padding: 0.75rem 1.4rem;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #4f46e5
+    );
+
+  color: white;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px
+    rgba(99, 102, 241, 0.22);
+
+  transition: 0.25s ease;
+}
+
+.reportf-submit-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(99, 102, 241, 0.3);
+}
+
+
+/* RESET */
+
+.reportf-reset-btn {
+  min-width: 90px;
+
+  padding: 0.75rem 1.2rem;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: #64748b;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.reportf-reset-btn:hover {
+  border-color: #94a3b8;
+
+  color: #334155;
+
+  background: #f8fafc;
+}
+
+
+/* =========================================================
+   BOTTOM MESSAGE
+========================================================= */
+
+.reportf-bottom-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin-top: 1.2rem;
+
+  padding: 0.7rem 1rem;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.reportf-bottom-note span {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #cffafe;
+
+  color: #0891b2;
+
+  font-size: 0.75rem;
+
+  font-weight: bold;
+}
+
+.reportf-bottom-note p {
+  margin: 0;
+
+  font-size: 0.75rem;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.reportf-footer {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 2rem auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    2fr 1fr 1.2fr 1fr 1.5fr;
+
+  gap: 2rem;
+
+  padding: 2rem 2.5rem;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(255, 255, 255, 0.6);
+
+  border:
+    1px solid rgba(226, 232, 240, 0.9);
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* FOOTER BRAND */
+
+.reportf-footer-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.reportf-footer-logo {
+  width: 45px;
+  height: 45px;
+}
+
+.reportf-footer-brand h3 {
+  margin: 0;
+
+  font-size: 1rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #ec4899
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reportf-footer-brand p {
+  margin-top: 4px;
+
+  font-size: 0.75rem;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   FOOTER SECTIONS
+========================================================= */
+
+.reportf-footer-section {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.6rem;
+}
+
+.reportf-footer-section h4 {
+  margin: 0 0 0.4rem;
+
+  font-size: 0.9rem;
+}
+
+.reportf-footer-section a,
+.reportf-footer-section p {
+  margin: 0;
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+
+  color: #64748b;
+}
+
+.reportf-footer-section a:hover {
+  color: #6366f1;
+}
+
+
+/* =========================================================
+   SOCIALS
+========================================================= */
+
+.reportf-socials {
+  display: flex;
+
+  gap: 0.6rem;
+
+  margin-top: 0.4rem;
+}
+
+.reportf-socials span {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+
+  border:
+    1px solid #e2e8f0;
+
+  font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.reportf-copyright {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  padding: 1rem;
+
+  box-sizing: border-box;
+
+  font-size: 0.8rem;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .reportf-nav-links {
+    gap: 0.7rem;
+  }
+
+  .reportf-nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .reportf-footer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+
+@media (max-width: 968px) {
+
+  .reportf-header {
+    flex-wrap: wrap;
+
+    gap: 1.5rem;
+  }
+
+  .reportf-nav-links {
+    order: 3;
+
+    width: 100%;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .reportf-main {
+    max-width: 750px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .reportf-form {
+    grid-template-columns: 1fr;
+  }
+
+  .reportf-full-width {
+    grid-column: auto;
+  }
+
+  .reportf-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .reportf-page {
+    padding: 1.2rem;
+  }
+
+  .reportf-header {
+    padding-bottom: 1rem;
+  }
+
+  .reportf-nav-links {
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    flex-wrap: nowrap;
+
+    padding-bottom: 5px;
+  }
+
+  .reportf-heading h2 {
+    font-size: 2.3rem;
+  }
+
+  .reportf-heading p {
+    font-size: 0.9rem;
+  }
+
+  .reportf-card {
+    padding: 1.3rem;
+  }
+
+  .reportf-card-header {
+    align-items: flex-start;
+  }
+
+  .reportf-form-actions {
+    flex-direction: column;
+  }
+
+  .reportf-submit-btn,
+  .reportf-reset-btn {
+    width: 100%;
+  }
+
+  .reportf-footer {
+    grid-template-columns: 1fr;
+
+    padding: 1.8rem;
+  }
+
+}
