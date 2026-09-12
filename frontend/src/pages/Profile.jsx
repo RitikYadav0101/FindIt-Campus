@@ -1,25 +1,28 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import BrandLogo from "./components/BrandLogo";
+
 import "./Profile.css";
+
 function Profile() {
   const navigate = useNavigate();
 
   // ================= GET LOGGED IN USER =================
 
-  const savedUser = JSON.parse(
-    localStorage.getItem("user")
-  );
+  const savedUser =
+    JSON.parse(localStorage.getItem("user")) || {};
 
   // ================= PROFILE DATA =================
 
   const [formData, setFormData] = useState({
-    username: savedUser?.username || "",
-    rollNumber: savedUser?.rollNumber || "",
-    name: savedUser?.name || "",
-    phone: "",
-    studentEmail: "",
-    parentName: "",
-    parentEmail: "",
+    username: savedUser.username || "",
+    rollNumber: savedUser.rollNumber || "",
+    name: savedUser.name || "",
+    phone: savedUser.phone || "",
+    studentEmail: savedUser.studentEmail || "",
+    parentName: savedUser.parentName || "",
+    parentEmail: savedUser.parentEmail || "",
   });
 
   const [editing, setEditing] = useState(false);
@@ -43,23 +46,38 @@ function Profile() {
     setSaved(false);
   };
 
+  // ================= CANCEL EDIT =================
+
+  const handleCancel = () => {
+    const currentUser =
+      JSON.parse(localStorage.getItem("user")) || {};
+
+    setFormData({
+      username: currentUser.username || "",
+      rollNumber: currentUser.rollNumber || "",
+      name: currentUser.name || "",
+      phone: currentUser.phone || "",
+      studentEmail: currentUser.studentEmail || "",
+      parentName: currentUser.parentName || "",
+      parentEmail: currentUser.parentEmail || "",
+    });
+
+    setEditing(false);
+  };
+
   // ================= SAVE PROFILE =================
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Save updated profile
+    const updatedUser = {
+      ...savedUser,
+      ...formData,
+    };
+
     localStorage.setItem(
       "user",
-      JSON.stringify({
-        username: formData.username,
-        rollNumber: formData.rollNumber,
-        name: formData.name,
-        phone: formData.phone,
-        studentEmail: formData.studentEmail,
-        parentName: formData.parentName,
-        parentEmail: formData.parentEmail,
-      })
+      JSON.stringify(updatedUser)
     );
 
     setEditing(false);
@@ -82,6 +100,7 @@ function Profile() {
       {/* ================= BACKGROUND ================= */}
 
       <div className="profile-circle profile-circle-one"></div>
+
       <div className="profile-circle profile-circle-two"></div>
 
 
@@ -89,41 +108,17 @@ function Profile() {
 
       <header className="profile-header">
 
-        {/* LOGO */}
+        {/* ================= CONSISTENT BRAND LOGO ================= */}
 
-        <Link to="/" className="profile-brand">
-
-          <div className="profile-brand-logo">
-
-            <div className="profile-box profile-box-one"></div>
-            <div className="profile-box profile-box-two"></div>
-            <div className="profile-box profile-box-three"></div>
-
-            <div className="profile-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
-          </div>
-
-
-          <div className="profile-brand-text">
-
-            <h1>I FOUND</h1>
-
-            <p>
-              Discover. Connect. Reclaim.
-            </p>
-
-          </div>
-
+        <Link
+          to="/"
+          className="profile-brand"
+        >
+          <BrandLogo small />
         </Link>
 
 
-        {/* BACK BUTTON */}
+        {/* ================= BACK BUTTON ================= */}
 
         <button
           className="profile-back-button"
@@ -152,7 +147,10 @@ function Profile() {
           <h2>
             Your
             <br />
-            <span>Profile</span>
+
+            <span>
+              Profile
+            </span>
           </h2>
 
 
@@ -249,7 +247,7 @@ function Profile() {
           <div className="profile-form-card">
 
 
-            {/* HEADING */}
+            {/* ================= HEADING ================= */}
 
             <div className="profile-form-heading">
 
@@ -264,7 +262,7 @@ function Profile() {
             </div>
 
 
-            {/* SUCCESS MESSAGE */}
+            {/* ================= SUCCESS MESSAGE ================= */}
 
             {saved && (
 
@@ -282,7 +280,7 @@ function Profile() {
             <form onSubmit={handleSubmit}>
 
 
-              {/* NAME */}
+              {/* ================= NAME ================= */}
 
               <div className="profile-input-group">
 
@@ -302,7 +300,7 @@ function Profile() {
               </div>
 
 
-              {/* USERNAME */}
+              {/* ================= USERNAME ================= */}
 
               <div className="profile-input-group">
 
@@ -322,7 +320,7 @@ function Profile() {
               </div>
 
 
-              {/* ROLL NUMBER */}
+              {/* ================= ROLL NUMBER ================= */}
 
               <div className="profile-input-group">
 
@@ -342,7 +340,7 @@ function Profile() {
               </div>
 
 
-              {/* PHONE + EMAIL */}
+              {/* ================= PHONE + EMAIL ================= */}
 
               <div className="profile-two-column">
 
@@ -391,7 +389,7 @@ function Profile() {
               </div>
 
 
-              {/* PARENT NAME */}
+              {/* ================= PARENT NAME ================= */}
 
               <div className="profile-input-group">
 
@@ -412,7 +410,7 @@ function Profile() {
               </div>
 
 
-              {/* PARENT EMAIL */}
+              {/* ================= PARENT EMAIL ================= */}
 
               <div className="profile-input-group">
 
@@ -450,6 +448,7 @@ function Profile() {
                 ) : (
 
                   <>
+
                     <button
                       type="submit"
                       className="profile-save-button"
@@ -457,13 +456,15 @@ function Profile() {
                       Save Changes
                     </button>
 
+
                     <button
                       type="button"
                       className="profile-cancel-button"
-                      onClick={() => setEditing(false)}
+                      onClick={handleCancel}
                     >
                       Cancel
                     </button>
+
                   </>
 
                 )}

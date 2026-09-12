@@ -4,16 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
 
-  // ================= LOGOUT FUNCTION =================
+  // ================= LOGOUT =================
 
   const handleLogout = () => {
-    // Remove login session
     localStorage.removeItem("isLoggedIn");
-
-    // Remove current user data
     localStorage.removeItem("user");
 
-    // Redirect to login page
     navigate("/login", { replace: true });
   };
 
@@ -28,31 +24,20 @@ function Home() {
 
         <Link to="/" className="home-brand">
 
-          <div className="home-brand-logo">
-
-            <div className="home-box home-box-one"></div>
-            <div className="home-box home-box-two"></div>
-            <div className="home-box home-box-three"></div>
-
-            <div className="home-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
+          <div className="home-logo-mark">
+            <span className="logo-letter">F</span>
+            <span className="logo-dot"></span>
           </div>
 
           <div className="home-brand-text">
-            <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
+            <h1>FINDIT</h1>
+            <p>Campus Lost & Found</p>
           </div>
 
         </Link>
 
 
-        {/* ================= NAVIGATION ================= */}
+        {/* NAVIGATION */}
 
         <nav className="home-nav-links">
 
@@ -83,7 +68,7 @@ function Home() {
         </nav>
 
 
-        {/* ================= SIGN OUT ================= */}
+        {/* SIGN OUT */}
 
         <button
           className="home-signout-btn"
@@ -99,17 +84,32 @@ function Home() {
 
       <main className="home-main">
 
+
         {/* ================= LEFT HERO ================= */}
 
         <section className="home-hero-section">
+
+          {/* BADGE */}
+
+          <div className="home-badge">
+            SMART CAMPUS LOST & FOUND
+          </div>
+
+
+          {/* HEADING */}
 
           <div className="home-hero-content">
 
             <h2>
               Smart Campus
               <br />
-              <span>Lost & Found</span>
+
+              <span>
+                Lost & Found
+              </span>
+
             </h2>
+
 
             <p className="home-description">
               Find what's lost.
@@ -124,19 +124,32 @@ function Home() {
 
           <div className="home-features">
 
+
+            {/* FEATURE 1 */}
+
             <div className="home-feature">
 
               <div className="home-feature-icon home-secure-icon">
                 ♢
               </div>
 
-              <div>
-                <h3>Secure & Reliable</h3>
-                <p>Your data is safe with us.</p>
+              <div className="home-feature-content">
+
+                <h3>
+                  Secure & Reliable
+                </h3>
+
+                <p>
+                  Your information and reports
+                  stay safe and protected.
+                </p>
+
               </div>
 
             </div>
 
+
+            {/* FEATURE 2 */}
 
             <div className="home-feature">
 
@@ -144,13 +157,23 @@ function Home() {
                 ♧
               </div>
 
-              <div>
-                <h3>Community Driven</h3>
-                <p>Helping each other, every day.</p>
+              <div className="home-feature-content">
+
+                <h3>
+                  Community Driven
+                </h3>
+
+                <p>
+                  Helping students reconnect
+                  with their belongings.
+                </p>
+
               </div>
 
             </div>
 
+
+            {/* FEATURE 3 */}
 
             <div className="home-feature">
 
@@ -158,9 +181,17 @@ function Home() {
                 ⚡
               </div>
 
-              <div>
-                <h3>Quick & Easy</h3>
-                <p>Report, Search & Reclaim in minutes.</p>
+              <div className="home-feature-content">
+
+                <h3>
+                  Quick & Easy
+                </h3>
+
+                <p>
+                  Report, search and recover
+                  items in minutes.
+                </p>
+
               </div>
 
             </div>
@@ -170,11 +201,15 @@ function Home() {
         </section>
 
 
+
         {/* ================= RIGHT ACTION PANEL ================= */}
 
         <section className="home-action-panel">
 
-          <h2>Find & Recover</h2>
+          <h2>
+            Find & Recover
+          </h2>
+
 
           <p className="home-action-description">
             Helping the campus community reconnect
@@ -185,7 +220,7 @@ function Home() {
           <div className="home-action-buttons">
 
 
-            {/* ================= LOST ================= */}
+            {/* LOST */}
 
             <Link
               to="/report-lost"
@@ -198,11 +233,16 @@ function Home() {
                   Looking for something?
                 </span>
 
-                <h3>Lost</h3>
+                <h3>
+                  Lost
+                </h3>
 
-                <p>Report your lost item</p>
+                <p>
+                  Report your lost item
+                </p>
 
               </div>
+
 
               <div className="home-action-icon">
                 📦
@@ -211,7 +251,8 @@ function Home() {
             </Link>
 
 
-            {/* ================= FOUND ================= */}
+
+            {/* FOUND */}
 
             <Link
               to="/report-found"
@@ -224,11 +265,16 @@ function Home() {
                   Found something?
                 </span>
 
-                <h3>Found</h3>
+                <h3>
+                  Found
+                </h3>
 
-                <p>Help someone get it back</p>
+                <p>
+                  Help someone get it back
+                </p>
 
               </div>
+
 
               <div className="home-action-icon">
                 🔎
@@ -239,7 +285,8 @@ function Home() {
           </div>
 
 
-          {/* ================= QUICK LINKS ================= */}
+
+          {/* QUICK LINKS */}
 
           <div className="home-quick-links">
 
@@ -258,6 +305,7 @@ function Home() {
       </main>
 
 
+
       {/* ================= FOOTER ================= */}
 
       <footer className="home-footer">
@@ -267,63 +315,102 @@ function Home() {
 
         <div className="home-footer-brand">
 
-          <div className="home-brand-logo home-footer-logo">
-
-            <div className="home-box home-box-one"></div>
-            <div className="home-box home-box-two"></div>
-            <div className="home-box home-box-three"></div>
-
-            <div className="home-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
+          <div className="home-footer-logo">
+            <div className="home-logo-mark footer-logo-mark">
+              <span className="logo-letter">F</span>
+              <span className="logo-dot"></span>
             </div>
 
+            <div className="home-brand-text">
+
+              <h1>
+                FINDIT
+              </h1>
+
+              <p>
+                Campus Lost & Found
+              </p>
+
+            </div>
           </div>
 
-          <div>
-            <h3>I FOUND</h3>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
+
+          <p className="home-footer-description">
+            A smart platform helping the campus
+            community find, report and recover
+            lost belongings easily.
+          </p>
 
         </div>
+
 
 
         {/* SITE */}
 
         <div className="home-footer-section">
 
-          <h4>Site</h4>
+          <h4>
+            Explore
+          </h4>
 
-          <Link to="/lost">
-            Lost
+          <Link to="/">
+            Home
           </Link>
 
-          <Link to="/report-lost">
-            Report Lost
+          <Link to="/lost">
+            Lost Items
           </Link>
 
           <Link to="/found">
-            Found
+            Found Items
+          </Link>
+
+          <Link to="/profile">
+            Profile
+          </Link>
+
+        </div>
+
+
+
+        {/* REPORT */}
+
+        <div className="home-footer-section">
+
+          <h4>
+            Report
+          </h4>
+
+          <Link to="/report-lost">
+            Report Lost
           </Link>
 
           <Link to="/report-found">
             Report Found
           </Link>
 
+          <Link to="/lost">
+            Search Lost Items
+          </Link>
+
+          <Link to="/found">
+            Search Found Items
+          </Link>
+
         </div>
+
 
 
         {/* HELP */}
 
         <div className="home-footer-section">
 
-          <h4>Help</h4>
+          <h4>
+            Help
+          </h4>
 
           <a href="#">
-            Customer Support
+            Support
           </a>
 
           <a href="#">
@@ -337,40 +424,22 @@ function Home() {
         </div>
 
 
-        {/* LINKS */}
-
-        <div className="home-footer-section">
-
-          <h4>Links</h4>
-
-          <a href="#">
-            LinkedIn
-          </a>
-
-          <a href="#">
-            Facebook
-          </a>
-
-          <a href="#">
-            YouTube
-          </a>
-
-          <a href="#">
-            About Us
-          </a>
-
-        </div>
-
 
         {/* CONTACT */}
 
         <div className="home-footer-section">
 
-          <h4>Contact</h4>
+          <h4>
+            Contact
+          </h4>
 
-          <p>Tel: +91 7416520690</p>
+          <p>
+            Campus Lost & Found
+          </p>
 
-          <p>Email: info@yourdomain.com</p>
+          <p>
+            info@finditcampus.com
+          </p>
 
           <div className="home-socials">
 
@@ -378,9 +447,7 @@ function Home() {
 
             <span>f</span>
 
-            <span>◎</span>
-
-            <span>◉</span>
+            <span>in</span>
 
           </div>
 
@@ -389,10 +456,19 @@ function Home() {
       </footer>
 
 
+
       {/* ================= COPYRIGHT ================= */}
 
       <div className="home-copyright">
-        © Copyright 2026 I FOUND. All Rights Reserved.
+
+        <span>
+          © 2026 FINDIT
+        </span>
+
+        <span>
+          Built for a smarter campus community.
+        </span>
+
       </div>
 
     </div>

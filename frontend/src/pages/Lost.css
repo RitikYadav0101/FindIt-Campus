@@ -14,28 +14,34 @@
 .lost-page {
   min-height: 100vh;
   width: 100%;
-  padding: 2rem;
 
-  font-family: Arial, sans-serif;
+  padding: 0 2rem;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
   background:
     radial-gradient(
-      circle at 20% 20%,
-      rgba(236, 72, 153, 0.12),
-      transparent 30%
+      circle at 85% 10%,
+      rgba(52, 112, 180, 0.13),
+      transparent 25%
     ),
     radial-gradient(
-      circle at 70% 80%,
-      rgba(6, 182, 212, 0.12),
-      transparent 30%
+      circle at 10% 85%,
+      rgba(37, 99, 235, 0.07),
+      transparent 28%
     ),
     linear-gradient(
       135deg,
-      #f8fafc,
-      #eef2ff
+      #07111f 0%,
+      #0b1626 48%,
+      #101d30 100%
     );
 
-  color: #0f172a;
+  color: #e8edf5;
+
   overflow-x: hidden;
 }
 
@@ -46,7 +52,9 @@
 
 .lost-header {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1320px;
+
+  min-height: 110px;
 
   margin: 0 auto;
 
@@ -54,9 +62,10 @@
   align-items: center;
   justify-content: space-between;
 
-  gap: 1rem;
+  gap: 2rem;
 
-  padding-bottom: 2rem;
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.13);
 }
 
 
@@ -68,114 +77,118 @@
   display: flex;
   align-items: center;
 
-  gap: 1rem;
+  gap: 0.9rem;
+
+  min-width: 260px;
 
   text-decoration: none;
 
-  flex-shrink: 0;
-}
-
-
-/* LOGO CONTAINER */
-
-.lost-brand-logo {
-  position: relative;
-
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
+  color: white;
 }
 
 
 /* =========================================================
-   LOGO BOXES
+   LOGO
 ========================================================= */
+
+.lost-brand-logo {
+  position: relative;
+
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1e3958,
+      #0b1626
+    );
+
+  border:
+    1px solid rgba(96, 165, 250, 0.3);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
 
 .lost-box {
   position: absolute;
 
-  border-radius: 8px;
+  background:
+    linear-gradient(
+      135deg,
+      #82bdf2,
+      #2865a5
+    );
 }
 
-
-/* BLUE BOX */
 
 .lost-box-one {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
 
-  top: 0;
-  left: 0;
+  top: 9px;
+  left: 9px;
 
-  background: #6366f1;
-
-  opacity: 0.9;
-
-  box-shadow:
-    0 4px 12px
-    rgba(99, 102, 241, 0.25);
+  border-radius:
+    2px 16px 2px 2px;
 }
 
-
-/* CYAN BOX */
 
 .lost-box-two {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
 
-  right: 0;
-  bottom: 0;
+  bottom: 9px;
+  left: 9px;
 
-  background: #06b6d4;
-
-  opacity: 0.9;
+  border-radius:
+    2px 2px 2px 16px;
 }
 
-
-/* PINK BOX */
 
 .lost-box-three {
-  width: 20px;
-  height: 20px;
+  width: 13px;
+  height: 13px;
 
-  top: 6px;
-  right: 4px;
+  right: 10px;
+  bottom: 12px;
 
-  background: #ec4899;
-
-  opacity: 0.85;
+  border-radius: 50%;
 }
 
-
-/* CENTER LOGO TEXT */
 
 .lost-logo-text {
   position: relative;
 
-  z-index: 5;
+  z-index: 3;
 
-  padding: 5px;
+  margin-left: 11px;
+  margin-top: -7px;
 
-  border-radius: 6px;
+  font-size: 0.42rem;
 
-  background: rgba(255, 255, 255, 0.92);
-
-  color: #0f172a;
-
-  font-size: 0.55rem;
   font-weight: 800;
-
-  text-align: center;
 
   line-height: 1.05;
 
-  border:
-    1px solid rgba(226, 232, 240, 0.8);
+  color: white;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -186,29 +199,22 @@
 .lost-brand-text h1 {
   margin: 0;
 
-  font-size: 1.25rem;
+  font-size: 1.2rem;
+
   font-weight: 800;
 
   letter-spacing: 1px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #6366f1,
-      #ec4899
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f1f5f9;
 }
 
 
 .lost-brand-text p {
-  margin: 4px 0 0;
+  margin: 5px 0 0;
 
-  font-size: 0.8rem;
+  font-size: 0.72rem;
 
-  color: #64748b;
+  color: #94a3b8;
 }
 
 
@@ -219,21 +225,29 @@
 .lost-nav-links {
   display: flex;
   align-items: center;
+  justify-content: center;
 
-  gap: 0.5rem;
+  gap: 0.3rem;
+
+  flex: 1;
 }
 
 
 .lost-nav-links a {
-  padding: 8px 10px;
+  position: relative;
 
-  border-radius: 8px;
+  padding:
+    0.65rem
+    0.8rem;
+
+  border-radius: 9px;
 
   text-decoration: none;
 
-  color: #64748b;
+  color: #94a3b8;
 
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+
   font-weight: 600;
 
   white-space: nowrap;
@@ -243,20 +257,37 @@
 
 
 .lost-nav-links a:hover {
-  color: #6366f1;
+  color: #dbeafe;
 
   background:
-    rgba(99, 102, 241, 0.08);
+    rgba(96, 165, 250, 0.07);
 }
 
 
 .lost-nav-links .active {
-  color: #6366f1;
+  color: #dbeafe;
+}
 
-  background:
-    rgba(99, 102, 241, 0.12);
 
-  font-weight: 700;
+.lost-nav-links .active::after {
+  content: "";
+
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: #60a5fa;
+
+  box-shadow:
+    0 0 10px rgba(96, 165, 250, 0.9);
 }
 
 
@@ -265,38 +296,45 @@
 ========================================================= */
 
 .lost-signout-btn {
-  padding: 0.7rem 1.2rem;
+  min-width: 92px;
 
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
+  padding:
+    0.72rem
+    1.15rem;
 
-  background: white;
+  border-radius: 12px;
 
-  color: #475569;
+  border:
+    1px solid rgba(148, 163, 184, 0.22);
 
-  font-size: 0.85rem;
+  background:
+    rgba(30, 41, 59, 0.75);
+
+  color: #cbd5e1;
+
+  font-size: 0.82rem;
+
   font-weight: 700;
 
   cursor: pointer;
-
-  white-space: nowrap;
 
   transition: 0.25s ease;
 }
 
 
 .lost-signout-btn:hover {
-  background: #6366f1;
-
-  border-color: #6366f1;
+  transform: translateY(-2px);
 
   color: white;
 
-  transform: translateY(-2px);
+  border-color:
+    rgba(96, 165, 250, 0.4);
+
+  background:
+    rgba(42, 69, 101, 0.85);
 
   box-shadow:
-    0 8px 18px
-    rgba(99, 102, 241, 0.2);
+    0 10px 25px rgba(0, 0, 0, 0.22);
 }
 
 
@@ -306,45 +344,99 @@
 
 .lost-main {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1320px;
 
-  margin: 2rem auto 0;
+  margin: 0 auto;
+
+  padding:
+    4.5rem 0
+    3rem;
 }
 
 
 /* =========================================================
-   PAGE HEADING
+   HERO
 ========================================================= */
 
 .lost-page-heading {
-  margin-bottom: 1.8rem;
+  position: relative;
 
-  text-align: center;
+  min-height: 255px;
+
+  margin-bottom: 2.6rem;
+
+  padding: 3.1rem;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(22, 39, 61, 0.96),
+      rgba(31, 57, 88, 0.88)
+    );
+
+  border:
+    1px solid rgba(96, 165, 250, 0.2);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 25px 60px rgba(0, 0, 0, 0.18);
+}
+
+
+/* RIGHT GLOW */
+
+.lost-heading-glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -150px;
+  top: -220px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(87, 148, 215, 0.22),
+      transparent 68%
+    );
 }
 
 
 .lost-heading-content {
-  max-width: 650px;
+  position: relative;
 
-  margin: 0 auto;
+  z-index: 2;
+
+  max-width: 750px;
 }
 
 
 .lost-eyebrow {
-  display: inline-block;
+  display: inline-flex;
 
-  margin-bottom: 0.7rem;
-
-  padding: 6px 10px;
+  padding:
+    0.5rem
+    0.9rem;
 
   border-radius: 999px;
 
   background:
-    rgba(99, 102, 241, 0.08);
+    rgba(96, 165, 250, 0.1);
 
-  color: #6366f1;
+  border:
+    1px solid rgba(96, 165, 250, 0.2);
 
-  font-size: 0.72rem;
+  color: #93c5fd;
+
+  font-size: 0.68rem;
+
   font-weight: 800;
 
   letter-spacing: 1.5px;
@@ -352,37 +444,37 @@
 
 
 .lost-heading-content h2 {
-  margin: 0;
+  margin:
+    1rem 0
+    0;
 
-  font-size: 3rem;
+  font-size: 3.4rem;
+
   font-weight: 800;
 
-  color: #0f172a;
+  letter-spacing: -1.5px;
+
+  color: #f1f5f9;
 }
 
 
 .lost-heading-content h2 span {
-  background:
-    linear-gradient(
-      90deg,
-      #6366f1,
-      #06b6d4
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #73aae2;
 }
 
 
 .lost-heading-content p {
-  max-width: 600px;
+  max-width: 700px;
 
-  margin: 0.8rem auto 0;
+  margin:
+    1rem 0
+    0;
 
-  font-size: 1rem;
-  line-height: 1.6;
+  color: #a8b4c5;
 
-  color: #64748b;
+  font-size: 0.96rem;
+
+  line-height: 1.7;
 }
 
 
@@ -396,116 +488,127 @@
 
   gap: 1rem;
 
-  margin-bottom: 2rem;
+  margin-bottom: 2.7rem;
 }
 
 
-/* SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .lost-search-wrapper {
   flex: 1;
 
-  height: 52px;
+  height: 58px;
 
   display: flex;
   align-items: center;
 
-  padding: 0 1rem;
+  padding: 0 1.2rem;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 13px;
+  border-radius: 16px;
 
-  background: white;
+  background:
+    rgba(20, 33, 51, 0.86);
+
+  border:
+    1px solid rgba(148, 163, 184, 0.18);
 
   transition: 0.25s ease;
 }
 
 
 .lost-search-wrapper:focus-within {
-  border-color: #6366f1;
+  border-color:
+    rgba(96, 165, 250, 0.55);
 
   box-shadow:
-    0 0 0 4px
-    rgba(99, 102, 241, 0.1);
+    0 0 0 4px rgba(96, 165, 250, 0.08);
 }
 
 
 .lost-search-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 
 .lost-search-wrapper input {
   width: 100%;
+  height: 100%;
 
-  padding: 0 0.7rem;
+  padding: 0 0.8rem;
 
   border: none;
   outline: none;
 
   background: transparent;
 
-  font-size: 0.9rem;
+  color: #e2e8f0;
 
-  color: #0f172a;
+  font-size: 0.9rem;
 }
 
 
 .lost-search-wrapper input::placeholder {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 
-/* REPORT BUTTON */
+/* =========================================================
+   REPORT BUTTON
+========================================================= */
 
 .lost-report-btn {
-  height: 52px;
+  height: 58px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 0.5rem;
+  gap: 0.6rem;
 
-  padding: 0 1.3rem;
+  padding:
+    0 1.6rem;
 
-  border-radius: 12px;
+  border-radius: 16px;
+
+  text-decoration: none;
 
   background:
     linear-gradient(
       135deg,
-      #ec4899,
-      #db2777
+      #3d85cc,
+      #245b9b
     );
+
+  border:
+    1px solid rgba(147, 197, 253, 0.22);
 
   color: white;
 
-  text-decoration: none;
-
   font-size: 0.85rem;
+
   font-weight: 700;
 
-  white-space: nowrap;
+  box-shadow:
+    0 12px 28px rgba(25, 82, 139, 0.3);
 
   transition: 0.25s ease;
-
-  box-shadow:
-    0 8px 18px
-    rgba(236, 72, 153, 0.2);
 }
 
 
 .lost-report-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 
   box-shadow:
-    0 12px 25px
-    rgba(236, 72, 153, 0.3);
+    0 18px 35px rgba(25, 82, 139, 0.45);
 }
 
 
 .lost-report-plus {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+
+  font-weight: 400;
 }
 
 
@@ -514,28 +617,27 @@
 ========================================================= */
 
 .lost-results-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 
 .lost-results-header h3 {
   margin: 0;
 
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-size: 1.45rem;
+
+  font-weight: 750;
+
+  color: #e8edf5;
 }
 
 
 .lost-results-header p {
-  margin: 0.35rem 0 0;
+  margin: 0.4rem 0 0;
 
-  font-size: 0.82rem;
+  color: #718096;
 
-  color: #64748b;
+  font-size: 0.8rem;
 }
 
 
@@ -547,9 +649,9 @@
   display: grid;
 
   grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    repeat(3, minmax(0, 1fr));
 
-  gap: 1.25rem;
+  gap: 1.3rem;
 }
 
 
@@ -558,64 +660,87 @@
 ========================================================= */
 
 .lost-item-card {
+  position: relative;
+
   overflow: hidden;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 17px;
+  border-radius: 20px;
 
   background:
-    rgba(255, 255, 255, 0.85);
+    linear-gradient(
+      180deg,
+      rgba(31, 48, 70, 0.97),
+      rgba(18, 30, 47, 0.98)
+    );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.15);
+
+  border-top:
+    4px solid #ff5f5f;
 
   box-shadow:
-    0 15px 35px
-    rgba(15, 23, 42, 0.07);
+    0 18px 45px rgba(0, 0, 0, 0.18);
 
   transition: 0.3s ease;
 }
 
 
 .lost-item-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(96, 165, 250, 0.4);
+
+  border-top-color: #ff6b6b;
 
   box-shadow:
-    0 22px 42px
-    rgba(15, 23, 42, 0.11);
+    0 28px 55px rgba(0, 0, 0, 0.3);
 }
 
 
-/* CARD TOP */
+/* =========================================================
+   CARD TOP
+========================================================= */
 
 .lost-card-top {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
   gap: 0.5rem;
 
-  padding: 0.9rem 0.95rem 0.75rem;
+  padding:
+    1rem
+    1rem
+    0.85rem;
 }
 
 
-/* CATEGORY */
-
 .lost-category {
-  padding: 5px 8px;
+  padding:
+    0.38rem
+    0.7rem;
 
-  border-radius: 6px;
+  border-radius: 999px;
 
-  background: #fdf2f8;
+  background:
+    rgba(96, 165, 250, 0.1);
 
-  color: #db2777;
+  border:
+    1px solid rgba(96, 165, 250, 0.16);
+
+  color: #9bc9f8;
 
   font-size: 0.65rem;
+
   font-weight: 700;
 }
 
 
-/* DATE */
-
 .lost-date {
-  color: #94a3b8;
+  color: #718096;
 
   font-size: 0.68rem;
 
@@ -624,53 +749,79 @@
 
 
 /* =========================================================
-   ITEM IMAGE
+   IMAGE
 ========================================================= */
 
 .lost-item-image {
-  height: 155px;
+  height: 210px;
+
+  margin:
+    0
+    1rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin: 0 0.95rem;
-
   overflow: hidden;
 
-  border-radius: 11px;
+  border-radius: 15px;
 
   background:
     linear-gradient(
       135deg,
-      #f8fafc,
-      #e2e8f0
+      #1a2b40,
+      #263f5d
     );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.12);
 }
 
-
-/* UPLOADED IMAGE */
 
 .lost-uploaded-image {
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
-
   display: block;
+
+  object-fit: cover;
 }
 
 
-/* NO IMAGE */
+/* =========================================================
+   NO IMAGE
+========================================================= */
 
 .lost-no-image {
-  font-size: 4rem;
+  width: 100%;
+  height: 100%;
 
-  filter:
-    drop-shadow(
-      0 8px 8px
-      rgba(15, 23, 42, 0.15)
+  display: grid;
+  place-items: center;
+}
+
+
+.lost-package-icon {
+  width: 82px;
+  height: 82px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 24px;
+
+  font-size: 2.8rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.22),
+      rgba(37, 99, 235, 0.1)
     );
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.22);
 }
 
 
@@ -679,35 +830,42 @@
 ========================================================= */
 
 .lost-card-content {
-  padding: 1rem 0.95rem;
+  padding:
+    1.2rem
+    1rem
+    1rem;
 }
 
 
 .lost-card-content h3 {
   margin: 0;
 
-  font-size: 1.05rem;
-  font-weight: 800;
+  color: #edf2f7;
 
-  color: #0f172a;
+  font-size: 1.12rem;
+
+  font-weight: 750;
 }
 
 
 /* DESCRIPTION */
 
 .lost-item-description {
-  min-height: 57px;
+  min-height: 55px;
 
-  margin: 0.55rem 0 0;
+  margin:
+    0.6rem 0
+    0;
 
-  color: #64748b;
+  color: #8d9aac;
 
-  font-size: 0.76rem;
-  line-height: 1.55;
+  font-size: 0.78rem;
 
-  overflow: hidden;
+  line-height: 1.6;
 
   display: -webkit-box;
+
+  overflow: hidden;
 
   -webkit-line-clamp: 3;
 
@@ -721,40 +879,46 @@
   display: flex;
   align-items: center;
 
-  gap: 0.45rem;
+  gap: 0.5rem;
 
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
 
-  color: #64748b;
+  color: #94a3b8;
 
-  font-size: 0.72rem;
+  font-size: 0.74rem;
+
   font-weight: 600;
 }
 
 
 .lost-location-icon {
-  color: #ec4899;
+  font-size: 0.9rem;
 }
 
 
-/* VIEW BUTTON */
+/* =========================================================
+   VIEW BUTTON
+========================================================= */
 
 .lost-view-btn {
   width: 100%;
 
-  margin-top: 0.9rem;
+  margin-top: 1rem;
 
-  padding: 0.58rem;
+  padding: 0.78rem;
 
-  border: none;
-  border-radius: 8px;
+  border-radius: 11px;
+
+  border:
+    1px solid rgba(96, 165, 250, 0.2);
 
   background:
-    rgba(236, 72, 153, 0.1);
+    rgba(96, 165, 250, 0.08);
 
-  color: #db2777;
+  color: #a8d1ff;
 
   font-size: 0.8rem;
+
   font-weight: 700;
 
   cursor: pointer;
@@ -764,9 +928,19 @@
 
 
 .lost-view-btn:hover {
-  background: #db2777;
+  background:
+    linear-gradient(
+      135deg,
+      #367fc7,
+      #245b9b
+    );
 
   color: white;
+
+  border-color: transparent;
+
+  box-shadow:
+    0 10px 22px rgba(37, 99, 235, 0.25);
 }
 
 
@@ -777,31 +951,42 @@
 .lost-no-items {
   grid-column: 1 / -1;
 
-  padding: 3rem 1rem;
+  padding:
+    4rem
+    1rem;
 
   text-align: center;
 
-  border: 1px dashed #cbd5e1;
-  border-radius: 16px;
+  border-radius: 20px;
 
   background:
-    rgba(255, 255, 255, 0.6);
+    rgba(20, 33, 51, 0.7);
+
+  border:
+    1px dashed rgba(148, 163, 184, 0.25);
+}
+
+
+.lost-empty-icon {
+  font-size: 2.5rem;
+
+  margin-bottom: 1rem;
 }
 
 
 .lost-no-items h3 {
   margin: 0;
 
-  font-size: 1.2rem;
+  color: #dbe4ee;
 
-  color: #334155;
+  font-size: 1.3rem;
 }
 
 
 .lost-no-items p {
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
 
-  color: #64748b;
+  color: #718096;
 }
 
 
@@ -811,79 +996,111 @@
 
 .lost-bottom-message {
   display: flex;
+
   align-items: center;
 
-  gap: 1rem;
+  gap: 1.2rem;
 
-  margin-top: 1.8rem;
+  margin-top: 2.5rem;
 
-  padding: 1.15rem 1.3rem;
+  padding: 1.5rem;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border-radius: 20px;
 
   background:
-    rgba(255, 255, 255, 0.65);
+    linear-gradient(
+      135deg,
+      rgba(24, 42, 64, 0.9),
+      rgba(31, 57, 88, 0.82)
+    );
+
+  border:
+    1px solid rgba(96, 165, 250, 0.18);
 }
 
 
 .lost-bottom-icon {
-  width: 40px;
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 50px;
+  height: 50px;
 
   flex-shrink: 0;
 
-  border-radius: 12px;
+  display: grid;
+  place-items: center;
 
-  background: #fce7f3;
+  border-radius: 15px;
 
-  color: #db2777;
+  background:
+    rgba(59, 130, 246, 0.15);
 
-  font-size: 1.2rem;
+  border:
+    1px solid rgba(96, 165, 250, 0.18);
+
+  color: #93c5fd;
+
+  font-size: 1.3rem;
+
   font-weight: 800;
+}
+
+
+.lost-bottom-content {
+  flex: 1;
 }
 
 
 .lost-bottom-message h3 {
   margin: 0;
 
-  font-size: 1rem;
+  color: #e8edf5;
 
-  color: #0f172a;
+  font-size: 1rem;
 }
 
 
 .lost-bottom-message p {
-  margin: 4px 0 0;
+  margin:
+    0.4rem 0
+    0;
 
-  color: #64748b;
+  color: #8d9aac;
 
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 
 .lost-bottom-link {
-  margin-left: auto;
+  padding:
+    0.75rem
+    1.1rem;
 
-  color: #db2777;
+  border-radius: 11px;
 
   text-decoration: none;
 
-  font-size: 0.85rem;
+  background:
+    rgba(96, 165, 250, 0.1);
+
+  color: #93c5fd;
+
+  font-size: 0.82rem;
+
   font-weight: 700;
 
   white-space: nowrap;
+
+  transition: 0.25s ease;
 }
 
 
 .lost-bottom-link:hover {
-  text-decoration: underline;
+  transform: translateY(-2px);
+
+  background: #367fc7;
+
+  color: white;
 }
 
 
@@ -893,59 +1110,52 @@
 
 .lost-footer {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1320px;
 
-  margin: 3rem auto 0;
+  margin: 1rem auto 0;
 
-  padding: 2rem 2.5rem;
+  padding:
+    2rem 0;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 24px;
-
-  background:
-    rgba(255, 255, 255, 0.65);
-
-  backdrop-filter: blur(12px);
+  border-top:
+    1px solid rgba(148, 163, 184, 0.12);
 }
 
 
 .lost-footer-brand {
   display: flex;
+
   align-items: center;
 
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 
 .lost-footer-logo {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
 }
 
 
 .lost-footer-brand h3 {
   margin: 0;
 
+  color: #e2e8f0;
+
   font-size: 1rem;
 
-  background:
-    linear-gradient(
-      90deg,
-      #6366f1,
-      #ec4899
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
 }
 
 
 .lost-footer-brand p {
-  margin: 4px 0 0;
+  margin:
+    0.3rem 0
+    0;
+
+  color: #718096;
 
   font-size: 0.75rem;
-
-  color: #64748b;
 }
 
 
@@ -955,17 +1165,20 @@
 
 .lost-copyright {
   width: 100%;
-  max-width: 1200px;
 
-  margin: 0 auto;
-
-  padding: 1.2rem;
+  padding:
+    1.2rem
+    1rem
+    2rem;
 
   text-align: center;
 
-  font-size: 0.8rem;
+  border-top:
+    1px solid rgba(148, 163, 184, 0.08);
 
   color: #64748b;
+
+  font-size: 0.75rem;
 }
 
 
@@ -977,6 +1190,9 @@
 
   .lost-header {
     flex-wrap: wrap;
+
+    padding:
+      1.2rem 0;
   }
 
 
@@ -984,8 +1200,6 @@
     order: 3;
 
     width: 100%;
-
-    justify-content: center;
   }
 
 
@@ -998,38 +1212,32 @@
 
 
 /* =========================================================
-   RESPONSIVE - MOBILE
+   RESPONSIVE - TABLET
 ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
-  .lost-page {
-    padding: 1.2rem;
+  .lost-main {
+    padding:
+      3rem 0
+      2.5rem;
   }
 
 
-  .lost-header {
-    flex-direction: column;
-
-    align-items: flex-start;
+  .lost-page-heading {
+    padding: 2.3rem;
   }
 
 
-  .lost-nav-links {
-    width: 100%;
-
-    order: initial;
-
-    overflow-x: auto;
-
-    justify-content: flex-start;
-
-    padding-bottom: 0.3rem;
+  .lost-heading-content h2 {
+    font-size: 2.7rem;
   }
 
 
   .lost-toolbar {
     flex-direction: column;
+
+    align-items: stretch;
   }
 
 
@@ -1039,22 +1247,79 @@
   }
 
 
-  .lost-items-grid {
-    grid-template-columns: 1fr;
-  }
-
-
   .lost-bottom-message {
     flex-wrap: wrap;
   }
 
+}
 
-  .lost-bottom-link {
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .lost-page {
+    padding: 0 1rem;
+  }
+
+
+  .lost-header {
+    min-height: auto;
+
+    gap: 1rem;
+  }
+
+
+  .lost-brand {
+    min-width: auto;
+  }
+
+
+  .lost-brand-text p {
+    display: none;
+  }
+
+
+  .lost-nav-links {
     width: 100%;
 
-    margin-left: 0;
+    justify-content: flex-start;
 
-    margin-top: 0.5rem;
+    overflow-x: auto;
+
+    padding-bottom: 0.5rem;
+  }
+
+
+  .lost-nav-links a {
+    font-size: 0.75rem;
+
+    padding:
+      0.6rem
+      0.7rem;
+  }
+
+
+  .lost-signout-btn {
+    margin-left: auto;
+  }
+
+
+  .lost-main {
+    padding:
+      2rem 0
+      2.5rem;
+  }
+
+
+  .lost-page-heading {
+    min-height: auto;
+
+    padding: 1.8rem;
+
+    border-radius: 24px;
   }
 
 
@@ -1062,17 +1327,52 @@
     font-size: 2.3rem;
   }
 
+
+  .lost-heading-content p {
+    font-size: 0.85rem;
+  }
+
+
+  .lost-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .lost-item-image {
+    height: 220px;
+  }
+
+
+  .lost-bottom-message {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .lost-bottom-link {
+    width: 100%;
+
+    text-align: center;
+  }
+
 }
 
 
 /* =========================================================
-   RESPONSIVE - SMALL MOBILE
+   SMALL MOBILE
 ========================================================= */
 
-@media (max-width: 500px) {
+@media (max-width: 420px) {
 
-  .lost-page {
-    padding: 1rem;
+  .lost-brand-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .lost-brand-text h1 {
+    font-size: 1rem;
   }
 
 
@@ -1081,23 +1381,13 @@
   }
 
 
-  .lost-heading-content p {
-    font-size: 0.9rem;
+  .lost-page-heading {
+    padding: 1.5rem;
   }
 
 
   .lost-card-top {
     flex-wrap: wrap;
-  }
-
-
-  .lost-bottom-message {
-    padding: 1rem;
-  }
-
-
-  .lost-footer {
-    padding: 1.5rem;
   }
 
 }

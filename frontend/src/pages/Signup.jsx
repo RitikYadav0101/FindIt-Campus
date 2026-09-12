@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
+import BrandLogo from "./components/BrandLogo";
 
 function Signup() {
   const navigate = useNavigate();
@@ -177,38 +178,9 @@ function Signup() {
 
         <header className="signup-header">
 
-          <Link to="/login" className="brand">
-
-            <div className="brand-logo">
-
-              <div className="logo-box logo-purple"></div>
-
-              <div className="logo-box logo-cyan"></div>
-
-              <div className="logo-box logo-pink"></div>
-
-              <div className="logo-text">
-                LOST
-                <br />
-                &
-                <br />
-                FOUND
-              </div>
-
-            </div>
-
-
-            <div className="brand-text">
-
-              <h1>I FOUND</h1>
-
-              <p>
-                Discover. Connect. Reclaim.
-              </p>
-
-            </div>
-
-          </Link>
+         <Link to="/login" className="brand">
+            <BrandLogo small />
+        </Link>
 
 
           <Link

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { findMatches } from "../utils/matchItems";
+import BrandLogo from "./components/BrandLogo";
 
 import "./Matches.css";
 
@@ -9,6 +10,8 @@ function Matches() {
   const navigate = useNavigate();
 
   const [matches, setMatches] = useState([]);
+
+  // ================= LOAD MATCHES =================
 
   useEffect(() => {
     const lostItems =
@@ -25,11 +28,15 @@ function Matches() {
     setMatches(matchedItems);
   }, []);
 
+  // ================= LOGOUT =================
+
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("user");
 
-    navigate("/login", { replace: true });
+    navigate("/login", {
+      replace: true,
+    });
   };
 
   return (
@@ -39,37 +46,23 @@ function Matches() {
 
       <header className="matches-navbar">
 
-        <Link to="/" className="matches-brand">
+        {/* ================= BRAND LOGO ================= */}
 
-          <div className="matches-brand-logo">
-
-            <div className="matches-box matches-box-one"></div>
-            <div className="matches-box matches-box-two"></div>
-            <div className="matches-box matches-box-three"></div>
-
-            <div className="matches-logo-text">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
-          </div>
-
-          <div className="matches-brand-name">
-            <h2>I FOUND</h2>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
-
+        <Link
+          to="/"
+          className="matches-brand"
+        >
+          <BrandLogo small />
         </Link>
 
 
-        {/* NAVIGATION */}
+        {/* ================= NAVIGATION ================= */}
 
         <nav className="matches-nav-links">
 
-          <Link to="/">Home</Link>
+          <Link to="/">
+            Home
+          </Link>
 
           <Link to="/lost">
             Lost
@@ -101,6 +94,8 @@ function Matches() {
         </nav>
 
 
+        {/* ================= SIGN OUT ================= */}
+
         <button
           className="matches-signout-btn"
           onClick={handleLogout}
@@ -124,31 +119,56 @@ function Matches() {
             🔍 SMART MATCHING SYSTEM
           </div>
 
+
           <h1>
             Possible <span>Matches</span>
           </h1>
 
+
           <p>
-            Our system compares reported lost and found items
-            to identify possible connections.
+            We compare lost and found reports to help reconnect
+            people with their belongings.
           </p>
 
 
           <div className="matches-stats">
 
             <div className="matches-stat">
-              <strong>{matches.length}</strong>
-              <span>Possible Matches</span>
+
+              <strong>
+                {matches.length}
+              </strong>
+
+              <span>
+                Possible Matches
+              </span>
+
             </div>
 
-            <div className="matches-stat">
-              <strong>🔒</strong>
-              <span>Privacy Protected</span>
-            </div>
 
             <div className="matches-stat">
-              <strong>⚡</strong>
-              <span>Smart Comparison</span>
+
+              <strong>
+                🔒
+              </strong>
+
+              <span>
+                Privacy Protected
+              </span>
+
+            </div>
+
+
+            <div className="matches-stat">
+
+              <strong>
+                ⚡
+              </strong>
+
+              <span>
+                Smart Comparison
+              </span>
+
             </div>
 
           </div>
@@ -166,11 +186,11 @@ function Matches() {
 
               <article
                 className="premium-match-card"
-                key={index}
+                key={`${match.lostItem.id}-${match.foundItem.id}`}
               >
 
 
-                {/* CARD HEADER */}
+                {/* ================= CARD HEADER ================= */}
 
                 <div className="match-card-header">
 
@@ -179,6 +199,7 @@ function Matches() {
                     <span className="match-number">
                       MATCH #{index + 1}
                     </span>
+
 
                     <h2>
                       Possible Item Connection
@@ -189,7 +210,9 @@ function Matches() {
 
                   <div className="match-confidence">
 
-                    <span>Match Confidence</span>
+                    <span>
+                      Match Confidence
+                    </span>
 
                     <strong>
                       {match.score}%
@@ -200,12 +223,12 @@ function Matches() {
                 </div>
 
 
-                {/* MATCH CONTENT */}
+                {/* ================= COMPARISON ================= */}
 
                 <div className="match-comparison">
 
 
-                  {/* LOST */}
+                  {/* ================= LOST ITEM ================= */}
 
                   <div className="premium-item-card lost-item-card">
 
@@ -240,6 +263,7 @@ function Matches() {
                         {match.lostItem.itemName}
                       </h3>
 
+
                       <p className="item-description">
                         {match.lostItem.description}
                       </p>
@@ -250,6 +274,7 @@ function Matches() {
                         <div className="detail-chip">
                           📍 {match.lostItem.location}
                         </div>
+
 
                         <div className="detail-chip">
                           📅 {match.lostItem.dateLost}
@@ -262,7 +287,7 @@ function Matches() {
                   </div>
 
 
-                  {/* MATCH CENTER */}
+                  {/* ================= MATCH CENTER ================= */}
 
                   <div className="match-center">
 
@@ -290,12 +315,13 @@ function Matches() {
                       POSSIBLE MATCH
                     </div>
 
+
                     <div className="match-line"></div>
 
                   </div>
 
 
-                  {/* FOUND */}
+                  {/* ================= FOUND ITEM ================= */}
 
                   <div className="premium-item-card found-item-card">
 
@@ -306,11 +332,11 @@ function Matches() {
 
                     <div className="premium-image-box">
 
-                      {match.foundItem.photo ? (
+                      {match.foundItem.image ? (
 
                         <img
-                          src={match.foundItem.photo}
-                          alt={match.foundItem.item}
+                          src={match.foundItem.image}
+                          alt={match.foundItem.itemName}
                         />
 
                       ) : (
@@ -327,8 +353,9 @@ function Matches() {
                     <div className="premium-item-content">
 
                       <h3>
-                        {match.foundItem.item}
+                        {match.foundItem.itemName}
                       </h3>
+
 
                       <p className="item-description">
                         {match.foundItem.description}
@@ -341,8 +368,9 @@ function Matches() {
                           📍 {match.foundItem.location}
                         </div>
 
+
                         <div className="detail-chip">
-                          📅 {match.foundItem.date}
+                          📅 {match.foundItem.dateFound}
                         </div>
 
                       </div>
@@ -351,16 +379,16 @@ function Matches() {
 
                   </div>
 
-
                 </div>
 
 
-                {/* PRIVACY FOOTER */}
+                {/* ================= PRIVACY ================= */}
 
                 <div className="match-privacy">
 
-                  🔒 Contact information is hidden to protect user privacy.
-                  Verify the item details before confirming ownership.
+                  🔒 Contact information is hidden to protect
+                  user privacy. Verify the item details before
+                  confirming ownership.
 
                 </div>
 
@@ -380,9 +408,11 @@ function Matches() {
               🔍
             </div>
 
+
             <h2>
               No Possible Matches Yet
             </h2>
+
 
             <p>
               Don't worry! As more lost and found items are
@@ -399,6 +429,7 @@ function Matches() {
               >
                 View Lost Items
               </Link>
+
 
               <Link
                 to="/found"

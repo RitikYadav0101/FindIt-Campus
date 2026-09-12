@@ -1,0 +1,111 @@
+.findit-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+/* ================= LOGO ICON ================= */
+
+.findit-logo-icon {
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6ea8ff 0%,
+      #3f7edb 55%,
+      #285da9 100%
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 12px 30px rgba(37, 99, 235, 0.25);
+}
+
+
+.findit-logo-icon span {
+  color: white;
+
+  font-size: 3.8rem;
+
+  font-weight: 800;
+
+  letter-spacing: -4px;
+
+  margin-left: -4px;
+
+  margin-top: -5px;
+}
+
+
+/* ================= BRAND TEXT ================= */
+
+.findit-brand-text h1 {
+  margin: 0;
+
+  color: #f1f5f9;
+
+  font-size: 2.2rem;
+
+  font-weight: 800;
+
+  letter-spacing: 5px;
+}
+
+
+.findit-brand-text p {
+  margin: 0.5rem 0 0;
+
+  color: #94a3b8;
+
+  font-size: 1.2rem;
+
+  font-weight: 400;
+}
+
+
+/* ================= SMALL VERSION ================= */
+
+.findit-brand.small {
+  gap: 0.8rem;
+}
+
+
+.findit-brand.small .findit-logo-icon {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+}
+
+
+.findit-brand.small .findit-logo-icon span {
+  font-size: 2.2rem;
+
+  letter-spacing: -2px;
+}
+
+
+.findit-brand.small .findit-brand-text h1 {
+  font-size: 1.2rem;
+
+  letter-spacing: 2px;
+}
+
+
+.findit-brand.small .findit-brand-text p {
+  margin-top: 0.25rem;
+
+  font-size: 0.72rem;
+}

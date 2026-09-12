@@ -1,53 +1,49 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BrandLogo from "./components/BrandLogo";
+
 import "./ReportFound.css";
 
 function ReportFound() {
   const navigate = useNavigate();
 
-  const initialFormData = {
-    name: "",
-    item: "",
+  const [formData, setFormData] = useState({
+    itemName: "",
+    category: "",
+    dateFound: "",
     location: "",
-    date: "",
     description: "",
-    photo: "",
-  };
+    features: "",
+    contact: "",
+    image: "",
+  });
 
-  const [formData, setFormData] = useState(initialFormData);
-  const [success, setSuccess] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   // ================= HANDLE INPUT =================
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
     }));
   };
 
   // ================= HANDLE IMAGE =================
 
-  const handleFileChange = (e) => {
+  const handleImageChange = (e) => {
     const file = e.target.files?.[0];
 
     if (!file) return;
 
-    // Maximum 5 MB
-    if (file.size > 5 * 1024 * 1024) {
-      alert("Image size must be less than 5MB.");
-      e.target.value = "";
-      return;
-    }
-
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setFormData((prev) => ({
-        ...prev,
-        photo: reader.result,
+      setFormData((prevData) => ({
+        ...prevData,
+        image: reader.result,
       }));
     };
 
@@ -65,15 +61,14 @@ function ReportFound() {
     const newItem = {
       id: Date.now(),
 
-      name: formData.name,
-      item: formData.item,
-      title: formData.item,
-      category: formData.item,
-
+      itemName: formData.itemName,
+      category: formData.category,
+      dateFound: formData.dateFound,
       location: formData.location,
-      date: formData.date,
       description: formData.description,
-      photo: formData.photo,
+      features: formData.features,
+      contact: formData.contact,
+      image: formData.image,
 
       status: "Found",
       createdAt: new Date().toISOString(),
@@ -84,101 +79,51 @@ function ReportFound() {
       JSON.stringify([newItem, ...existingItems])
     );
 
-    setSuccess("Found item reported successfully!");
+    setSubmitted(true);
 
-    setFormData(initialFormData);
+    setFormData({
+      itemName: "",
+      category: "",
+      dateFound: "",
+      location: "",
+      description: "",
+      features: "",
+      contact: "",
+      image: "",
+    });
 
     setTimeout(() => {
       navigate("/found");
     }, 1500);
   };
 
-  // ================= RESET =================
-
-  const handleReset = () => {
-    setFormData(initialFormData);
-    setSuccess("");
-  };
-
-  // ================= LOGOUT =================
-
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("user");
-
-    navigate("/login", { replace: true });
-  };
-
   return (
-    <div className="reportf-page">
+    <div className="reportfound-page">
+
+      {/* ================= BACKGROUND ================= */}
+
+      <div className="reportfound-circle reportfound-circle-one"></div>
+      <div className="reportfound-circle reportfound-circle-two"></div>
+
 
       {/* ================= HEADER ================= */}
 
-      <header className="reportf-header">
+      <header className="reportfound-header">
 
-        <Link to="/" className="reportf-brand">
+        {/* CONSISTENT BRAND LOGO */}
 
-          <div className="reportf-brand-logo">
-
-            <div className="reportf-box reportf-box-one"></div>
-            <div className="reportf-box reportf-box-two"></div>
-            <div className="reportf-box reportf-box-three"></div>
-
-            <div className="reportf-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
-          </div>
-
-          <div className="reportf-brand-text">
-            <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
-
+        <Link to="/" className="reportfound-brand">
+          <BrandLogo small={true} />
         </Link>
 
 
-        {/* ================= NAVIGATION ================= */}
-
-        <nav className="reportf-nav-links">
-
-          <Link to="/">Home</Link>
-
-          <Link to="/lost">Lost</Link>
-
-          <Link to="/report-lost">
-            Report Lost
-          </Link>
-
-          <Link to="/found">
-            Found
-          </Link>
-
-          <Link
-            to="/report-found"
-            className="active"
-          >
-            Report Found
-          </Link>
-
-          <Link to="/profile">
-            Profile
-          </Link>
-
-        </nav>
-
-
-        {/* ================= SIGN OUT ================= */}
+        {/* BACK BUTTON */}
 
         <button
-          className="reportf-signout-btn"
-          onClick={handleLogout}
+          className="reportfound-back-button"
+          onClick={() => navigate(-1)}
         >
-          Sign Out
+          ← Back
         </button>
 
       </header>
@@ -186,316 +131,458 @@ function ReportFound() {
 
       {/* ================= MAIN ================= */}
 
-      <main className="reportf-main">
-
-        {/* PAGE HEADING */}
-
-        <div className="reportf-heading">
-
-          <span className="reportf-heading-line"></span>
-
-          <h2>
-            Report <span>Found</span> Item
-          </h2>
-
-          <p>
-            Help someone reconnect with their lost belonging.
-          </p>
-
-        </div>
+      <main className="reportfound-main">
 
 
-        {/* SUCCESS MESSAGE */}
+        {/* ================= LEFT SECTION ================= */}
 
-        {success && (
-          <div className="reportf-success-message">
-            ✓ {success}
+        <section className="reportfound-intro-section">
+
+          <div className="reportfound-search-icon-container">
+            ✨
           </div>
-        )}
 
 
-        {/* ================= FORM CARD ================= */}
+          <div className="reportfound-intro-content">
 
-        <section className="reportf-card">
-
-          <div className="reportf-card-header">
-
-            <div className="reportf-form-icon">
-              +
+            <div className="reportfound-small-label">
+              FOUND SOMETHING?
             </div>
 
-            <div>
-              <h3>Found Item Details</h3>
 
-              <p>
-                Provide the details below so the owner can
-                identify their item.
-              </p>
-            </div>
+            <h2>
+              Help Return
+              <br />
+
+              <span>Found Items</span>
+            </h2>
+
+
+            <p>
+              Report the item you found and help someone in the
+              campus community get their belongings back.
+            </p>
 
           </div>
 
 
-          <form
-            className="reportf-form"
-            onSubmit={handleSubmit}
-          >
+          {/* ================= TIPS ================= */}
 
-            {/* NAME */}
-
-            <div className="reportf-form-group">
-
-              <label htmlFor="reportf-name">
-                Name <span>*</span>
-              </label>
-
-              <input
-                id="reportf-name"
-                name="name"
-                type="text"
-                placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-
-            </div>
+          <div className="reportfound-tips">
 
 
-            {/* ITEM */}
+            <div className="reportfound-tip">
 
-            <div className="reportf-form-group">
+              <div className="reportfound-tip-icon">
+                ✓
+              </div>
 
-              <label htmlFor="reportf-item">
-                Item <span>*</span>
-              </label>
+              <div>
 
-              <select
-                id="reportf-item"
-                name="item"
-                value={formData.item}
-                onChange={handleChange}
-                required
-              >
+                <h3>
+                  Be Specific
+                </h3>
 
-                <option value="">
-                  Select item type
-                </option>
+                <p>
+                  Add clear details to help identify the owner.
+                </p>
 
-                <option value="Mobile Phone">
-                  Mobile Phone
-                </option>
-
-                <option value="Laptop">
-                  Laptop
-                </option>
-
-                <option value="Wallet">
-                  Wallet
-                </option>
-
-                <option value="ID / Card">
-                  ID / Card
-                </option>
-
-                <option value="Bag">
-                  Bag
-                </option>
-
-                <option value="Book">
-                  Book
-                </option>
-
-                <option value="Keys">
-                  Keys
-                </option>
-
-                <option value="Other">
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-            {/* LOCATION */}
-
-            <div className="reportf-form-group">
-
-              <label htmlFor="reportf-location">
-                Location <span>*</span>
-              </label>
-
-              <select
-                id="reportf-location"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                required
-              >
-
-                <option value="">
-                  Where did you find it?
-                </option>
-
-                <option value="Library">
-                  Library
-                </option>
-
-                <option value="Canteen">
-                  Canteen
-                </option>
-
-                <option value="Classroom">
-                  Classroom
-                </option>
-
-                <option value="Parking Area">
-                  Parking Area
-                </option>
-
-                <option value="Hostel">
-                  Hostel
-                </option>
-
-                <option value="Sports Ground">
-                  Sports Ground
-                </option>
-
-                <option value="Other Campus Area">
-                  Other Campus Area
-                </option>
-
-              </select>
-
-            </div>
-
-
-            {/* DATE */}
-
-            <div className="reportf-form-group">
-
-              <label htmlFor="reportf-date">
-                Date Found <span>*</span>
-              </label>
-
-              <input
-                id="reportf-date"
-                name="date"
-                type="date"
-                value={formData.date}
-                onChange={handleChange}
-                required
-              />
-
-            </div>
-
-
-            {/* DESCRIPTION */}
-
-            <div className="reportf-form-group reportf-full-width">
-
-              <label htmlFor="reportf-description">
-                Item Description <span>*</span>
-              </label>
-
-              <textarea
-                id="reportf-description"
-                name="description"
-                placeholder="Describe the item, its color, brand, distinguishing features, etc."
-                value={formData.description}
-                onChange={handleChange}
-                required
-              />
-
-              <div className="reportf-character-info">
-                Please provide enough details to help identify the item.
               </div>
 
             </div>
 
 
-            {/* PHOTO */}
+            <div className="reportfound-tip">
 
-            <div className="reportf-form-group reportf-full-width">
+              <div className="reportfound-tip-icon reportfound-cyan">
+                📍
+              </div>
 
-              <label htmlFor="reportf-photo">
-                Upload Photo
-              </label>
+              <div>
 
-              <div className="reportf-upload-area">
+                <h3>
+                  Add Location
+                </h3>
 
-                <input
-                  id="reportf-photo"
-                  type="file"
-                  accept="image/png, image/jpeg, image/jpg"
-                  onChange={handleFileChange}
+                <p>
+                  Tell us exactly where you found the item.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="reportfound-tip">
+
+              <div className="reportfound-tip-icon reportfound-amber">
+                🤝
+              </div>
+
+              <div>
+
+                <h3>
+                  Help Someone
+                </h3>
+
+                <p>
+                  Your report could help reunite someone with their item.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ================= FORM ================= */}
+
+        <section className="reportfound-form-section">
+
+          <div className="reportfound-form-card">
+
+
+            {/* FORM HEADING */}
+
+            <div className="reportfound-form-heading">
+
+              <h2>
+                Report Found Item
+              </h2>
+
+              <p>
+                Provide the details below to create a found listing.
+              </p>
+
+            </div>
+
+
+            {/* SUCCESS MESSAGE */}
+
+            {submitted && (
+
+              <div className="reportfound-success-message">
+                ✓ Found item listed successfully!
+              </div>
+
+            )}
+
+
+            <form
+              className="reportfound-form"
+              onSubmit={handleSubmit}
+            >
+
+
+              {/* ================= ITEM NAME ================= */}
+
+              <div className="reportfound-input-group">
+
+                <label htmlFor="itemName">
+                  Item Name
+                </label>
+
+
+                <div className="reportfound-input-wrapper">
+
+                  <span className="reportfound-input-icon">
+                    📦
+                  </span>
+
+                  <input
+                    type="text"
+                    id="itemName"
+                    name="itemName"
+                    placeholder="e.g. Black Wallet"
+                    value={formData.itemName}
+                    onChange={handleChange}
+                    required
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* ================= CATEGORY ================= */}
+
+              <div className="reportfound-input-group">
+
+                <label htmlFor="category">
+                  Category
+                </label>
+
+
+                <div className="reportfound-input-wrapper">
+
+                  <span className="reportfound-input-icon">
+                    🏷️
+                  </span>
+
+
+                  <select
+                    id="category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    required
+                  >
+
+                    <option value="">
+                      Select a category
+                    </option>
+
+                    <option value="Electronics">
+                      Electronics
+                    </option>
+
+                    <option value="Wallet / Money">
+                      Wallet / Money
+                    </option>
+
+                    <option value="ID / Documents">
+                      ID / Documents
+                    </option>
+
+                    <option value="Keys">
+                      Keys
+                    </option>
+
+                    <option value="Clothing">
+                      Clothing
+                    </option>
+
+                    <option value="Books / Stationery">
+                      Books / Stationery
+                    </option>
+
+                    <option value="Accessories">
+                      Accessories
+                    </option>
+
+                    <option value="Other">
+                      Other
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              {/* ================= DATE + LOCATION ================= */}
+
+              <div className="reportfound-two-column">
+
+
+                <div className="reportfound-input-group">
+
+                  <label htmlFor="dateFound">
+                    Date Found
+                  </label>
+
+
+                  <div className="reportfound-input-wrapper">
+
+                    <span className="reportfound-input-icon">
+                      📅
+                    </span>
+
+                    <input
+                      type="date"
+                      id="dateFound"
+                      name="dateFound"
+                      value={formData.dateFound}
+                      onChange={handleChange}
+                      required
+                    />
+
+                  </div>
+
+                </div>
+
+
+                <div className="reportfound-input-group">
+
+                  <label htmlFor="location">
+                    Location Found
+                  </label>
+
+
+                  <div className="reportfound-input-wrapper">
+
+                    <span className="reportfound-input-icon">
+                      📍
+                    </span>
+
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      placeholder="e.g. Central Library"
+                      value={formData.location}
+                      onChange={handleChange}
+                      required
+                    />
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              {/* ================= DESCRIPTION ================= */}
+
+              <div className="reportfound-input-group">
+
+                <label htmlFor="description">
+                  Description
+                </label>
+
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Describe the item..."
+                  value={formData.description}
+                  onChange={handleChange}
+                  rows="3"
+                  required
                 />
 
-                <div className="reportf-upload-content">
+              </div>
 
-                  <div className="reportf-upload-icon">
+
+              {/* ================= FEATURES ================= */}
+
+              <div className="reportfound-input-group">
+
+                <label htmlFor="features">
+                  Distinguishing Features
+                </label>
+
+                <textarea
+                  id="features"
+                  name="features"
+                  placeholder="Color, brand, stickers, scratches, etc."
+                  value={formData.features}
+                  onChange={handleChange}
+                  rows="2"
+                />
+
+              </div>
+
+
+              {/* ================= CONTACT ================= */}
+
+              <div className="reportfound-input-group">
+
+                <label htmlFor="contact">
+                  Contact Information
+                </label>
+
+
+                <div className="reportfound-input-wrapper">
+
+                  <span className="reportfound-input-icon">
+                    📞
+                  </span>
+
+                  <input
+                    type="text"
+                    id="contact"
+                    name="contact"
+                    placeholder="Email or phone number"
+                    value={formData.contact}
+                    onChange={handleChange}
+                    required
+                  />
+
+                </div>
+
+              </div>
+
+
+              {/* ================= IMAGE ================= */}
+
+              <div className="reportfound-input-group">
+
+                <label htmlFor="image">
+                  Item Image <span>(Optional)</span>
+                </label>
+
+
+                <label
+                  htmlFor="image"
+                  className="reportfound-upload-box"
+                >
+
+                  <input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                  />
+
+                  <div className="reportfound-upload-icon">
                     ↑
                   </div>
+
 
                   <div>
 
                     <strong>
-                      {formData.photo
+                      {formData.image
                         ? "Image selected ✓"
                         : "Upload an image"}
                     </strong>
 
                     <p>
-                      PNG, JPG or JPEG • Max 5MB
+                      PNG, JPG or JPEG
                     </p>
 
                   </div>
 
-                </div>
+                </label>
+
+
+                {formData.image && (
+
+                  <img
+                    className="reportfound-preview"
+                    src={formData.image}
+                    alt="Preview"
+                  />
+
+                )}
 
               </div>
 
 
-              {formData.photo && (
-
-                <div className="reportf-image-preview">
-
-                  <img
-                    src={formData.photo}
-                    alt="Selected item"
-                  />
-
-                </div>
-
-              )}
-
-            </div>
-
-
-            {/* BUTTONS */}
-
-            <div className="reportf-form-actions">
+              {/* ================= SUBMIT ================= */}
 
               <button
                 type="submit"
-                className="reportf-submit-btn"
+                className="reportfound-submit-button"
               >
-                Submit Report
+
+                <span>
+                  List Found Item
+                </span>
+
+                <span>
+                  →
+                </span>
+
               </button>
 
-              <button
-                type="button"
-                className="reportf-reset-btn"
-                onClick={handleReset}
-              >
-                Reset
-              </button>
+            </form>
 
-            </div>
-
-          </form>
+          </div>
 
         </section>
 

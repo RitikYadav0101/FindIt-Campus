@@ -1,38 +1,46 @@
 /* =========================================================
-   FOUND PAGE
+   GLOBAL
 ========================================================= */
 
 * {
   box-sizing: border-box;
 }
 
+
+/* =========================================================
+   PAGE
+========================================================= */
+
 .found-page {
   min-height: 100vh;
-
   width: 100%;
 
-  padding: 2rem;
+  padding: 0 2rem;
 
-  font-family: Arial, sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #e5edf8;
 
   background:
     radial-gradient(
-      circle at 20% 20%,
-      rgba(236, 72, 153, 0.12),
-      transparent 30%
+      circle at 10% 10%,
+      rgba(59, 130, 246, 0.12),
+      transparent 28%
     ),
     radial-gradient(
-      circle at 70% 80%,
-      rgba(6, 182, 212, 0.12),
+      circle at 90% 80%,
+      rgba(37, 99, 235, 0.1),
       transparent 30%
     ),
     linear-gradient(
       135deg,
-      #f8fafc,
-      #eef2ff
+      #08111f,
+      #0b1627 50%,
+      #0c1b2e
     );
-
-  color: #0f172a;
 
   overflow-x: hidden;
 }
@@ -44,17 +52,36 @@
 
 .found-header {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
 
-  margin: auto;
+  min-height: 106px;
+
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding-bottom: 2rem;
+  gap: 1.5rem;
 
-  gap: 1rem;
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.14);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.found-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 0.85rem;
+
+  text-decoration: none;
+
+  min-width: 220px;
 }
 
 
@@ -62,22 +89,11 @@
    LOGO
 ========================================================= */
 
-.found-brand {
-  display: flex;
-  align-items: center;
-
-  gap: 1rem;
-
-  flex-shrink: 0;
-
-  text-decoration: none;
-}
-
 .found-brand-logo {
   position: relative;
 
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
 
   display: flex;
   align-items: center;
@@ -86,96 +102,107 @@
   flex-shrink: 0;
 }
 
-.found-box {
+
+.found-logo-glow {
   position: absolute;
 
-  border-radius: 8px;
-}
+  width: 52px;
+  height: 52px;
 
-.found-box-one {
-  width: 32px;
-  height: 32px;
-
-  background: #6366f1;
-
-  top: 0;
-  left: 0;
-
-  opacity: 0.9;
-}
-
-.found-box-two {
-  width: 28px;
-  height: 28px;
-
-  background: #06b6d4;
-
-  bottom: 0;
-  right: 0;
-
-  opacity: 0.9;
-}
-
-.found-box-three {
-  width: 20px;
-  height: 20px;
-
-  background: #ec4899;
-
-  top: 6px;
-  right: 4px;
-
-  opacity: 0.85;
-}
-
-.found-lost-box {
-  position: relative;
-  z-index: 2;
-
-  background: rgba(255, 255, 255, 0.9);
-
-  padding: 5px;
-
-  border-radius: 6px;
-
-  font-size: 0.65rem;
-  font-weight: 800;
-
-  text-align: center;
-  line-height: 1.1;
-
-  color: #0f172a;
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.found-brand-text h1 {
-  font-size: 1.25rem;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-
-  margin: 0;
+  border-radius: 16px;
 
   background:
     linear-gradient(
-      90deg,
-      #6366f1,
-      #ec4899
+      135deg,
+      #3b82f6,
+      #1d4ed8
     );
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  box-shadow:
+    0 8px 25px
+    rgba(59, 130, 246, 0.35);
+
+  transform: rotate(8deg);
 }
 
+
+.found-logo-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #15263e,
+      #0d1a2d
+    );
+
+  border:
+    1px solid rgba(147, 197, 253, 0.35);
+}
+
+
+.found-logo-search {
+  position: absolute;
+
+  left: 7px;
+  top: 3px;
+
+  font-size: 2.1rem;
+
+  color: #93c5fd;
+
+  font-weight: 300;
+}
+
+
+.found-logo-box {
+  position: absolute;
+
+  right: 7px;
+  bottom: 7px;
+
+  font-size: 1rem;
+
+  color: #ffffff;
+}
+
+
+/* BRAND TEXT */
+
+.found-brand-text h1 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 1.12rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+
+.found-brand-text h1 span {
+  color: #7db8ff;
+}
+
+
 .found-brand-text p {
-  margin: 4px 0 0;
+  margin: 5px 0 0;
 
-  font-size: 0.8rem;
+  color: #8fa1b8;
 
-  color: #64748b;
+  font-size: 0.72rem;
 }
 
 
@@ -186,41 +213,69 @@
 .found-nav-links {
   display: flex;
   align-items: center;
-
   justify-content: center;
 
-  gap: 1.2rem;
+  gap: 0.25rem;
 
-  min-width: 0;
+  flex: 1;
 }
+
 
 .found-nav-links a {
+  position: relative;
+
+  padding: 10px 12px;
+
+  color: #8d9aae;
+
   text-decoration: none;
 
-  font-size: 0.9rem;
-  font-weight: 500;
-
-  color: #64748b;
-
-  transition: 0.25s ease;
-
-  white-space: nowrap;
-}
-
-.found-nav-links a:hover {
-  color: #6366f1;
-}
-
-.found-nav-links .active {
-  color: #6366f1;
-
-  background: rgba(99, 102, 241, 0.1);
-
-  padding: 8px 13px;
+  font-size: 0.82rem;
+  font-weight: 600;
 
   border-radius: 8px;
 
-  font-weight: 600;
+  white-space: nowrap;
+
+  transition: 0.25s ease;
+}
+
+
+.found-nav-links a:hover {
+  color: #dbeafe;
+
+  background:
+    rgba(96, 165, 250, 0.08);
+}
+
+
+.found-nav-links .active {
+  color: #f8fafc;
+
+  background:
+    rgba(59, 130, 246, 0.13);
+}
+
+
+.found-nav-links .active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -19px;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #60a5fa;
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 0 10px #60a5fa;
 }
 
 
@@ -229,32 +284,39 @@
 ========================================================= */
 
 .found-signout-btn {
-  padding: 0.7rem 1.2rem;
-
-  background: white;
-
-  border: 1px solid #cbd5e1;
+  padding: 0.72rem 1.2rem;
 
   border-radius: 10px;
 
-  color: #475569;
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
 
-  font-size: 0.85rem;
-  font-weight: 600;
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color: #cbd5e1;
+
+  font-size: 0.8rem;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: 0.25s ease;
 
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
+
 .found-signout-btn:hover {
-  background: #6366f1;
+  transform: translateY(-2px);
+
+  background:
+    rgba(59, 130, 246, 0.16);
+
+  border-color:
+    rgba(96, 165, 250, 0.45);
 
   color: white;
-
-  transform: translateY(-2px);
 }
 
 
@@ -264,9 +326,11 @@
 
 .found-main {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
 
-  margin: 2rem auto 0;
+  margin: 0 auto;
+
+  padding: 4.5rem 0 2rem;
 }
 
 
@@ -275,196 +339,175 @@
 ========================================================= */
 
 .found-page-heading {
-  display: flex;
+  max-width: 700px;
 
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-
-  margin-bottom: 1.8rem;
+  margin: 0 auto 3rem;
 
   text-align: center;
 }
 
-.found-heading-content {
-  width: 100%;
-
-  max-width: 650px;
-
-  margin: 0 auto;
-
-  text-align: center;
-}
 
 .found-eyebrow {
-  display: inline-block;
+  display: inline-flex;
 
-  margin-bottom: 0.7rem;
+  padding: 7px 13px;
 
-  font-size: 0.72rem;
+  margin-bottom: 1rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(59, 130, 246, 0.1);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.16);
+
+  color: #7db8ff;
+
+  font-size: 0.68rem;
   font-weight: 800;
 
   letter-spacing: 1.5px;
-
-  color: #6366f1;
-
-  background: rgba(99, 102, 241, 0.08);
-
-  padding: 6px 10px;
-
-  border-radius: 999px;
 }
 
-.found-heading-content h2 {
+
+.found-page-heading h2 {
   margin: 0;
 
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
 
   font-weight: 800;
 
-  line-height: 1.1;
+  color: #f1f5f9;
 
-  color: #0f172a;
+  letter-spacing: -1.5px;
 }
 
-.found-heading-content h2 span {
+
+.found-page-heading h2 span {
   background:
     linear-gradient(
       90deg,
-      #6366f1,
-      #06b6d4
+      #60a5fa,
+      #93c5fd
     );
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.found-heading-content p {
-  margin: 0.8rem auto 0;
 
-  max-width: 600px;
+.found-page-heading p {
+  max-width: 620px;
 
-  font-size: 1rem;
+  margin: 1rem auto 0;
 
-  line-height: 1.6;
+  color: #9aa9bb;
 
-  color: #64748b;
+  font-size: 0.95rem;
 
-  font-weight: 500;
-
-  text-align: center;
+  line-height: 1.7;
 }
 
 
 /* =========================================================
-   SEARCH TOOLBAR
+   TOOLBAR
 ========================================================= */
 
 .found-toolbar {
   display: flex;
-
   align-items: center;
 
   gap: 1rem;
 
-  margin-bottom: 2rem;
-
-  width: 100%;
+  margin-bottom: 2.5rem;
 }
+
 
 .found-search-wrapper {
   flex: 1;
 
-  min-width: 0;
-
-  height: 52px;
+  height: 56px;
 
   display: flex;
   align-items: center;
 
-  padding: 0 1rem;
+  padding: 0 1.2rem;
 
-  background: rgba(255, 255, 255, 0.78);
+  border-radius: 14px;
 
-  border: 1px solid rgba(226, 232, 240, 0.95);
+  background:
+    rgba(24, 39, 61, 0.7);
 
-  border-radius: 13px;
+  border:
+    1px solid rgba(148, 163, 184, 0.16);
 
   box-shadow:
-    0 8px 20px rgba(15, 23, 42, 0.04);
+    0 15px 40px
+    rgba(0, 0, 0, 0.15);
 
-  backdrop-filter: blur(10px);
-
-  transition: 0.3s;
+  transition: 0.25s ease;
 }
+
 
 .found-search-wrapper:focus-within {
-  border-color: rgba(99, 102, 241, 0.45);
+  border-color:
+    rgba(96, 165, 250, 0.55);
 
   box-shadow:
-    0 0 0 4px rgba(99, 102, 241, 0.08);
+    0 0 0 4px
+    rgba(59, 130, 246, 0.08);
 }
+
 
 .found-search-icon {
-  width: 28px;
+  font-size: 1rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #94a3b8;
-
-  font-size: 1.35rem;
-
-  transform: rotate(-20deg);
+  opacity: 0.75;
 }
+
 
 .found-search-wrapper input {
   width: 100%;
+
+  padding: 0 0.8rem;
 
   border: none;
   outline: none;
 
   background: transparent;
 
-  padding: 0 0.6rem;
-
-  color: #0f172a;
-
-  font-family: Arial, sans-serif;
+  color: #e2e8f0;
 
   font-size: 0.9rem;
 }
 
+
 .found-search-wrapper input::placeholder {
-  color: #94a3b8;
+  color: #718096;
 }
 
 
-/* =========================================================
-   REPORT BUTTON
-========================================================= */
+/* REPORT BUTTON */
 
 .found-report-btn {
-  height: 52px;
+  height: 56px;
 
-  display: inline-flex;
-
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 0.55rem;
+  gap: 0.6rem;
 
-  padding: 0 1.3rem;
+  padding: 0 1.4rem;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
   background:
     linear-gradient(
       135deg,
-      #06b6d4,
-      #0891b2
+      #3b82f6,
+      #2563eb
     );
 
   color: white;
@@ -472,38 +515,39 @@
   text-decoration: none;
 
   font-size: 0.85rem;
-
   font-weight: 700;
 
   box-shadow:
-    0 10px 22px rgba(6, 182, 212, 0.18);
+    0 12px 28px
+    rgba(37, 99, 235, 0.25);
 
-  transition: 0.3s;
-
-  flex-shrink: 0;
+  transition: 0.25s ease;
 }
+
 
 .found-report-btn:hover {
   transform: translateY(-3px);
 
   box-shadow:
-    0 14px 28px rgba(6, 182, 212, 0.25);
+    0 18px 35px
+    rgba(37, 99, 235, 0.35);
 }
+
 
 .found-report-plus {
   width: 22px;
   height: 22px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.18);
+  background:
+    rgba(255, 255, 255, 0.15);
 
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 
@@ -513,68 +557,50 @@
 
 .found-results-header {
   display: flex;
-
-  align-items: flex-end;
-
+  align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.3rem;
 }
+
 
 .found-results-header h3 {
   margin: 0;
 
+  color: #e5edf8;
+
   font-size: 1.35rem;
-
-  font-weight: 800;
-
-  color: #0f172a;
 }
+
 
 .found-results-header p {
-  margin: 0.35rem 0 0;
+  margin: 5px 0 0;
 
-  font-size: 0.82rem;
-
-  color: #64748b;
-}
-
-.found-filter-btn {
-  display: flex;
-
-  align-items: center;
-
-  gap: 0.45rem;
-
-  padding: 0.6rem 0.9rem;
-
-  border: 1px solid #dbe3ec;
-
-  border-radius: 9px;
-
-  background: rgba(255, 255, 255, 0.75);
-
-  color: #64748b;
+  color: #718096;
 
   font-size: 0.8rem;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.25s;
 }
 
-.found-filter-btn:hover {
-  border-color: #c7d2fe;
 
-  color: #6366f1;
+.found-results-badge {
+  padding: 8px 12px;
 
-  background: white;
+  border-radius: 999px;
+
+  background:
+    rgba(59, 130, 246, 0.08);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.12);
+
+  color: #8bbcff;
+
+  font-size: 0.72rem;
 }
 
 
 /* =========================================================
-   FOUND ITEMS GRID
+   ITEMS GRID
 ========================================================= */
 
 .found-items-grid {
@@ -584,8 +610,6 @@
     repeat(4, minmax(0, 1fr));
 
   gap: 1.25rem;
-
-  width: 100%;
 }
 
 
@@ -594,75 +618,133 @@
 ========================================================= */
 
 .found-item-card {
-  min-width: 0;
-
   overflow: hidden;
 
+  border-radius: 20px;
+
   background:
-    rgba(255, 255, 255, 0.78);
+    linear-gradient(
+      145deg,
+      rgba(31, 48, 72, 0.9),
+      rgba(17, 31, 49, 0.9)
+    );
 
   border:
-    1px solid rgba(226, 232, 240, 0.9);
-
-  border-radius: 17px;
+    1px solid rgba(148, 163, 184, 0.14);
 
   box-shadow:
-    0 15px 35px rgba(15, 23, 42, 0.07);
+    0 18px 45px
+    rgba(0, 0, 0, 0.2);
 
-  backdrop-filter: blur(12px);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
+
 .found-item-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-7px);
 
   border-color:
-    rgba(165, 180, 252, 0.75);
+    rgba(96, 165, 250, 0.4);
 
   box-shadow:
-    0 22px 42px rgba(15, 23, 42, 0.11);
+    0 25px 55px
+    rgba(0, 0, 0, 0.3);
+}
+
+
+/* CARD TOP */
+
+.found-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+
+  padding: 1rem 1rem 0.8rem;
+}
+
+
+.found-category {
+  padding: 5px 9px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(59, 130, 246, 0.12);
+
+  color: #93c5fd;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+
+.found-date {
+  color: #718096;
+
+  font-size: 0.65rem;
 }
 
 
 /* =========================================================
-   ITEM EMOJI
+   IMAGE
 ========================================================= */
 
 .found-item-image {
-  margin: 0 0.95rem;
+  height: 165px;
 
-  height: 155px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+  margin: 0 1rem;
 
   overflow: hidden;
 
-  border-radius: 11px;
+  border-radius: 14px;
 
   background:
     linear-gradient(
       135deg,
-      #eef2f7,
-      #e2e8f0
+      #1d2d44,
+      #243852
     );
 
-  position: relative;
-}
-
-.found-item-icon {
-  font-size: 4.5rem;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
+}
+
+
+.found-uploaded-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+.found-no-image {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 0.7rem;
+
+  color: #7890aa;
+
+  font-size: 0.75rem;
+}
+
+
+.found-image-icon {
+  font-size: 3.8rem;
+
+  filter:
+    drop-shadow(
+      0 8px 15px
+      rgba(0, 0, 0, 0.3)
+    );
 }
 
 
@@ -671,100 +753,139 @@
 ========================================================= */
 
 .found-card-content {
-  padding: 1rem 0.95rem 1rem;
-
-  min-width: 0;
+  padding: 1.1rem 1rem 1rem;
 }
+
 
 .found-card-content h3 {
   margin: 0;
 
-  color: #0f172a;
+  color: #eef4fb;
 
   font-size: 1.05rem;
 
   font-weight: 800;
 }
 
+
 .found-item-description {
-  margin: 0.55rem 0 0;
+  min-height: 58px;
 
-  min-height: 57px;
+  margin: 0.6rem 0 0;
 
-  color: #64748b;
+  color: #91a0b3;
 
   font-size: 0.76rem;
 
   line-height: 1.55;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 3;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
 }
 
 
-/* =========================================================
-   LOCATION
-========================================================= */
+/* LOCATION */
 
 .found-location {
   display: flex;
-
   align-items: center;
 
   gap: 0.45rem;
 
-  margin-top: 0.8rem;
+  margin-top: 0.85rem;
 
-  color: #64748b;
+  color: #8291a4;
 
   font-size: 0.72rem;
-
-  font-weight: 600;
 }
+
 
 .found-location-icon {
-  color: #06b6d4;
-
-  font-size: 0.8rem;
+  color: #60a5fa;
 }
 
 
-/* =========================================================
-   VIEW BUTTON
-========================================================= */
+/* VIEW BUTTON */
 
 .found-view-btn {
   width: 100%;
 
   display: flex;
-
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
-  margin-top: 0.9rem;
+  margin-top: 1rem;
 
-  padding: 0.58rem 0;
-
-  border-radius: 8px;
+  padding: 0.72rem 0.85rem;
 
   border: none;
 
-  background: rgba(99, 102, 241, 0.08);
+  border-radius: 10px;
 
-  color: #6366f1;
+  background:
+    rgba(59, 130, 246, 0.1);
 
-  text-decoration: none;
+  color: #93c5fd;
 
-  font-size: 0.72rem;
-
+  font-size: 0.78rem;
   font-weight: 700;
 
   cursor: pointer;
 
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
+
 .found-view-btn:hover {
-  background: #6366f1;
+  background:
+    #2563eb;
 
   color: white;
+}
+
+
+/* =========================================================
+   NO ITEMS
+========================================================= */
+
+.found-no-items {
+  grid-column: 1 / -1;
+
+  padding: 4rem 1rem;
+
+  text-align: center;
+
+  border-radius: 20px;
+
+  border:
+    1px dashed rgba(148, 163, 184, 0.25);
+
+  background:
+    rgba(22, 36, 55, 0.55);
+}
+
+
+.found-empty-icon {
+  margin-bottom: 1rem;
+
+  font-size: 3rem;
+}
+
+
+.found-no-items h3 {
+  margin: 0;
+
+  color: #dbeafe;
+}
+
+
+.found-no-items p {
+  color: #7f8ea1;
 }
 
 
@@ -773,85 +894,82 @@
 ========================================================= */
 
 .found-bottom-message {
-  margin-top: 1.8rem;
-
   display: flex;
-
   align-items: center;
 
   gap: 1rem;
 
-  padding: 1.15rem 1.3rem;
+  margin-top: 2rem;
+
+  padding: 1.3rem;
+
+  border-radius: 17px;
 
   background:
-    rgba(255, 255, 255, 0.58);
+    linear-gradient(
+      135deg,
+      rgba(31, 54, 84, 0.8),
+      rgba(22, 39, 61, 0.8)
+    );
 
   border:
-    1px solid rgba(226, 232, 240, 0.9);
-
-  border-radius: 14px;
-
-  backdrop-filter: blur(10px);
-
-  min-width: 0;
+    1px solid rgba(96, 165, 250, 0.15);
 }
 
+
 .found-bottom-icon {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
   flex-shrink: 0;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
-  background: #cffafe;
+  background:
+    rgba(59, 130, 246, 0.15);
 
-  color: #0891b2;
+  color: #93c5fd;
 
-  font-size: 1rem;
-
+  font-size: 1.2rem;
   font-weight: 800;
 }
 
-.found-bottom-message h3 {
+
+.found-bottom-content h3 {
   margin: 0;
 
-  font-size: 0.9rem;
+  color: #e5edf8;
 
-  font-weight: 800;
+  font-size: 1rem;
 }
 
-.found-bottom-message p {
-  margin: 3px 0 0;
 
-  color: #64748b;
+.found-bottom-content p {
+  margin: 5px 0 0;
 
-  font-size: 0.76rem;
+  color: #8d9caf;
 
-  line-height: 1.4;
+  font-size: 0.78rem;
+
+  line-height: 1.5;
 }
+
 
 .found-bottom-link {
   margin-left: auto;
 
-  flex-shrink: 0;
-
-  color: #6366f1;
+  color: #8fc0ff;
 
   text-decoration: none;
 
-  font-size: 0.78rem;
-
+  font-size: 0.82rem;
   font-weight: 700;
-}
 
-.found-bottom-link:hover {
-  text-decoration: underline;
+  white-space: nowrap;
 }
 
 
@@ -861,147 +979,92 @@
 
 .found-footer {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
 
   margin: 3rem auto 0;
 
   display: grid;
 
   grid-template-columns:
-    minmax(0, 2fr)
-    minmax(0, 1fr)
-    minmax(0, 1.2fr)
-    minmax(0, 1fr)
-    minmax(0, 1.5fr);
+    1.7fr
+    repeat(4, 1fr);
 
   gap: 2rem;
 
   padding: 2.5rem;
 
-  background:
-    rgba(255, 255, 255, 0.6);
+  border-top:
+    1px solid rgba(148, 163, 184, 0.14);
 
-  border:
-    1px solid rgba(226, 232, 240, 0.9);
-
-  border-radius: 24px;
-
-  backdrop-filter: blur(12px);
-
-  overflow: hidden;
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.14);
 }
 
-
-/* =========================================================
-   FOOTER BRAND
-========================================================= */
 
 .found-footer-brand {
   display: flex;
+  align-items: flex-start;
 
-  align-items: center;
-
-  gap: 1rem;
-
-  min-width: 0;
+  gap: 0.9rem;
 }
 
-.found-footer-logo {
-  width: 45px;
-  height: 45px;
-}
 
 .found-footer-brand h3 {
-  margin: 0;
+  margin: 4px 0 0;
+
+  color: white;
 
   font-size: 1rem;
-
-  background:
-    linear-gradient(
-      90deg,
-      #6366f1,
-      #ec4899
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
+
+
+.found-footer-brand h3 span {
+  color: #7db8ff;
+}
+
 
 .found-footer-brand p {
-  margin-top: 4px;
+  margin: 7px 0 0;
+
+  color: #748397;
 
   font-size: 0.75rem;
-
-  color: #64748b;
 }
 
-
-/* =========================================================
-   FOOTER LINKS
-========================================================= */
 
 .found-footer-section {
   display: flex;
-
   flex-direction: column;
 
-  gap: 0.6rem;
-
-  min-width: 0;
+  gap: 0.65rem;
 }
+
 
 .found-footer-section h4 {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3rem;
 
-  font-size: 0.9rem;
+  color: #dbeafe;
+
+  font-size: 0.85rem;
 }
+
 
 .found-footer-section a,
 .found-footer-section p {
   margin: 0;
 
+  color: #748397;
+
   text-decoration: none;
 
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 
-  color: #64748b;
-
-  overflow-wrap: anywhere;
+  transition: 0.2s ease;
 }
+
 
 .found-footer-section a:hover {
-  color: #6366f1;
-}
-
-
-/* =========================================================
-   SOCIALS
-========================================================= */
-
-.found-socials {
-  display: flex;
-
-  gap: 0.6rem;
-
-  margin-top: 0.4rem;
-}
-
-.found-socials span {
-  width: 30px;
-  height: 30px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: white;
-
-  border: 1px solid #e2e8f0;
-
-  font-size: 0.8rem;
+  color: #93c5fd;
 }
 
 
@@ -1011,206 +1074,172 @@
 
 .found-copyright {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
 
   margin: 0 auto;
 
-  text-align: center;
+  padding: 1.3rem 0 2rem;
 
-  padding: 1.2rem;
-
-  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
 
   color: #64748b;
+
+  font-size: 0.72rem;
 }
 
 
 /* =========================================================
-   RESPONSIVE — 1100px
+   TABLET
 ========================================================= */
 
 @media (max-width: 1100px) {
 
-  .found-nav-links {
-    gap: 0.7rem;
-  }
-
-  .found-nav-links a {
-    font-size: 0.8rem;
-  }
-
-  .found-items-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-  .found-footer {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-  }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE — 968px
-========================================================= */
-
-@media (max-width: 968px) {
-
   .found-header {
     flex-wrap: wrap;
 
-    gap: 1.5rem;
+    padding: 1.5rem 0;
   }
+
 
   .found-nav-links {
     order: 3;
 
     width: 100%;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
   }
 
-  .found-heading-content h2 {
-    font-size: 2.7rem;
+
+  .found-items-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .found-footer {
+    grid-template-columns:
+      repeat(3, 1fr);
   }
 
 }
 
 
 /* =========================================================
-   RESPONSIVE — 700px
+   MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
 
-  .found-items-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .found-toolbar {
-    flex-direction: column;
-
-    align-items: stretch;
-  }
-
-  .found-report-btn {
-    width: 100%;
-  }
-
-  .found-bottom-message {
-    align-items: flex-start;
-
-    flex-wrap: wrap;
-  }
-
-  .found-bottom-link {
-    margin-left: 0;
-
-    width: 100%;
-  }
-
-  .found-footer {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    padding: 1.8rem;
-  }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE — 600px
-========================================================= */
-
-@media (max-width: 600px) {
-
   .found-page {
-    padding: 1.2rem;
+    padding: 0 1.2rem;
   }
+
 
   .found-header {
-    padding-bottom: 1rem;
+    flex-direction: column;
+
+    align-items: flex-start;
   }
 
+
   .found-nav-links {
+    width: 100%;
+
     justify-content: flex-start;
 
     overflow-x: auto;
 
     flex-wrap: nowrap;
 
-    padding-bottom: 4px;
+    padding-bottom: 0.5rem;
   }
+
 
   .found-nav-links a {
     white-space: nowrap;
   }
 
-  .found-page-heading {
-    margin-top: 1rem;
 
-    justify-content: center;
+  .found-toolbar {
+    flex-direction: column;
+  }
+
+
+  .found-search-wrapper,
+  .found-report-btn {
+    width: 100%;
+  }
+
+
+  .found-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .found-bottom-message {
+    flex-wrap: wrap;
+  }
+
+
+  .found-bottom-link {
+    width: 100%;
+
+    margin-left: 0;
+
+    margin-top: 0.5rem;
+  }
+
+
+  .found-footer {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    padding: 2rem 0;
+  }
+
+
+  .found-copyright {
+    flex-direction: column;
+
+    gap: 0.5rem;
 
     text-align: center;
   }
 
-  .found-heading-content {
-    text-align: center;
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+  .found-main {
+    padding-top: 3rem;
   }
 
-  .found-heading-content h2 {
-    font-size: 2.3rem;
+
+  .found-page-heading h2 {
+    font-size: 2.5rem;
   }
 
-  .found-heading-content p {
-    font-size: 0.9rem;
-  }
-
-  .found-results-header {
-    align-items: center;
-  }
-
-  .found-results-header p {
-    display: none;
-  }
-
-  .found-filter-btn {
-    flex-shrink: 0;
-  }
-
-  .found-item-image {
-    height: 180px;
-  }
 
   .found-footer {
     grid-template-columns: 1fr;
-
-    padding: 1.8rem;
   }
+
 
   .found-results-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 1.5rem;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0.8rem;
   }
 
-  .found-results-header > div {
-    text-align: center;
-  }
 
-  .found-results-header h3 {
-    margin: 0;
-  }
-
-  .found-results-header p {
-    margin: 0.4rem 0 0;
+  .found-item-image {
+    height: 190px;
   }
 
 }

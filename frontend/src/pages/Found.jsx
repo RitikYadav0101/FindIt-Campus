@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BrandLogo from "./components/BrandLogo";
 
 import "./Found.css";
 
@@ -30,18 +31,27 @@ function Found() {
   // ================= SEARCH =================
 
   const filteredItems = foundItems.filter((item) => {
+    const itemName =
+      item.item ||
+      item.itemName ||
+      item.title ||
+      "";
+
+    const location =
+      item.location ||
+      "";
+
+    const description =
+      item.description ||
+      "";
+
+    const search =
+      searchTerm.toLowerCase();
+
     return (
-      item.item
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-
-      item.location
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-
-      item.description
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
+      itemName.toLowerCase().includes(search) ||
+      location.toLowerCase().includes(search) ||
+      description.toLowerCase().includes(search)
     );
   });
 
@@ -52,29 +62,10 @@ function Found() {
 
       <header className="found-header">
 
+        {/* BRAND */}
+
         <Link to="/" className="found-brand">
-
-          <div className="found-brand-logo">
-
-            <div className="found-box found-box-one"></div>
-            <div className="found-box found-box-two"></div>
-            <div className="found-box found-box-three"></div>
-
-            <div className="found-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
-          </div>
-
-          <div className="found-brand-text">
-            <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
-
+          <BrandLogo small={true} />
         </Link>
 
 
@@ -105,8 +96,6 @@ function Found() {
             Report Found
           </Link>
 
-          {/* ================= MATCHES ================= */}
-
           <Link to="/matches">
             Matches
           </Link>
@@ -134,26 +123,23 @@ function Found() {
 
       <main className="found-main">
 
+
         {/* ================= PAGE HEADING ================= */}
 
         <section className="found-page-heading">
 
-          <div className="found-heading-content">
+          <span className="found-eyebrow">
+            CAMPUS COMMUNITY
+          </span>
 
-            <span className="found-eyebrow">
-              CAMPUS COMMUNITY
-            </span>
+          <h2>
+            Found <span>Items</span>
+          </h2>
 
-            <h2>
-              Found <span>Items</span>
-            </h2>
-
-            <p>
-              Browse items that have been found around campus and help reconnect
-              them with their owners.
-            </p>
-
-          </div>
+          <p>
+            Browse items found around campus and help reconnect
+            them with their rightful owners.
+          </p>
 
         </section>
 
@@ -172,7 +158,9 @@ function Found() {
               type="text"
               placeholder="Search found items..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) =>
+                setSearchTerm(e.target.value)
+              }
             />
 
           </div>
@@ -205,14 +193,15 @@ function Found() {
             </h3>
 
             <p>
-              Items reported by members of the campus community
+              {filteredItems.length} item(s) available
             </p>
 
           </div>
 
-          <button className="found-filter-btn">
-            ☷ Filter
-          </button>
+
+          <div className="found-results-badge">
+            🔎 Browse Items
+          </div>
 
         </div>
 
@@ -223,106 +212,161 @@ function Found() {
 
           {filteredItems.length > 0 ? (
 
-            filteredItems.map((item) => (
+            filteredItems.map((item, index) => {
 
-              <article
-                className="found-item-card"
-                key={item.id}
-              >
+              const itemName =
+                item.item ||
+                item.itemName ||
+                item.title ||
+                "Unnamed Item";
 
-                <div className="found-card-top">
+              const image =
+                item.photo ||
+                item.image;
 
-                  <span className="found-category">
-                    {item.item}
-                  </span>
+              const category =
+                item.category ||
+                "Found Item";
 
-                  <span className="found-date">
-                    {item.date}
-                  </span>
+              const date =
+                item.date ||
+                item.dateFound ||
+                "Recently";
 
-                </div>
+              return (
 
+                <article
+                  className="found-item-card"
+                  key={item.id || index}
+                >
 
-                {/* ================= IMAGE ================= */}
+                  {/* ================= CARD TOP ================= */}
 
-                <div className="found-item-image">
+                  <div className="found-card-top">
 
-                  {item.photo ? (
-
-                    <img
-                      src={item.photo}
-                      alt={item.item}
-                      className="found-uploaded-image"
-                    />
-
-                  ) : (
-
-                    <div className="found-no-image">
-                      📦
-                    </div>
-
-                  )}
-
-                </div>
-
-
-                {/* ================= CARD CONTENT ================= */}
-
-                <div className="found-card-content">
-
-                  <h3>
-                    {item.item}
-                  </h3>
-
-                  <p className="found-item-description">
-                    {item.description}
-                  </p>
-
-
-                  {/* LOCATION */}
-
-                  <div className="found-location">
-
-                    <span className="found-location-icon">
-                      📍
+                    <span className="found-category">
+                      {category}
                     </span>
 
-                    <span>
-                      {item.location}
+                    <span className="found-date">
+                      {date}
                     </span>
 
                   </div>
 
 
-                  {/* VIEW BUTTON */}
+                  {/* ================= IMAGE ================= */}
 
-                  <button
-                    className="found-view-btn"
-                    onClick={() =>
-                      alert(
-                        `Item: ${item.item}\n\nFound at: ${item.location}\n\nDescription: ${item.description}\n\nReported by: ${item.name}`
-                      )
-                    }
-                  >
-                    View Item
-                  </button>
+                  <div className="found-item-image">
 
-                </div>
+                    {image ? (
 
-              </article>
+                      <img
+                        src={image}
+                        alt={itemName}
+                        className="found-uploaded-image"
+                      />
 
-            ))
+                    ) : (
+
+                      <div className="found-no-image">
+
+                        <div className="found-image-icon">
+                          📦
+                        </div>
+
+                        <span>
+                          Found Item
+                        </span>
+
+                      </div>
+
+                    )}
+
+                  </div>
+
+
+                  {/* ================= CONTENT ================= */}
+
+                  <div className="found-card-content">
+
+                    <h3>
+                      {itemName}
+                    </h3>
+
+
+                    <p className="found-item-description">
+
+                      {item.description ||
+                        "No description available for this item."}
+
+                    </p>
+
+
+                    {/* ================= LOCATION ================= */}
+
+                    <div className="found-location">
+
+                      <span className="found-location-icon">
+                        📍
+                      </span>
+
+                      <span>
+                        {item.location ||
+                          "Location not available"}
+                      </span>
+
+                    </div>
+
+
+                    {/* ================= VIEW BUTTON ================= */}
+
+                    <button
+                      className="found-view-btn"
+                      onClick={() =>
+                        alert(
+                          `Item: ${itemName}\n\n` +
+                          `Found at: ${
+                            item.location ||
+                            "Not provided"
+                          }\n\n` +
+                          `Description: ${
+                            item.description ||
+                            "Not provided"
+                          }\n\n` +
+                          `Reported by: ${
+                            item.name ||
+                            item.reportedBy ||
+                            "Not provided"
+                          }`
+                        )
+                      }
+                    >
+                      View Details
+                      <span>→</span>
+                    </button>
+
+                  </div>
+
+                </article>
+
+              );
+            })
 
           ) : (
 
             <div className="found-no-items">
+
+              <div className="found-empty-icon">
+                🔎
+              </div>
 
               <h3>
                 No Found Items
               </h3>
 
               <p>
-                No item matches your search.
+                No item matches your search. Try another keyword.
               </p>
 
             </div>
@@ -340,15 +384,16 @@ function Found() {
             ✓
           </div>
 
-          <div>
+
+          <div className="found-bottom-content">
 
             <h3>
-              Can't find what you're looking for?
+              Found something around campus?
             </h3>
 
             <p>
-              Try searching with a different keyword or report an item you've
-              found yourself.
+              Help someone recover their belongings by reporting
+              the item you found.
             </p>
 
           </div>
@@ -370,35 +415,94 @@ function Found() {
 
       <footer className="found-footer">
 
+
+        {/* ================= BRAND ================= */}
+
         <div className="found-footer-brand">
+          <BrandLogo small={true} />
+        </div>
 
-          <div className="found-brand-logo found-footer-logo">
 
-            <div className="found-box found-box-one"></div>
-            <div className="found-box found-box-two"></div>
-            <div className="found-box found-box-three"></div>
+        {/* ================= QUICK LINKS ================= */}
 
-            <div className="found-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
+        <div className="found-footer-section">
 
-          </div>
+          <h4>
+            Explore
+          </h4>
 
-          <div>
+          <Link to="/">
+            Home
+          </Link>
 
-            <h3>
-              I FOUND
-            </h3>
+          <Link to="/lost">
+            Lost Items
+          </Link>
 
-            <p>
-              Discover. Connect. Reclaim.
-            </p>
+          <Link to="/found">
+            Found Items
+          </Link>
 
-          </div>
+        </div>
+
+
+        {/* ================= REPORT ================= */}
+
+        <div className="found-footer-section">
+
+          <h4>
+            Report
+          </h4>
+
+          <Link to="/report-lost">
+            Report Lost
+          </Link>
+
+          <Link to="/report-found">
+            Report Found
+          </Link>
+
+          <Link to="/matches">
+            Matches
+          </Link>
+
+        </div>
+
+
+        {/* ================= ACCOUNT ================= */}
+
+        <div className="found-footer-section">
+
+          <h4>
+            Account
+          </h4>
+
+          <Link to="/profile">
+            My Profile
+          </Link>
+
+          <Link to="/login">
+            Login
+          </Link>
+
+        </div>
+
+
+        {/* ================= CONTACT ================= */}
+
+        <div className="found-footer-section">
+
+          <h4>
+            Contact
+          </h4>
+
+          <p>
+            Campus Lost & Found
+          </p>
+
+          <p>
+            Helping students reconnect.
+          </p>
 
         </div>
 
@@ -408,7 +512,15 @@ function Found() {
       {/* ================= COPYRIGHT ================= */}
 
       <div className="found-copyright">
-        © Copyright 2026 I FOUND. All Rights Reserved.
+
+        <span>
+          © 2026 FINDIT
+        </span>
+
+        <span>
+          Made for the Campus Community
+        </span>
+
       </div>
 
     </div>

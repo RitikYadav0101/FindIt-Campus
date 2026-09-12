@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BrandLogo from "./components/BrandLogo";
 import "./ReportLost.css";
 
 function ReportLost() {
@@ -52,7 +53,16 @@ function ReportLost() {
 
     const newItem = {
       id: Date.now(),
-      ...formData,
+
+      itemName: formData.itemName,
+      category: formData.category,
+      dateLost: formData.dateLost,
+      location: formData.location,
+      description: formData.description,
+      features: formData.features,
+      contact: formData.contact,
+      image: formData.image,
+
       status: "Lost",
       createdAt: new Date().toISOString(),
     };
@@ -77,122 +87,163 @@ function ReportLost() {
 
     setTimeout(() => {
       navigate("/lost");
-    }, 1500);
+    }, 1200);
   };
 
   return (
     <div className="reportlost-page">
-      <div className="reportlost-circle reportlost-circle-one"></div>
-      <div className="reportlost-circle reportlost-circle-two"></div>
 
-      {/* HEADER */}
+      {/* ================= HEADER ================= */}
+
       <header className="reportlost-header">
+
+        {/* CONSISTENT BRAND LOGO */}
         <Link to="/" className="reportlost-brand">
-          <div className="reportlost-brand-logo">
-            <div className="reportlost-logo-box reportlost-logo-box-one"></div>
-            <div className="reportlost-logo-box reportlost-logo-box-two"></div>
-            <div className="reportlost-logo-box reportlost-logo-box-three"></div>
-
-            <div className="reportlost-logo-center">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-          </div>
-
-          <div className="reportlost-brand-text">
-            <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
+          <BrandLogo small />
         </Link>
+
+
+        {/* NAVIGATION */}
+
+        <nav className="reportlost-nav-links">
+
+          <Link to="/">Home</Link>
+
+          <Link to="/lost">Lost</Link>
+
+          <Link to="/report-lost" className="active">
+            Report Lost
+          </Link>
+
+          <Link to="/found">Found</Link>
+
+          <Link to="/report-found">
+            Report Found
+          </Link>
+
+          <Link to="/profile">
+            Profile
+          </Link>
+
+        </nav>
+
+
+        {/* BACK BUTTON */}
 
         <button
           className="reportlost-back-button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/lost")}
         >
           ← Back
         </button>
+
       </header>
 
-      {/* MAIN */}
+
+      {/* ================= MAIN ================= */}
+
       <main className="reportlost-main">
-        {/* LEFT SIDE */}
+
+
+        {/* ================= LEFT SIDE ================= */}
+
         <section className="reportlost-intro-section">
+
           <div className="reportlost-search-icon-container">
             🔍
           </div>
 
-          <div className="reportlost-intro-content">
-            <div className="reportlost-small-label">
-              LOST SOMETHING?
-            </div>
+          <span className="reportlost-small-label">
+            LOST SOMETHING?
+          </span>
 
-            <h2>
-              List Your
-              <br />
-              <span>Lost Item</span>
-            </h2>
+          <h2>
+            List Your
+            <br />
+            <span>Lost Item</span>
+          </h2>
 
-            <p>
-              Tell us about the item you lost and help the
-              campus community get it back to you.
-            </p>
-          </div>
+          <p className="reportlost-intro-description">
+            Tell us about the item you lost and help the campus
+            community get it back to you.
+          </p>
+
+
+          {/* TIPS */}
 
           <div className="reportlost-tips">
+
             <div className="reportlost-tip">
+
               <div className="reportlost-tip-icon">
                 ✓
               </div>
 
               <div>
                 <h3>Be Specific</h3>
+
                 <p>
                   Add details that make your item easy to identify.
                 </p>
               </div>
+
             </div>
 
+
             <div className="reportlost-tip">
-              <div className="reportlost-tip-icon reportlost-cyan">
+
+              <div className="reportlost-tip-icon">
                 📍
               </div>
 
               <div>
                 <h3>Add Location</h3>
+
                 <p>
                   Mention where you last remember having it.
                 </p>
               </div>
+
             </div>
 
+
             <div className="reportlost-tip">
-              <div className="reportlost-tip-icon reportlost-amber">
+
+              <div className="reportlost-tip-icon">
                 ⚡
               </div>
 
               <div>
                 <h3>Act Quickly</h3>
+
                 <p>
                   The sooner you report it, the better.
                 </p>
               </div>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* FORM */}
+
+        {/* ================= FORM ================= */}
+
         <section className="reportlost-form-section">
+
           <div className="reportlost-form-card">
+
             <div className="reportlost-form-heading">
+
               <h2>Report Lost Item</h2>
 
               <p>
                 Provide the details below to create your listing.
               </p>
+
             </div>
+
 
             {submitted && (
               <div className="reportlost-success-message">
@@ -200,18 +251,25 @@ function ReportLost() {
               </div>
             )}
 
+
             <form
               className="reportlost-form"
               onSubmit={handleSubmit}
             >
+
               {/* ITEM NAME */}
+
               <div className="reportlost-input-group">
+
                 <label htmlFor="itemName">
                   Item Name
                 </label>
 
                 <div className="reportlost-input-wrapper">
-                  <span className="reportlost-input-icon">📦</span>
+
+                  <span className="reportlost-input-icon">
+                    📦
+                  </span>
 
                   <input
                     type="text"
@@ -222,17 +280,25 @@ function ReportLost() {
                     onChange={handleChange}
                     required
                   />
+
                 </div>
+
               </div>
 
+
               {/* CATEGORY */}
+
               <div className="reportlost-input-group">
+
                 <label htmlFor="category">
                   Category
                 </label>
 
                 <div className="reportlost-input-wrapper">
-                  <span className="reportlost-input-icon">🏷️</span>
+
+                  <span className="reportlost-input-icon">
+                    🏷️
+                  </span>
 
                   <select
                     id="category"
@@ -241,6 +307,7 @@ function ReportLost() {
                     onChange={handleChange}
                     required
                   >
+
                     <option value="">
                       Select a category
                     </option>
@@ -276,19 +343,29 @@ function ReportLost() {
                     <option value="Other">
                       Other
                     </option>
+
                   </select>
+
                 </div>
+
               </div>
 
+
+              {/* DATE + LOCATION */}
+
               <div className="reportlost-two-column">
-                {/* DATE */}
+
                 <div className="reportlost-input-group">
+
                   <label htmlFor="dateLost">
                     Date Lost
                   </label>
 
                   <div className="reportlost-input-wrapper">
-                    <span className="reportlost-input-icon">📅</span>
+
+                    <span className="reportlost-input-icon">
+                      📅
+                    </span>
 
                     <input
                       type="date"
@@ -298,17 +375,23 @@ function ReportLost() {
                       onChange={handleChange}
                       required
                     />
+
                   </div>
+
                 </div>
 
-                {/* LOCATION */}
+
                 <div className="reportlost-input-group">
+
                   <label htmlFor="location">
                     Location Lost
                   </label>
 
                   <div className="reportlost-input-wrapper">
-                    <span className="reportlost-input-icon">📍</span>
+
+                    <span className="reportlost-input-icon">
+                      📍
+                    </span>
 
                     <input
                       type="text"
@@ -319,12 +402,18 @@ function ReportLost() {
                       onChange={handleChange}
                       required
                     />
+
                   </div>
+
                 </div>
+
               </div>
 
+
               {/* DESCRIPTION */}
+
               <div className="reportlost-input-group">
+
                 <label htmlFor="description">
                   Description
                 </label>
@@ -338,10 +427,14 @@ function ReportLost() {
                   rows="3"
                   required
                 />
+
               </div>
 
+
               {/* FEATURES */}
+
               <div className="reportlost-input-group">
+
                 <label htmlFor="features">
                   Distinguishing Features
                 </label>
@@ -354,16 +447,23 @@ function ReportLost() {
                   onChange={handleChange}
                   rows="2"
                 />
+
               </div>
 
+
               {/* CONTACT */}
+
               <div className="reportlost-input-group">
+
                 <label htmlFor="contact">
                   Contact Information
                 </label>
 
                 <div className="reportlost-input-wrapper">
-                  <span className="reportlost-input-icon">📞</span>
+
+                  <span className="reportlost-input-icon">
+                    📞
+                  </span>
 
                   <input
                     type="text"
@@ -374,12 +474,17 @@ function ReportLost() {
                     onChange={handleChange}
                     required
                   />
+
                 </div>
+
               </div>
 
+
               {/* IMAGE */}
+
               <div className="reportlost-input-group">
-                <label htmlFor="image">
+
+                <label>
                   Item Image <span>(Optional)</span>
                 </label>
 
@@ -387,6 +492,7 @@ function ReportLost() {
                   htmlFor="image"
                   className="reportlost-upload-box"
                 >
+
                   <input
                     type="file"
                     id="image"
@@ -399,6 +505,7 @@ function ReportLost() {
                   </div>
 
                   <div>
+
                     <strong>
                       {formData.image
                         ? "Image selected ✓"
@@ -406,30 +513,42 @@ function ReportLost() {
                     </strong>
 
                     <p>PNG, JPG or JPEG</p>
+
                   </div>
+
                 </label>
 
+
                 {formData.image && (
+
                   <img
                     className="reportlost-preview"
                     src={formData.image}
                     alt="Preview"
                   />
+
                 )}
+
               </div>
 
+
               {/* SUBMIT */}
+
               <button
                 type="submit"
                 className="reportlost-submit-button"
               >
-                <span>List Lost Item</span>
-                <span>→</span>
+                List Lost Item →
               </button>
+
             </form>
+
           </div>
+
         </section>
+
       </main>
+
     </div>
   );
 }

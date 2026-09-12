@@ -1,33 +1,88 @@
 /* =========================================================
-   REPORT FOUND PAGE
+   GLOBAL
 ========================================================= */
 
-.reportf-page {
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.reportfound-page {
   min-height: 100vh;
   width: 100%;
+
   padding: 2rem;
 
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #e5edf8;
+
+  position: relative;
+
+  overflow-x: hidden;
 
   background:
     radial-gradient(
-      circle at 20% 20%,
-      rgba(236, 72, 153, 0.13),
-      transparent 30%
+      circle at 10% 15%,
+      rgba(59, 130, 246, 0.16),
+      transparent 28%
     ),
     radial-gradient(
-      circle at 70% 80%,
+      circle at 90% 85%,
       rgba(6, 182, 212, 0.12),
       transparent 30%
     ),
     linear-gradient(
       135deg,
-      #f8fafc,
-      #eef2ff
+      #08111f,
+      #0b1627 50%,
+      #0c1b2e
     );
+}
 
-  color: #0f172a;
-  overflow-x: hidden;
+
+/* =========================================================
+   BACKGROUND CIRCLES
+========================================================= */
+
+.reportfound-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(10px);
+
+  z-index: 0;
+}
+
+
+.reportfound-circle-one {
+  width: 350px;
+  height: 350px;
+
+  top: 100px;
+  left: -160px;
+
+  background:
+    rgba(37, 99, 235, 0.18);
+}
+
+
+.reportfound-circle-two {
+  width: 400px;
+  height: 400px;
+
+  right: -180px;
+  bottom: -120px;
+
+  background:
+    rgba(6, 182, 212, 0.12);
 }
 
 
@@ -35,7 +90,7 @@
    HEADER
 ========================================================= */
 
-.reportf-header {
+.reportfound-header {
   width: 100%;
   max-width: 1200px;
 
@@ -45,99 +100,132 @@
   align-items: center;
   justify-content: space-between;
 
-  gap: 1.5rem;
-  padding-bottom: 1rem;
+  gap: 1rem;
+
+  padding-bottom: 2rem;
+
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.14);
+
+  position: relative;
+
+  z-index: 2;
 }
 
 
 /* =========================================================
-   LOGO
+   BRAND
 ========================================================= */
 
-.reportf-brand {
+.reportfound-brand {
   display: flex;
   align-items: center;
 
   gap: 1rem;
 
   text-decoration: none;
-  color: inherit;
+
+  min-width: 0;
 }
 
-.reportf-brand-logo {
+
+.reportfound-brand-logo {
   position: relative;
 
   width: 52px;
   height: 52px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   flex-shrink: 0;
 }
 
-.reportf-box {
+
+.reportfound-logo-box {
   position: absolute;
-  border-radius: 8px;
+
+  border-radius: 9px;
 }
 
-.reportf-box-one {
+
+/* BLUE */
+
+.reportfound-logo-box-one {
   width: 32px;
   height: 32px;
 
   top: 0;
   left: 0;
 
-  background: #6366f1;
+  background: #3b82f6;
 
   opacity: 0.9;
-
-  box-shadow:
-    0 4px 12px
-    rgba(99, 102, 241, 0.25);
 }
 
-.reportf-box-two {
+
+/* CYAN */
+
+.reportfound-logo-box-two {
   width: 28px;
   height: 28px;
 
-  bottom: 0;
   right: 0;
+  bottom: 0;
 
   background: #06b6d4;
+
   opacity: 0.9;
 }
 
-.reportf-box-three {
-  width: 20px;
-  height: 20px;
 
-  top: 6px;
+/* LIGHT BLUE */
+
+.reportfound-logo-box-three {
+  width: 21px;
+  height: 21px;
+
+  top: 5px;
   right: 4px;
 
-  background: #ec4899;
+  background: #60a5fa;
+
   opacity: 0.85;
 }
 
-.reportf-lost-box {
+
+/* CENTER */
+
+.reportfound-logo-center {
   position: relative;
+
   z-index: 2;
 
-  padding: 5px 6px;
+  display: inline-block;
 
-  background: rgba(255, 255, 255, 0.95);
+  padding: 5px;
 
-  border: 1px solid #e2e8f0;
   border-radius: 6px;
 
+  background:
+    rgba(15, 23, 42, 0.95);
+
+  border:
+    1px solid rgba(147, 197, 253, 0.35);
+
+  color: #e0f2fe;
+
   font-size: 0.55rem;
+
   font-weight: 800;
 
   line-height: 1.05;
+
   text-align: center;
 
-  color: #0f172a;
+  top: 12px;
+  left: 11px;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0, 0, 0, 0.3);
 }
 
 
@@ -145,10 +233,11 @@
    BRAND TEXT
 ========================================================= */
 
-.reportf-brand-text h1 {
+.reportfound-brand-text h1 {
   margin: 0;
 
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+
   font-weight: 800;
 
   letter-spacing: 1px;
@@ -156,105 +245,66 @@
   background:
     linear-gradient(
       90deg,
-      #6366f1,
-      #ec4899
+      #60a5fa,
+      #22d3ee
     );
 
   -webkit-background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
-.reportf-brand-text p {
+
+.reportfound-brand-text p {
   margin: 4px 0 0;
 
+  color: #8fa1b8;
+
   font-size: 0.78rem;
-
-  color: #64748b;
 }
 
 
 /* =========================================================
-   NAVIGATION
+   BACK BUTTON
 ========================================================= */
 
-.reportf-nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 0.4rem;
-}
-
-.reportf-nav-links a {
-  padding: 8px 10px;
-
-  border-radius: 8px;
-
-  text-decoration: none;
-
-  font-size: 0.85rem;
-  font-weight: 600;
-
-  color: #64748b;
-
-  white-space: nowrap;
-
-  transition: 0.25s ease;
-}
-
-.reportf-nav-links a:hover {
-  color: #6366f1;
-
-  background:
-    rgba(99, 102, 241, 0.08);
-}
-
-.reportf-nav-links .active {
-  color: #6366f1;
-
-  background:
-    rgba(99, 102, 241, 0.12);
-
-  font-weight: 700;
-}
-
-
-/* =========================================================
-   SIGN OUT
-========================================================= */
-
-.reportf-signout-btn {
+.reportfound-back-button {
   padding: 0.7rem 1.2rem;
 
-  border: 1px solid #cbd5e1;
+  border:
+    1px solid rgba(148, 163, 184, 0.25);
+
   border-radius: 10px;
 
-  background: white;
+  background:
+    rgba(255, 255, 255, 0.05);
 
-  color: #475569;
+  color: #cbd5e1;
 
   font-size: 0.85rem;
+
   font-weight: 700;
 
   cursor: pointer;
 
-  white-space: nowrap;
-
   transition: 0.25s ease;
+
+  flex-shrink: 0;
 }
 
-.reportf-signout-btn:hover {
-  background: #6366f1;
 
-  border-color: #6366f1;
+.reportfound-back-button:hover {
+  background: #2563eb;
+
+  border-color: #2563eb;
 
   color: white;
 
   transform: translateY(-2px);
 
   box-shadow:
-    0 8px 18px
-    rgba(99, 102, 241, 0.2);
+    0 10px 25px
+    rgba(37, 99, 235, 0.3);
 }
 
 
@@ -262,105 +312,243 @@
    MAIN
 ========================================================= */
 
-.reportf-main {
+.reportfound-main {
   width: 100%;
-  max-width: 850px;
+  max-width: 1200px;
 
-  margin: 2rem auto 3rem;
+  margin: 1rem auto 3rem;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  gap: 4rem;
 
   align-items: center;
+
+  position: relative;
+
+  z-index: 2;
 }
 
 
 /* =========================================================
-   PAGE HEADING
+   LEFT SECTION
 ========================================================= */
 
-.reportf-heading {
-  text-align: center;
+.reportfound-intro-section {
+  padding: 2rem 0;
 
-  margin-bottom: 1.8rem;
+  min-width: 0;
 }
 
-.reportf-heading-line {
-  display: block;
 
-  width: 50px;
-  height: 4px;
+/* =========================================================
+   ICON
+========================================================= */
 
-  margin: 0 auto 1rem;
+.reportfound-search-icon-container {
+  width: 68px;
+  height: 68px;
 
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 2rem;
+
+  border-radius: 20px;
 
   background:
     linear-gradient(
-      90deg,
-      #6366f1,
-      #06b6d4,
-      #ec4899
+      135deg,
+      rgba(59, 130, 246, 0.22),
+      rgba(6, 182, 212, 0.18)
     );
+
+  border:
+    1px solid rgba(96, 165, 250, 0.2);
+
+  font-size: 2rem;
+
+  box-shadow:
+    0 15px 35px
+    rgba(37, 99, 235, 0.18);
 }
 
-.reportf-heading h2 {
-  margin: 0;
 
-  font-size: 3rem;
-  line-height: 1.15;
+/* =========================================================
+   INTRO CONTENT
+========================================================= */
+
+.reportfound-small-label {
+  display: inline-block;
+
+  margin-bottom: 1rem;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(59, 130, 246, 0.12);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.18);
+
+  color: #7db8ff;
+
+  font-size: 0.7rem;
 
   font-weight: 800;
 
-  letter-spacing: -1px;
-
-  color: #0f172a;
+  letter-spacing: 1.5px;
 }
 
-.reportf-heading h2 span {
+
+.reportfound-intro-content h2 {
+  margin: 0;
+
+  font-size: 3.5rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  color: #f1f5f9;
+}
+
+
+.reportfound-intro-content h2 span {
   background:
     linear-gradient(
       90deg,
-      #6366f1,
-      #06b6d4
+      #60a5fa,
+      #22d3ee
     );
 
   -webkit-background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
-.reportf-heading p {
-  margin: 0.8rem 0 0;
+
+.reportfound-intro-content p {
+  max-width: 480px;
+
+  margin: 1.3rem 0 0;
+
+  color: #9aa9bb;
 
   font-size: 1rem;
 
-  line-height: 1.6;
-
-  color: #64748b;
+  line-height: 1.7;
 }
 
 
 /* =========================================================
-   SUCCESS MESSAGE
+   TIPS
 ========================================================= */
 
-.reportf-success-message {
+.reportfound-tips {
+  margin-top: 2.5rem;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.2rem;
+}
+
+
+.reportfound-tip {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+}
+
+
+/* TIP ICON */
+
+.reportfound-tip-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background:
+    rgba(59, 130, 246, 0.16);
+
+  color: #7db8ff;
+
+  font-weight: 800;
+
+  border:
+    1px solid rgba(96, 165, 250, 0.12);
+}
+
+
+.reportfound-cyan {
+  background:
+    rgba(6, 182, 212, 0.14);
+
+  color: #22d3ee;
+}
+
+
+.reportfound-amber {
+  background:
+    rgba(245, 158, 11, 0.14);
+
+  color: #fbbf24;
+}
+
+
+/* TIP TEXT */
+
+.reportfound-tip h3 {
+  margin: 0 0 5px;
+
+  font-size: 0.95rem;
+
+  font-weight: 800;
+
+  color: #e5edf8;
+}
+
+
+.reportfound-tip p {
+  margin: 0;
+
+  color: #8d9caf;
+
+  font-size: 0.82rem;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM SECTION
+========================================================= */
+
+.reportfound-form-section {
   width: 100%;
 
-  margin-bottom: 1rem;
-  padding: 0.9rem 1rem;
-
-  border: 1px solid #86efac;
-  border-radius: 10px;
-
-  background: #dcfce7;
-
-  color: #15803d;
-
-  font-size: 0.9rem;
-  font-weight: 700;
-
-  text-align: center;
+  min-width: 0;
 }
 
 
@@ -368,117 +556,162 @@
    FORM CARD
 ========================================================= */
 
-.reportf-card {
+.reportfound-form-card {
   width: 100%;
 
-  padding: 2rem;
-
-  background:
-    rgba(255, 255, 255, 0.88);
-
-  border:
-    1px solid rgba(226, 232, 240, 0.95);
+  padding: 2.2rem;
 
   border-radius: 24px;
 
+  background:
+    linear-gradient(
+      145deg,
+      rgba(31, 48, 72, 0.95),
+      rgba(17, 31, 49, 0.95)
+    );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.16);
+
   box-shadow:
-    0 25px 50px -12px
-    rgba(15, 23, 42, 0.12);
+    0 25px 60px
+    rgba(0, 0, 0, 0.3);
 
   backdrop-filter: blur(16px);
 }
 
 
 /* =========================================================
-   CARD HEADER
+   FORM HEADING
 ========================================================= */
 
-.reportf-card-header {
-  display: flex;
-  align-items: center;
-
-  gap: 1rem;
-
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-
-  border-bottom: 1px solid #e2e8f0;
+.reportfound-form-heading {
+  margin-bottom: 1.8rem;
 }
 
-.reportf-form-icon {
-  width: 48px;
-  height: 48px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.reportfound-form-heading h2 {
+  margin: 0;
 
-  flex-shrink: 0;
+  font-size: 1.7rem;
 
-  border-radius: 14px;
-
-  background: #e0e7ff;
-
-  color: #6366f1;
-
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.reportf-card-header h3 {
-  margin: 0 0 5px;
-
-  font-size: 1.25rem;
   font-weight: 800;
 
-  color: #0f172a;
+  color: #f1f5f9;
 }
 
-.reportf-card-header p {
-  margin: 0;
+
+.reportfound-form-heading p {
+  margin: 0.5rem 0 0;
+
+  color: #8d9caf;
 
   font-size: 0.85rem;
 
   line-height: 1.5;
-
-  color: #64748b;
 }
 
 
 /* =========================================================
-   FORM GRID
+   SUCCESS MESSAGE
 ========================================================= */
 
-.reportf-form {
-  display: grid;
+.reportfound-success-message {
+  margin-bottom: 1.3rem;
 
-  grid-template-columns: 1fr 1fr;
+  padding: 0.9rem 1rem;
 
-  column-gap: 1.4rem;
-  row-gap: 1.3rem;
+  border-radius: 10px;
+
+  background:
+    rgba(34, 197, 94, 0.12);
+
+  border:
+    1px solid rgba(34, 197, 94, 0.35);
+
+  color: #86efac;
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
 }
 
 
 /* =========================================================
-   FORM GROUP
+   FORM
 ========================================================= */
 
-.reportf-form-group {
+.reportfound-form {
   display: flex;
+
+  flex-direction: column;
+
+  gap: 1.2rem;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+========================================================= */
+
+.reportfound-input-group {
+  display: flex;
+
   flex-direction: column;
 
   gap: 0.5rem;
+
+  min-width: 0;
 }
 
-.reportf-form-group label {
-  font-size: 0.85rem;
+
+.reportfound-input-group label {
+  color: #cbd5e1;
+
+  font-size: 0.83rem;
+
   font-weight: 700;
-
-  color: #334155;
 }
 
-.reportf-form-group label span {
-  color: #ec4899;
+
+.reportfound-input-group label span {
+  color: #718096;
+
+  font-size: 0.75rem;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.reportfound-input-wrapper {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   INPUT ICON
+========================================================= */
+
+.reportfound-input-icon {
+  position: absolute;
+
+  left: 0.9rem;
+
+  z-index: 2;
+
+  font-size: 1rem;
+
+  pointer-events: none;
 }
 
 
@@ -486,78 +719,130 @@
    INPUTS
 ========================================================= */
 
-.reportf-form-group input,
-.reportf-form-group select,
-.reportf-form-group textarea {
+.reportfound-input-wrapper input,
+.reportfound-input-wrapper select {
   width: 100%;
 
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
+  height: 48px;
 
-  background: #f8fafc;
+  padding:
+    0
+    0.9rem
+    0
+    2.8rem;
 
-  color: #0f172a;
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  border-radius: 11px;
+
+  background:
+    rgba(8, 17, 31, 0.5);
+
+  color: #e2e8f0;
 
   font-family: inherit;
-  font-size: 0.9rem;
+
+  font-size: 0.85rem;
 
   outline: none;
 
   transition: 0.25s ease;
 }
 
-.reportf-form-group input,
-.reportf-form-group select {
-  height: 46px;
 
-  padding: 0 0.9rem;
+.reportfound-input-wrapper select {
+  cursor: pointer;
 }
 
-.reportf-form-group textarea {
-  min-height: 110px;
+
+.reportfound-input-wrapper select option {
+  background: #0f1c2d;
+
+  color: #e5edf8;
+}
+
+
+.reportfound-input-wrapper input[type="date"] {
+  cursor: pointer;
+
+  color-scheme: dark;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.reportfound-input-group textarea {
+  width: 100%;
 
   padding: 0.8rem 0.9rem;
 
-  resize: vertical;
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  border-radius: 11px;
+
+  background:
+    rgba(8, 17, 31, 0.5);
+
+  color: #e2e8f0;
+
+  font-family: inherit;
+
+  font-size: 0.85rem;
 
   line-height: 1.5;
+
+  outline: none;
+
+  resize: vertical;
+
+  transition: 0.25s ease;
 }
 
-.reportf-form-group input::placeholder,
-.reportf-form-group textarea::placeholder {
-  color: #94a3b8;
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.reportfound-input-wrapper input::placeholder,
+.reportfound-input-group textarea::placeholder {
+  color: #64748b;
 }
 
-.reportf-form-group input:focus,
-.reportf-form-group select:focus,
-.reportf-form-group textarea:focus {
-  border-color: #6366f1;
 
-  background: white;
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.reportfound-input-wrapper input:focus,
+.reportfound-input-wrapper select:focus,
+.reportfound-input-group textarea:focus {
+  border-color: #3b82f6;
+
+  background:
+    rgba(8, 17, 31, 0.8);
 
   box-shadow:
     0 0 0 4px
-    rgba(99, 102, 241, 0.12);
+    rgba(59, 130, 246, 0.1);
 }
 
 
 /* =========================================================
-   FULL WIDTH
+   TWO COLUMN
 ========================================================= */
 
-.reportf-full-width {
-  grid-column: 1 / -1;
-}
+.reportfound-two-column {
+  display: grid;
 
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
 
-/* =========================================================
-   CHARACTER INFO
-========================================================= */
-
-.reportf-character-info {
-  font-size: 0.75rem;
-
-  color: #94a3b8;
+  gap: 1rem;
 }
 
 
@@ -565,85 +850,89 @@
    FILE UPLOAD
 ========================================================= */
 
-.reportf-upload-area {
-  position: relative;
+.reportfound-upload-box {
+  width: 100%;
 
-  min-height: 110px;
+  min-height: 95px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
 
-  border: 2px dashed #cbd5e1;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem;
+
+  border:
+    1.5px dashed rgba(148, 163, 184, 0.35);
+
   border-radius: 12px;
 
-  background: #f8fafc;
+  background:
+    rgba(8, 17, 31, 0.35);
 
   cursor: pointer;
 
   transition: 0.25s ease;
 }
 
-.reportf-upload-area:hover {
-  border-color: #6366f1;
 
-  background: #eef2ff;
+.reportfound-upload-box:hover {
+  border-color: #3b82f6;
+
+  background:
+    rgba(59, 130, 246, 0.08);
 }
 
-.reportf-upload-area input {
-  position: absolute;
 
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  opacity: 0;
-
-  cursor: pointer;
+.reportfound-upload-box input {
+  display: none;
 }
 
-.reportf-upload-content {
-  display: flex;
-  align-items: center;
 
-  gap: 0.8rem;
+/* UPLOAD ICON */
 
-  pointer-events: none;
-}
-
-.reportf-upload-icon {
-  width: 44px;
-  height: 44px;
+.reportfound-upload-icon {
+  width: 45px;
+  height: 45px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   border-radius: 12px;
 
-  background: #e0e7ff;
+  background:
+    rgba(59, 130, 246, 0.15);
 
-  color: #6366f1;
+  color: #7db8ff;
 
   font-size: 1.5rem;
-  font-weight: bold;
+
+  font-weight: 800;
 }
 
-.reportf-upload-content strong {
+
+/* UPLOAD TEXT */
+
+.reportfound-upload-box strong {
   display: block;
 
-  font-size: 0.9rem;
+  color: #dbeafe;
 
-  color: #334155;
+  font-size: 0.85rem;
 }
 
-.reportf-upload-content p {
+
+.reportfound-upload-box p {
   margin: 4px 0 0;
 
-  font-size: 0.75rem;
+  color: #718096;
 
-  color: #94a3b8;
+  font-size: 0.72rem;
 }
 
 
@@ -651,104 +940,85 @@
    IMAGE PREVIEW
 ========================================================= */
 
-.reportf-image-preview {
-  margin-top: 0.8rem;
-}
-
-.reportf-image-preview img {
+.reportfound-preview {
   width: 150px;
   height: 150px;
+
+  margin-top: 0.8rem;
 
   display: block;
 
   object-fit: cover;
 
-  border: 1px solid #e2e8f0;
   border-radius: 12px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  box-shadow:
+    0 8px 20px
+    rgba(0, 0, 0, 0.25);
 }
 
 
 /* =========================================================
-   FORM BUTTONS
+   SUBMIT BUTTON
 ========================================================= */
 
-.reportf-form-actions {
-  grid-column: 1 / -1;
+.reportfound-submit-button {
+  width: 100%;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   gap: 0.8rem;
 
-  padding-top: 0.5rem;
-}
+  margin-top: 0.5rem;
 
-.reportf-submit-btn {
-  min-width: 150px;
-
-  padding: 0.8rem 1.5rem;
+  padding: 0.95rem 1.5rem;
 
   border: none;
-  border-radius: 10px;
+
+  border-radius: 12px;
 
   background:
     linear-gradient(
       135deg,
-      #6366f1,
-      #4f46e5
+      #3b82f6,
+      #2563eb
     );
 
   color: white;
 
   font-family: inherit;
+
   font-size: 0.9rem;
-  font-weight: 700;
+
+  font-weight: 800;
 
   cursor: pointer;
 
   box-shadow:
-    0 8px 18px
-    rgba(99, 102, 241, 0.25);
+    0 10px 25px
+    rgba(37, 99, 235, 0.3);
 
   transition: 0.25s ease;
 }
 
-.reportf-submit-btn:hover {
+
+.reportfound-submit-button:hover {
   transform: translateY(-2px);
 
   box-shadow:
-    0 12px 25px
-    rgba(99, 102, 241, 0.35);
+    0 15px 30px
+    rgba(37, 99, 235, 0.45);
 }
 
-.reportf-reset-btn {
-  min-width: 100px;
 
-  padding: 0.8rem 1.3rem;
-
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-
-  background: white;
-
-  color: #64748b;
-
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.25s ease;
-}
-
-.reportf-reset-btn:hover {
-  border-color: #94a3b8;
-
-  background: #f8fafc;
-
-  color: #334155;
+.reportfound-submit-button:active {
+  transform: translateY(0);
 }
 
 
@@ -756,18 +1026,41 @@
    TABLET
 ========================================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
 
-  .reportf-header {
-    flex-wrap: wrap;
+  .reportfound-main {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+
+    max-width: 700px;
   }
 
-  .reportf-nav-links {
-    order: 3;
 
-    width: 100%;
+  .reportfound-intro-section {
+    text-align: center;
+  }
 
-    justify-content: center;
+
+  .reportfound-search-icon-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .reportfound-intro-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .reportfound-tips {
+    max-width: 550px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: left;
   }
 
 }
@@ -779,64 +1072,122 @@
 
 @media (max-width: 700px) {
 
-  .reportf-form {
-    grid-template-columns: 1fr;
+  .reportfound-page {
+    padding: 1.2rem;
   }
 
-  .reportf-full-width {
-    grid-column: auto;
+
+  .reportfound-header {
+    padding-bottom: 1.5rem;
+  }
+
+
+  .reportfound-brand-text h1 {
+    font-size: 1.1rem;
+  }
+
+
+  .reportfound-brand-text p {
+    font-size: 0.68rem;
+  }
+
+
+  .reportfound-back-button {
+    padding: 0.6rem 0.9rem;
+
+    font-size: 0.78rem;
+  }
+
+
+  .reportfound-intro-content h2 {
+    font-size: 2.7rem;
+  }
+
+
+  .reportfound-form-card {
+    padding: 1.4rem;
+  }
+
+
+  .reportfound-two-column {
+    grid-template-columns: 1fr;
   }
 
 }
 
 
-@media (max-width: 600px) {
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-  .reportf-page {
+@media (max-width: 480px) {
+
+  .reportfound-page {
     padding: 1rem;
   }
 
-  .reportf-header {
-    flex-direction: column;
 
+  .reportfound-brand {
+    gap: 0.6rem;
+  }
+
+
+  .reportfound-brand-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+
+  .reportfound-logo-box-one {
+    width: 28px;
+    height: 28px;
+  }
+
+
+  .reportfound-logo-box-two {
+    width: 24px;
+    height: 24px;
+  }
+
+
+  .reportfound-logo-box-three {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  .reportfound-logo-center {
+    font-size: 0.48rem;
+  }
+
+
+  .reportfound-brand-text p {
+    display: none;
+  }
+
+
+  .reportfound-intro-content h2 {
+    font-size: 2.3rem;
+  }
+
+
+  .reportfound-form-heading h2 {
+    font-size: 1.4rem;
+  }
+
+
+  .reportfound-tip {
+    gap: 0.7rem;
+  }
+
+
+  .reportfound-form-card {
+    padding: 1.1rem;
+  }
+
+
+  .reportfound-upload-box {
     align-items: flex-start;
-
-    gap: 1rem;
-  }
-
-  .reportf-nav-links {
-    width: 100%;
-
-    justify-content: flex-start;
-
-    overflow-x: auto;
-
-    padding-bottom: 0.3rem;
-  }
-
-  .reportf-heading h2 {
-    font-size: 2.2rem;
-  }
-
-  .reportf-heading p {
-    font-size: 0.9rem;
-  }
-
-  .reportf-card {
-    padding: 1.3rem;
-  }
-
-  .reportf-card-header {
-    align-items: flex-start;
-  }
-
-  .reportf-form-actions {
-    flex-direction: column;
-  }
-
-  .reportf-submit-btn,
-  .reportf-reset-btn {
-    width: 100%;
   }
 
 }

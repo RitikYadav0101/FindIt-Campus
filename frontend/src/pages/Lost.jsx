@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BrandLogo from "./components/BrandLogo";
 import "./Lost.css";
 
 function Lost() {
@@ -8,16 +9,12 @@ function Lost() {
   const [searchTerm, setSearchTerm] = useState("");
   const [lostItems, setLostItems] = useState([]);
 
-  // ================= LOAD LOST ITEMS =================
-
   useEffect(() => {
     const savedItems =
       JSON.parse(localStorage.getItem("lostItems")) || [];
 
     setLostItems(savedItems);
   }, []);
-
-  // ================= LOGOUT =================
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
@@ -26,17 +23,12 @@ function Lost() {
     navigate("/login", { replace: true });
   };
 
-  // ================= SEARCH =================
-
   const filteredItems = lostItems.filter((item) => {
     const itemName =
       item.itemName || item.title || item.item || "";
 
-    const category =
-      item.category || "";
-
-    const location =
-      item.location || "";
+    const category = item.category || "";
+    const location = item.location || "";
 
     const search = searchTerm.toLowerCase();
 
@@ -50,37 +42,12 @@ function Lost() {
   return (
     <div className="lost-page">
 
-      {/* ================= HEADER ================= */}
-
+      {/* HEADER */}
       <header className="lost-header">
 
         <Link to="/" className="lost-brand">
-
-          <div className="lost-brand-logo">
-
-            <div className="lost-box lost-box-one"></div>
-            <div className="lost-box lost-box-two"></div>
-            <div className="lost-box lost-box-three"></div>
-
-            <div className="lost-logo-text">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
-          </div>
-
-          <div className="lost-brand-text">
-            <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
-
+          <BrandLogo small />
         </Link>
-
-
-        {/* ================= NAVIGATION ================= */}
 
         <nav className="lost-nav-links">
 
@@ -108,7 +75,6 @@ function Lost() {
 
         </nav>
 
-
         <button
           className="lost-signout-btn"
           onClick={handleLogout}
@@ -119,13 +85,12 @@ function Lost() {
       </header>
 
 
-      {/* ================= MAIN ================= */}
-
+      {/* MAIN */}
       <main className="lost-main">
 
-        {/* HEADING */}
-
         <section className="lost-page-heading">
+
+          <div className="lost-heading-glow"></div>
 
           <div className="lost-heading-content">
 
@@ -147,8 +112,6 @@ function Lost() {
         </section>
 
 
-        {/* ================= SEARCH ================= */}
-
         <section className="lost-toolbar">
 
           <div className="lost-search-wrapper">
@@ -168,179 +131,179 @@ function Lost() {
 
           </div>
 
-
           <Link
             to="/report-lost"
             className="lost-report-btn"
           >
-            <span className="lost-report-plus">
-              +
-            </span>
-
+            <span className="lost-report-plus">+</span>
             Report Lost
-
           </Link>
 
         </section>
 
 
-        {/* ================= RESULTS HEADER ================= */}
+        <section className="lost-results-section">
 
-        <div className="lost-results-header">
+          <div className="lost-results-header">
 
-          <div>
+            <div>
 
-            <h3>
-              Recently Lost
-            </h3>
+              <h3>Recently Lost</h3>
 
-            <p>
-              {filteredItems.length} item(s) found
-            </p>
+              <p>
+                {filteredItems.length} item(s) found
+              </p>
+
+            </div>
 
           </div>
 
-        </div>
 
+          <div className="lost-items-grid">
 
-        {/* ================= ITEMS ================= */}
+            {filteredItems.length > 0 ? (
 
-        <section className="lost-items-grid">
+              filteredItems.map((item, index) => {
 
-          {filteredItems.length > 0 ? (
+                const itemName =
+                  item.itemName ||
+                  item.title ||
+                  item.item ||
+                  "Unnamed Item";
 
-            filteredItems.map((item) => {
+                const date =
+                  item.dateLost ||
+                  item.date ||
+                  "Date not available";
 
-              const itemName =
-                item.itemName || item.title || item.item;
+                const image =
+                  item.image ||
+                  item.photo;
 
-              const date =
-                item.dateLost || item.date;
+                return (
 
-              const image =
-                item.image || item.photo;
+                  <article
+                    className="lost-item-card"
+                    key={item.id || index}
+                  >
 
-              return (
+                    <div className="lost-card-top">
 
-                <article
-                  className="lost-item-card"
-                  key={item.id}
-                >
-
-                  {/* CARD TOP */}
-
-                  <div className="lost-card-top">
-
-                    <span className="lost-category">
-                      {item.category || "Other"}
-                    </span>
-
-                    <span className="lost-date">
-                      {date || "Date not available"}
-                    </span>
-
-                  </div>
-
-
-                  {/* IMAGE */}
-
-                  <div className="lost-item-image">
-
-                    {image ? (
-
-                      <img
-                        src={image}
-                        alt={itemName}
-                        className="lost-uploaded-image"
-                      />
-
-                    ) : (
-
-                      <div className="lost-no-image">
-                        📦
-                      </div>
-
-                    )}
-
-                  </div>
-
-
-                  {/* CONTENT */}
-
-                  <div className="lost-card-content">
-
-                    <h3>
-                      {itemName}
-                    </h3>
-
-                    <p className="lost-item-description">
-                      {item.description ||
-                        "No description available."}
-                    </p>
-
-
-                    <div className="lost-location">
-
-                      <span className="lost-location-icon">
-                        📍
+                      <span className="lost-category">
+                        {item.category || "Other"}
                       </span>
 
-                      <span>
-                        {item.location ||
-                          "Location not available"}
+                      <span className="lost-date">
+                        {date}
                       </span>
 
                     </div>
 
 
-                    <button
-                      className="lost-view-btn"
-                      onClick={() =>
-                        alert(
-                          `Item: ${itemName}\n\n` +
-                          `Description: ${
-                            item.description ||
-                            "Not provided"
-                          }\n\n` +
-                          `Features: ${
-                            item.features ||
-                            "Not provided"
-                          }\n\n` +
-                          `Contact: ${
-                            item.contact ||
-                            "Not provided"
-                          }`
-                        )
-                      }
-                    >
-                      View Item
-                    </button>
+                    <div className="lost-item-image">
 
-                  </div>
+                      {image ? (
 
-                </article>
+                        <img
+                          src={image}
+                          alt={itemName}
+                          className="lost-uploaded-image"
+                        />
 
-              );
-            })
+                      ) : (
 
-          ) : (
+                        <div className="lost-no-image">
+                          <div className="lost-package-icon">
+                            📦
+                          </div>
+                        </div>
 
-            <div className="lost-no-items">
+                      )}
 
-              <h3>No Lost Items Found</h3>
+                    </div>
 
-              <p>
-                No item matches your search.
-              </p>
 
-            </div>
+                    <div className="lost-card-content">
 
-          )}
+                      <h3>{itemName}</h3>
+
+                      <p className="lost-item-description">
+
+                        {item.description ||
+                          "No description available for this item."}
+
+                      </p>
+
+
+                      <div className="lost-location">
+
+                        <span className="lost-location-icon">
+                          📍
+                        </span>
+
+                        <span>
+                          {item.location ||
+                            "Location not available"}
+                        </span>
+
+                      </div>
+
+
+                      <button
+                        className="lost-view-btn"
+                        onClick={() =>
+                          alert(
+                            `Item: ${itemName}\n\n` +
+                            `Category: ${
+                              item.category || "Not provided"
+                            }\n\n` +
+                            `Description: ${
+                              item.description || "Not provided"
+                            }\n\n` +
+                            `Features: ${
+                              item.features || "Not provided"
+                            }\n\n` +
+                            `Location: ${
+                              item.location || "Not provided"
+                            }\n\n` +
+                            `Contact: ${
+                              item.contact || "Not provided"
+                            }`
+                          )
+                        }
+                      >
+                        View Item →
+                      </button>
+
+                    </div>
+
+                  </article>
+
+                );
+              })
+
+            ) : (
+
+              <div className="lost-no-items">
+
+                <div className="lost-empty-icon">
+                  📦
+                </div>
+
+                <h3>No Lost Items Found</h3>
+
+                <p>
+                  No item matches your search.
+                </p>
+
+              </div>
+
+            )}
+
+          </div>
 
         </section>
 
-
-        {/* ================= BOTTOM ================= */}
 
         <section className="lost-bottom-message">
 
@@ -348,7 +311,7 @@ function Lost() {
             ?
           </div>
 
-          <div>
+          <div className="lost-bottom-content">
 
             <h3>
               Can't find your lost item?
@@ -360,7 +323,6 @@ function Lost() {
             </p>
 
           </div>
-
 
           <Link
             to="/report-lost"
@@ -374,45 +336,19 @@ function Lost() {
       </main>
 
 
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
 
       <footer className="lost-footer">
 
         <div className="lost-footer-brand">
-
-          <div className="lost-brand-logo lost-footer-logo">
-
-            <div className="lost-box lost-box-one"></div>
-            <div className="lost-box lost-box-two"></div>
-            <div className="lost-box lost-box-three"></div>
-
-            <div className="lost-logo-text">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
-          </div>
-
-          <div>
-
-            <h3>I FOUND</h3>
-
-            <p>
-              Discover. Connect. Reclaim.
-            </p>
-
-          </div>
-
+          <BrandLogo small />
         </div>
 
       </footer>
 
 
       <div className="lost-copyright">
-        © Copyright 2026 I FOUND. All Rights Reserved.
+        © Copyright 2026 FINDIT. All Rights Reserved.
       </div>
 
     </div>
