@@ -1,0 +1,1245 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.found-page {
+  min-height: 100vh;
+  width: 100%;
+
+  padding: 0 2rem;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #e5edf8;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(59, 130, 246, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(37, 99, 235, 0.1),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #08111f,
+      #0b1627 50%,
+      #0c1b2e
+    );
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.found-header {
+  width: 100%;
+  max-width: 1280px;
+
+  min-height: 106px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.14);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.found-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 0.85rem;
+
+  text-decoration: none;
+
+  min-width: 220px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.found-brand-logo {
+  position: relative;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+.found-logo-glow {
+  position: absolute;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3b82f6,
+      #1d4ed8
+    );
+
+  box-shadow:
+    0 8px 25px
+    rgba(59, 130, 246, 0.35);
+
+  transform: rotate(8deg);
+}
+
+
+.found-logo-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #15263e,
+      #0d1a2d
+    );
+
+  border:
+    1px solid rgba(147, 197, 253, 0.35);
+}
+
+
+.found-logo-search {
+  position: absolute;
+
+  left: 7px;
+  top: 3px;
+
+  font-size: 2.1rem;
+
+  color: #93c5fd;
+
+  font-weight: 300;
+}
+
+
+.found-logo-box {
+  position: absolute;
+
+  right: 7px;
+  bottom: 7px;
+
+  font-size: 1rem;
+
+  color: #ffffff;
+}
+
+
+/* BRAND TEXT */
+
+.found-brand-text h1 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: 1.12rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+
+.found-brand-text h1 span {
+  color: #7db8ff;
+}
+
+
+.found-brand-text p {
+  margin: 5px 0 0;
+
+  color: #8fa1b8;
+
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.found-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.25rem;
+
+  flex: 1;
+}
+
+
+.found-nav-links a {
+  position: relative;
+
+  padding: 10px 12px;
+
+  color: #8d9aae;
+
+  text-decoration: none;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  border-radius: 8px;
+
+  white-space: nowrap;
+
+  transition: 0.25s ease;
+}
+
+
+.found-nav-links a:hover {
+  color: #dbeafe;
+
+  background:
+    rgba(96, 165, 250, 0.08);
+}
+
+
+.found-nav-links .active {
+  color: #f8fafc;
+
+  background:
+    rgba(59, 130, 246, 0.13);
+}
+
+
+.found-nav-links .active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -19px;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #60a5fa;
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 0 10px #60a5fa;
+}
+
+
+/* =========================================================
+   SIGN OUT
+========================================================= */
+
+.found-signout-btn {
+  padding: 0.72rem 1.2rem;
+
+  border-radius: 10px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color: #cbd5e1;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+  white-space: nowrap;
+}
+
+
+.found-signout-btn:hover {
+  transform: translateY(-2px);
+
+  background:
+    rgba(59, 130, 246, 0.16);
+
+  border-color:
+    rgba(96, 165, 250, 0.45);
+
+  color: white;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.found-main {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: 4.5rem 0 2rem;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.found-page-heading {
+  max-width: 700px;
+
+  margin: 0 auto 3rem;
+
+  text-align: center;
+}
+
+
+.found-eyebrow {
+  display: inline-flex;
+
+  padding: 7px 13px;
+
+  margin-bottom: 1rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(59, 130, 246, 0.1);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.16);
+
+  color: #7db8ff;
+
+  font-size: 0.68rem;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+.found-page-heading h2 {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  font-weight: 800;
+
+  color: #f1f5f9;
+
+  letter-spacing: -1.5px;
+}
+
+
+.found-page-heading h2 span {
+  background:
+    linear-gradient(
+      90deg,
+      #60a5fa,
+      #93c5fd
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.found-page-heading p {
+  max-width: 620px;
+
+  margin: 1rem auto 0;
+
+  color: #9aa9bb;
+
+  font-size: 0.95rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.found-toolbar {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-bottom: 2.5rem;
+}
+
+
+.found-search-wrapper {
+  flex: 1;
+
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 1.2rem;
+
+  border-radius: 14px;
+
+  background:
+    rgba(24, 39, 61, 0.7);
+
+  border:
+    1px solid rgba(148, 163, 184, 0.16);
+
+  box-shadow:
+    0 15px 40px
+    rgba(0, 0, 0, 0.15);
+
+  transition: 0.25s ease;
+}
+
+
+.found-search-wrapper:focus-within {
+  border-color:
+    rgba(96, 165, 250, 0.55);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(59, 130, 246, 0.08);
+}
+
+
+.found-search-icon {
+  font-size: 1rem;
+
+  opacity: 0.75;
+}
+
+
+.found-search-wrapper input {
+  width: 100%;
+
+  padding: 0 0.8rem;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #e2e8f0;
+
+  font-size: 0.9rem;
+}
+
+
+.found-search-wrapper input::placeholder {
+  color: #718096;
+}
+
+
+/* REPORT BUTTON */
+
+.found-report-btn {
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  padding: 0 1.4rem;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3b82f6,
+      #2563eb
+    );
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  box-shadow:
+    0 12px 28px
+    rgba(37, 99, 235, 0.25);
+
+  transition: 0.25s ease;
+}
+
+
+.found-report-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 35px
+    rgba(37, 99, 235, 0.35);
+}
+
+
+.found-report-plus {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.15);
+
+  font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   RESULTS HEADER
+========================================================= */
+
+.found-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1.3rem;
+}
+
+
+.found-results-header h3 {
+  margin: 0;
+
+  color: #e5edf8;
+
+  font-size: 1.35rem;
+}
+
+
+.found-results-header p {
+  margin: 5px 0 0;
+
+  color: #718096;
+
+  font-size: 0.8rem;
+}
+
+
+.found-results-badge {
+  padding: 8px 12px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(59, 130, 246, 0.08);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.12);
+
+  color: #8bbcff;
+
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   ITEMS GRID
+========================================================= */
+
+.found-items-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 1.25rem;
+}
+
+
+/* =========================================================
+   ITEM CARD
+========================================================= */
+
+.found-item-card {
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(31, 48, 72, 0.9),
+      rgba(17, 31, 49, 0.9)
+    );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.14);
+
+  box-shadow:
+    0 18px 45px
+    rgba(0, 0, 0, 0.2);
+
+  transition: 0.3s ease;
+}
+
+
+.found-item-card:hover {
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(96, 165, 250, 0.4);
+
+  box-shadow:
+    0 25px 55px
+    rgba(0, 0, 0, 0.3);
+}
+
+
+/* CARD TOP */
+
+.found-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+
+  padding: 1rem 1rem 0.8rem;
+}
+
+
+.found-category {
+  padding: 5px 9px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(59, 130, 246, 0.12);
+
+  color: #93c5fd;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+
+.found-date {
+  color: #718096;
+
+  font-size: 0.65rem;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.found-item-image {
+  height: 165px;
+
+  margin: 0 1rem;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1d2d44,
+      #243852
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.found-uploaded-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+.found-no-image {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 0.7rem;
+
+  color: #7890aa;
+
+  font-size: 0.75rem;
+}
+
+
+.found-image-icon {
+  font-size: 3.8rem;
+
+  filter:
+    drop-shadow(
+      0 8px 15px
+      rgba(0, 0, 0, 0.3)
+    );
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.found-card-content {
+  padding: 1.1rem 1rem 1rem;
+}
+
+
+.found-card-content h3 {
+  margin: 0;
+
+  color: #eef4fb;
+
+  font-size: 1.05rem;
+
+  font-weight: 800;
+}
+
+
+.found-item-description {
+  min-height: 58px;
+
+  margin: 0.6rem 0 0;
+
+  color: #91a0b3;
+
+  font-size: 0.76rem;
+
+  line-height: 1.55;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 3;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* LOCATION */
+
+.found-location {
+  display: flex;
+  align-items: center;
+
+  gap: 0.45rem;
+
+  margin-top: 0.85rem;
+
+  color: #8291a4;
+
+  font-size: 0.72rem;
+}
+
+
+.found-location-icon {
+  color: #60a5fa;
+}
+
+
+/* VIEW BUTTON */
+
+.found-view-btn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 1rem;
+
+  padding: 0.72rem 0.85rem;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    rgba(59, 130, 246, 0.1);
+
+  color: #93c5fd;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.found-view-btn:hover {
+  background:
+    #2563eb;
+
+  color: white;
+}
+
+
+/* =========================================================
+   NO ITEMS
+========================================================= */
+
+.found-no-items {
+  grid-column: 1 / -1;
+
+  padding: 4rem 1rem;
+
+  text-align: center;
+
+  border-radius: 20px;
+
+  border:
+    1px dashed rgba(148, 163, 184, 0.25);
+
+  background:
+    rgba(22, 36, 55, 0.55);
+}
+
+
+.found-empty-icon {
+  margin-bottom: 1rem;
+
+  font-size: 3rem;
+}
+
+
+.found-no-items h3 {
+  margin: 0;
+
+  color: #dbeafe;
+}
+
+
+.found-no-items p {
+  color: #7f8ea1;
+}
+
+
+/* =========================================================
+   BOTTOM MESSAGE
+========================================================= */
+
+.found-bottom-message {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 2rem;
+
+  padding: 1.3rem;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(31, 54, 84, 0.8),
+      rgba(22, 39, 61, 0.8)
+    );
+
+  border:
+    1px solid rgba(96, 165, 250, 0.15);
+}
+
+
+.found-bottom-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background:
+    rgba(59, 130, 246, 0.15);
+
+  color: #93c5fd;
+
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+
+.found-bottom-content h3 {
+  margin: 0;
+
+  color: #e5edf8;
+
+  font-size: 1rem;
+}
+
+
+.found-bottom-content p {
+  margin: 5px 0 0;
+
+  color: #8d9caf;
+
+  font-size: 0.78rem;
+
+  line-height: 1.5;
+}
+
+
+.found-bottom-link {
+  margin-left: auto;
+
+  color: #8fc0ff;
+
+  text-decoration: none;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.found-footer {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: 3rem auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    1.7fr
+    repeat(4, 1fr);
+
+  gap: 2rem;
+
+  padding: 2.5rem;
+
+  border-top:
+    1px solid rgba(148, 163, 184, 0.14);
+
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.14);
+}
+
+
+.found-footer-brand {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 0.9rem;
+}
+
+
+.found-footer-brand h3 {
+  margin: 4px 0 0;
+
+  color: white;
+
+  font-size: 1rem;
+}
+
+
+.found-footer-brand h3 span {
+  color: #7db8ff;
+}
+
+
+.found-footer-brand p {
+  margin: 7px 0 0;
+
+  color: #748397;
+
+  font-size: 0.75rem;
+}
+
+
+.found-footer-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.65rem;
+}
+
+
+.found-footer-section h4 {
+  margin: 0 0 0.3rem;
+
+  color: #dbeafe;
+
+  font-size: 0.85rem;
+}
+
+
+.found-footer-section a,
+.found-footer-section p {
+  margin: 0;
+
+  color: #748397;
+
+  text-decoration: none;
+
+  font-size: 0.75rem;
+
+  transition: 0.2s ease;
+}
+
+
+.found-footer-section a:hover {
+  color: #93c5fd;
+}
+
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.found-copyright {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: 1.3rem 0 2rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #64748b;
+
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .found-header {
+    flex-wrap: wrap;
+
+    padding: 1.5rem 0;
+  }
+
+
+  .found-nav-links {
+    order: 3;
+
+    width: 100%;
+  }
+
+
+  .found-items-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .found-footer {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .found-page {
+    padding: 0 1.2rem;
+  }
+
+
+  .found-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+
+  .found-nav-links {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    flex-wrap: nowrap;
+
+    padding-bottom: 0.5rem;
+  }
+
+
+  .found-nav-links a {
+    white-space: nowrap;
+  }
+
+
+  .found-toolbar {
+    flex-direction: column;
+  }
+
+
+  .found-search-wrapper,
+  .found-report-btn {
+    width: 100%;
+  }
+
+
+  .found-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .found-bottom-message {
+    flex-wrap: wrap;
+  }
+
+
+  .found-bottom-link {
+    width: 100%;
+
+    margin-left: 0;
+
+    margin-top: 0.5rem;
+  }
+
+
+  .found-footer {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    padding: 2rem 0;
+  }
+
+
+  .found-copyright {
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    text-align: center;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+  .found-main {
+    padding-top: 3rem;
+  }
+
+
+  .found-page-heading h2 {
+    font-size: 2.5rem;
+  }
+
+
+  .found-footer {
+    grid-template-columns: 1fr;
+  }
+
+
+  .found-results-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0.8rem;
+  }
+
+
+  .found-item-image {
+    height: 190px;
+  }
+
+}

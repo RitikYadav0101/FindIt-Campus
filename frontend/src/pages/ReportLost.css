@@ -1,0 +1,1077 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.reportlost-page {
+  min-height: 100vh;
+  width: 100%;
+
+  padding: 0 2rem;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(47, 109, 184, 0.14),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(30, 64, 175, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #07111f 0%,
+      #0b1626 45%,
+      #101d30 100%
+    );
+
+  color: #e8edf5;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.reportlost-header {
+  width: 100%;
+  max-width: 1280px;
+
+  min-height: 106px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  border-bottom:
+    1px solid rgba(148, 163, 184, 0.13);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.reportlost-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 0.9rem;
+
+  text-decoration: none;
+
+  min-width: 250px;
+
+  color: white;
+}
+
+
+.reportlost-brand-logo {
+  position: relative;
+
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1d3655,
+      #0b1626
+    );
+
+  border:
+    1px solid rgba(96, 165, 250, 0.28);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 28px rgba(0, 0, 0, 0.22);
+
+  overflow: hidden;
+}
+
+
+.reportlost-box {
+  position: absolute;
+
+  background:
+    linear-gradient(
+      135deg,
+      #78b7ee,
+      #2865a5
+    );
+}
+
+
+.reportlost-box-one {
+  width: 22px;
+  height: 22px;
+
+  top: 9px;
+  left: 9px;
+
+  border-radius:
+    2px 16px 2px 2px;
+}
+
+
+.reportlost-box-two {
+  width: 22px;
+  height: 22px;
+
+  bottom: 9px;
+  left: 9px;
+
+  border-radius:
+    2px 2px 2px 16px;
+}
+
+
+.reportlost-box-three {
+  width: 13px;
+  height: 13px;
+
+  right: 10px;
+  bottom: 12px;
+
+  border-radius: 50%;
+}
+
+
+.reportlost-logo-text {
+  position: relative;
+
+  z-index: 3;
+
+  margin-left: 11px;
+  margin-top: -7px;
+
+  font-size: 0.42rem;
+
+  font-weight: 800;
+
+  line-height: 1.05;
+
+  color: #f8fafc;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.reportlost-brand-text h1 {
+  margin: 0;
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  color: #f1f5f9;
+}
+
+
+.reportlost-brand-text p {
+  margin: 5px 0 0;
+
+  font-size: 0.72rem;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.reportlost-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.25rem;
+
+  flex: 1;
+}
+
+
+.reportlost-nav-links a {
+  position: relative;
+
+  padding: 0.65rem 0.8rem;
+
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  color: #94a3b8;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+.reportlost-nav-links a:hover {
+  color: #dbeafe;
+
+  background:
+    rgba(96, 165, 250, 0.07);
+}
+
+
+.reportlost-nav-links .active {
+  color: #dbeafe;
+}
+
+
+.reportlost-nav-links .active::after {
+  content: "";
+
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #60a5fa;
+
+  left: 50%;
+  bottom: 1px;
+
+  transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.reportlost-back-button {
+  min-width: 92px;
+
+  padding: 0.7rem 1.15rem;
+
+  border-radius: 11px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  background:
+    rgba(30, 41, 59, 0.72);
+
+  color: #cbd5e1;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.reportlost-back-button:hover {
+  transform: translateY(-2px);
+
+  background:
+    rgba(48, 83, 122, 0.8);
+
+  color: white;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.reportlost-main {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding:
+    4rem 0
+    4rem;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.85fr)
+    minmax(0, 1.15fr);
+
+  gap: 5rem;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   LEFT INTRO
+========================================================= */
+
+.reportlost-intro-section {
+  min-width: 0;
+}
+
+
+.reportlost-search-icon-container {
+  width: 65px;
+  height: 65px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 2rem;
+
+  border-radius: 20px;
+
+  background:
+    rgba(96, 165, 250, 0.1);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.18);
+
+  font-size: 2rem;
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.reportlost-small-label {
+  display: inline-flex;
+
+  padding:
+    0.5rem
+    0.85rem;
+
+  border-radius: 999px;
+
+  background:
+    rgba(96, 165, 250, 0.1);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.18);
+
+  color: #93c5fd;
+
+  font-size: 0.68rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+
+.reportlost-intro-section h2 {
+  margin:
+    1.2rem 0
+    0;
+
+  font-size: 3.8rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  color: #f1f5f9;
+}
+
+
+.reportlost-intro-section h2 span {
+  color: #67a8e8;
+}
+
+
+.reportlost-intro-description {
+  max-width: 500px;
+
+  margin:
+    1.3rem 0
+    0;
+
+  color: #a8b4c5;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   TIPS
+========================================================= */
+
+.reportlost-tips {
+  margin-top: 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.2rem;
+}
+
+
+.reportlost-tip {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+}
+
+
+.reportlost-tip-icon {
+  width: 45px;
+  height: 45px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 13px;
+
+  background:
+    rgba(96, 165, 250, 0.1);
+
+  border:
+    1px solid rgba(96, 165, 250, 0.16);
+
+  color: #93c5fd;
+
+  font-weight: 800;
+}
+
+
+.reportlost-tip h3 {
+  margin: 0 0 5px;
+
+  color: #e2e8f0;
+
+  font-size: 0.95rem;
+}
+
+
+.reportlost-tip p {
+  margin: 0;
+
+  color: #8d9aac;
+
+  font-size: 0.82rem;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.reportlost-form-section {
+  width: 100%;
+}
+
+
+.reportlost-form-card {
+  width: 100%;
+
+  padding: 2.2rem;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(29, 45, 66, 0.97),
+      rgba(18, 30, 47, 0.97)
+    );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.14);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   FORM HEADING
+========================================================= */
+
+.reportlost-form-heading {
+  margin-bottom: 1.8rem;
+}
+
+
+.reportlost-form-heading h2 {
+  margin: 0;
+
+  font-size: 1.8rem;
+
+  color: #f1f5f9;
+}
+
+
+.reportlost-form-heading p {
+  margin: 0.5rem 0 0;
+
+  color: #94a3b8;
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.reportlost-success-message {
+  margin-bottom: 1.3rem;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 10px;
+
+  background:
+    rgba(34, 197, 94, 0.12);
+
+  border:
+    1px solid rgba(34, 197, 94, 0.3);
+
+  color: #86efac;
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.reportlost-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.2rem;
+}
+
+
+.reportlost-input-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+
+.reportlost-input-group label {
+  color: #cbd5e1;
+
+  font-size: 0.83rem;
+
+  font-weight: 700;
+}
+
+
+.reportlost-input-group label span {
+  color: #64748b;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.reportlost-input-wrapper {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+.reportlost-input-icon {
+  position: absolute;
+
+  left: 0.9rem;
+
+  z-index: 2;
+
+  font-size: 0.9rem;
+
+  pointer-events: none;
+}
+
+
+.reportlost-input-wrapper input,
+.reportlost-input-wrapper select {
+  width: 100%;
+
+  height: 52px;
+
+  padding:
+    0
+    1rem
+    0
+    2.9rem;
+
+  border-radius: 12px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  background:
+    rgba(20, 33, 51, 0.82);
+
+  color: #e2e8f0;
+
+  font-family: inherit;
+
+  font-size: 0.85rem;
+
+  outline: none;
+
+  transition: 0.25s ease;
+}
+
+
+.reportlost-input-wrapper select {
+  cursor: pointer;
+}
+
+
+.reportlost-input-wrapper option {
+  background: #16263a;
+
+  color: white;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.reportlost-input-group textarea {
+  width: 100%;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 12px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+
+  background:
+    rgba(20, 33, 51, 0.82);
+
+  color: #e2e8f0;
+
+  font-family: inherit;
+
+  font-size: 0.85rem;
+
+  line-height: 1.5;
+
+  outline: none;
+
+  resize: vertical;
+
+  transition: 0.25s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.reportlost-input-wrapper input::placeholder,
+.reportlost-input-group textarea::placeholder {
+  color: #64748b;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.reportlost-input-wrapper input:focus,
+.reportlost-input-wrapper select:focus,
+.reportlost-input-group textarea:focus {
+  border-color:
+    rgba(96, 165, 250, 0.6);
+
+  box-shadow:
+    0 0 0 4px rgba(96, 165, 250, 0.08);
+}
+
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.reportlost-two-column {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+.reportlost-upload-box {
+  width: 100%;
+
+  min-height: 95px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem;
+
+  border:
+    1.5px dashed rgba(148, 163, 184, 0.3);
+
+  border-radius: 14px;
+
+  background:
+    rgba(20, 33, 51, 0.6);
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.reportlost-upload-box:hover {
+  border-color:
+    rgba(96, 165, 250, 0.6);
+
+  background:
+    rgba(96, 165, 250, 0.06);
+}
+
+
+.reportlost-upload-box input {
+  display: none;
+}
+
+
+.reportlost-upload-icon {
+  width: 45px;
+  height: 45px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(96, 165, 250, 0.12);
+
+  color: #93c5fd;
+
+  font-size: 1.5rem;
+
+  font-weight: 800;
+}
+
+
+.reportlost-upload-box strong {
+  display: block;
+
+  color: #dbeafe;
+
+  font-size: 0.85rem;
+}
+
+
+.reportlost-upload-box p {
+  margin: 4px 0 0;
+
+  color: #64748b;
+
+  font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+.reportlost-preview {
+  width: 150px;
+  height: 150px;
+
+  margin-top: 0.8rem;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.2);
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.reportlost-submit-button {
+  width: 100%;
+
+  margin-top: 0.5rem;
+
+  padding: 1rem 1.5rem;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #367fc7,
+      #245b9b
+    );
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 0.9rem;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+  box-shadow:
+    0 12px 28px rgba(25, 82, 139, 0.28);
+}
+
+
+.reportlost-submit-button:hover {
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #4b93da,
+      #2866ad
+    );
+
+  box-shadow:
+    0 18px 35px rgba(25, 82, 139, 0.4);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .reportlost-header {
+    flex-wrap: wrap;
+
+    padding: 1.2rem 0;
+  }
+
+
+  .reportlost-nav-links {
+    order: 3;
+
+    width: 100%;
+  }
+
+
+  .reportlost-main {
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+
+    max-width: 750px;
+  }
+
+
+  .reportlost-intro-section {
+    text-align: center;
+  }
+
+
+  .reportlost-search-icon-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .reportlost-intro-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .reportlost-tips {
+    max-width: 550px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: left;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .reportlost-page {
+    padding: 0 1rem;
+  }
+
+
+  .reportlost-header {
+    min-height: auto;
+
+    padding: 1.2rem 0;
+  }
+
+
+  .reportlost-brand {
+    min-width: auto;
+  }
+
+
+  .reportlost-brand-text p {
+    display: none;
+  }
+
+
+  .reportlost-nav-links {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    overflow-x: auto;
+  }
+
+
+  .reportlost-nav-links a {
+    font-size: 0.75rem;
+
+    padding: 0.6rem 0.65rem;
+  }
+
+
+  .reportlost-back-button {
+    margin-left: auto;
+  }
+
+
+  .reportlost-main {
+    padding: 2.5rem 0;
+  }
+
+
+  .reportlost-intro-section h2 {
+    font-size: 2.8rem;
+  }
+
+
+  .reportlost-form-card {
+    padding: 1.4rem;
+  }
+
+
+  .reportlost-two-column {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .reportlost-brand-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+
+  .reportlost-brand-text h1 {
+    font-size: 1rem;
+  }
+
+
+  .reportlost-intro-section h2 {
+    font-size: 2.3rem;
+  }
+
+
+  .reportlost-form-card {
+    padding: 1.1rem;
+  }
+
+}

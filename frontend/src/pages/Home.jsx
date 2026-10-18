@@ -1,50 +1,69 @@
 import "./Home.css";
-
+import { Link, useNavigate } from "react-router-dom";
+import BrandLogo from "../components/BrandLogo";
+import { useAuth } from "../context/AuthContext";
 function Home() {
+  const navigate = useNavigate();
+  const{logout} = useAuth();
+
+  // ================= LOGOUT =================
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="home-page">
 
       {/* ================= HEADER ================= */}
+
       <header className="home-header">
 
         {/* LOGO */}
-        <div className="home-brand">
 
-          <div className="home-brand-logo">
-            <div className="home-box home-box-one"></div>
-            <div className="home-box home-box-two"></div>
-            <div className="home-box home-box-three"></div>
-
-            <div className="home-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-          </div>
-
-          <div className="home-brand-text">
-            <h1>I FOUND</h1>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
-
-        </div>
+        <Link to="/" className="home-brand">
+          <BrandLogo small />
+        </Link>
 
 
         {/* NAVIGATION */}
+
         <nav className="home-nav-links">
-          <a href="#" className="active">Home</a>
-          <a href="#">Lost</a>
-          <a href="#">Report Lost</a>
-          <a href="#">Found</a>
-          <a href="#">Report Found</a>
-          <a href="#">Profile</a>
+
+          <Link to="/" className="active">
+            Home
+          </Link>
+
+          <Link to="/lost">
+            Lost
+          </Link>
+
+          <Link to="/report-lost">
+            Report Lost
+          </Link>
+
+          <Link to="/found">
+            Found
+          </Link>
+
+          <Link to="/report-found">
+            Report Found
+          </Link>
+
+          <Link to="/profile">
+            Profile
+          </Link>
+
         </nav>
 
 
         {/* SIGN OUT */}
-        <button className="home-signout-btn">
+
+        <button
+          className="home-signout-btn"
+          onClick={handleLogout}
+        >
           Sign Out
         </button>
 
@@ -52,10 +71,22 @@ function Home() {
 
 
       {/* ================= MAIN ================= */}
+
       <main className="home-main">
 
+
         {/* ================= LEFT HERO ================= */}
+
         <section className="home-hero-section">
+
+          {/* BADGE */}
+
+          <div className="home-badge">
+            SMART CAMPUS LOST & FOUND
+          </div>
+
+
+          {/* HEADING */}
 
           <div className="home-hero-content">
 
@@ -63,8 +94,12 @@ function Home() {
               Smart Campus
               <br />
 
-              <span>Lost & Found</span>
+              <span>
+                Lost & Found
+              </span>
+
             </h2>
+
 
             <p className="home-description">
               Find what's lost.
@@ -75,8 +110,12 @@ function Home() {
           </div>
 
 
-          {/* FEATURES */}
+          {/* ================= FEATURES ================= */}
+
           <div className="home-features">
+
+
+            {/* FEATURE 1 */}
 
             <div className="home-feature">
 
@@ -84,13 +123,23 @@ function Home() {
                 ♢
               </div>
 
-              <div>
-                <h3>Secure & Reliable</h3>
-                <p>Your data is safe with us.</p>
+              <div className="home-feature-content">
+
+                <h3>
+                  Secure & Reliable
+                </h3>
+
+                <p>
+                  Your information and reports
+                  stay safe and protected.
+                </p>
+
               </div>
 
             </div>
 
+
+            {/* FEATURE 2 */}
 
             <div className="home-feature">
 
@@ -98,13 +147,23 @@ function Home() {
                 ♧
               </div>
 
-              <div>
-                <h3>Community Driven</h3>
-                <p>Helping each other, every day.</p>
+              <div className="home-feature-content">
+
+                <h3>
+                  Community Driven
+                </h3>
+
+                <p>
+                  Helping students reconnect
+                  with their belongings.
+                </p>
+
               </div>
 
             </div>
 
+
+            {/* FEATURE 3 */}
 
             <div className="home-feature">
 
@@ -112,9 +171,17 @@ function Home() {
                 ⚡
               </div>
 
-              <div>
-                <h3>Quick & Easy</h3>
-                <p>Report, Search & Reclaim in minutes.</p>
+              <div className="home-feature-content">
+
+                <h3>
+                  Quick & Easy
+                </h3>
+
+                <p>
+                  Report, search and recover
+                  items in minutes.
+                </p>
+
               </div>
 
             </div>
@@ -124,10 +191,15 @@ function Home() {
         </section>
 
 
+
         {/* ================= RIGHT ACTION PANEL ================= */}
+
         <section className="home-action-panel">
 
-          <h2>Find & Recover</h2>
+          <h2>
+            Find & Recover
+          </h2>
+
 
           <p className="home-action-description">
             Helping the campus community reconnect
@@ -137,57 +209,84 @@ function Home() {
 
           <div className="home-action-buttons">
 
+
             {/* LOST */}
-            <a href="#" className="home-action-card home-lost-card">
+
+            <Link
+              to="/report-lost"
+              className="home-action-card home-lost-card"
+            >
 
               <div>
+
                 <span className="home-small-text">
                   Looking for something?
                 </span>
 
-                <h3>Lost</h3>
+                <h3>
+                  Lost
+                </h3>
 
-                <p>Report your lost item</p>
+                <p>
+                  Report your lost item
+                </p>
+
               </div>
+
 
               <div className="home-action-icon">
                 📦
               </div>
 
-            </a>
+            </Link>
+
 
 
             {/* FOUND */}
-            <a href="#" className="home-action-card home-found-card">
+
+            <Link
+              to="/report-found"
+              className="home-action-card home-found-card"
+            >
 
               <div>
+
                 <span className="home-small-text">
                   Found something?
                 </span>
 
-                <h3>Found</h3>
+                <h3>
+                  Found
+                </h3>
 
-                <p>Help someone get it back</p>
+                <p>
+                  Help someone get it back
+                </p>
+
               </div>
+
 
               <div className="home-action-icon">
                 🔎
               </div>
 
-            </a>
+            </Link>
 
           </div>
 
 
+
+          {/* QUICK LINKS */}
+
           <div className="home-quick-links">
 
-            <a href="#">
+            <Link to="/lost">
               Browse Lost Items →
-            </a>
+            </Link>
 
-            <a href="#">
+            <Link to="/found">
               Browse Found Items →
-            </a>
+            </Link>
 
           </div>
 
@@ -196,87 +295,135 @@ function Home() {
       </main>
 
 
+
       {/* ================= FOOTER ================= */}
+
       <footer className="home-footer">
 
+
         {/* BRAND */}
+
         <div className="home-footer-brand">
 
-          <div className="home-brand-logo home-footer-logo">
-
-            <div className="home-box home-box-one"></div>
-            <div className="home-box home-box-two"></div>
-            <div className="home-box home-box-three"></div>
-
-            <div className="home-lost-box">
-              LOST
-              <br />
-              &
-              <br />
-              FOUND
-            </div>
-
+          <div className="home-footer-logo">
+            <BrandLogo small />
           </div>
 
-          <div>
-            <h3>I FOUND</h3>
-            <p>Discover. Connect. Reclaim.</p>
-          </div>
+
+          <p className="home-footer-description">
+            A smart platform helping the campus
+            community find, report and recover
+            lost belongings easily.
+          </p>
 
         </div>
+
 
 
         {/* SITE */}
+
         <div className="home-footer-section">
 
-          <h4>Site</h4>
+          <h4>
+            Explore
+          </h4>
 
-          <a href="#">Lost</a>
-          <a href="#">Report Lost</a>
-          <a href="#">Found</a>
-          <a href="#">Report Found</a>
+          <Link to="/">
+            Home
+          </Link>
+
+          <Link to="/lost">
+            Lost Items
+          </Link>
+
+          <Link to="/found">
+            Found Items
+          </Link>
+
+          <Link to="/profile">
+            Profile
+          </Link>
 
         </div>
+
+
+
+        {/* REPORT */}
+
+        <div className="home-footer-section">
+
+          <h4>
+            Report
+          </h4>
+
+          <Link to="/report-lost">
+            Report Lost
+          </Link>
+
+          <Link to="/report-found">
+            Report Found
+          </Link>
+
+          <Link to="/lost">
+            Search Lost Items
+          </Link>
+
+          <Link to="/found">
+            Search Found Items
+          </Link>
+
+        </div>
+
 
 
         {/* HELP */}
+
         <div className="home-footer-section">
 
-          <h4>Help</h4>
+          <h4>
+            Help
+          </h4>
 
-          <a href="#">Customer Support</a>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
+          <a href="#">
+            Support
+          </a>
+
+          <a href="#">
+            Terms & Conditions
+          </a>
+
+          <a href="#">
+            Privacy Policy
+          </a>
 
         </div>
 
-
-        {/* LINKS */}
-        <div className="home-footer-section">
-
-          <h4>Links</h4>
-
-          <a href="#">LinkedIn</a>
-          <a href="#">Facebook</a>
-          <a href="#">YouTube</a>
-          <a href="#">About Us</a>
-
-        </div>
 
 
         {/* CONTACT */}
+
         <div className="home-footer-section">
 
-          <h4>Contact</h4>
+          <h4>
+            Contact
+          </h4>
 
-          <p>Tel: +91 7416520690</p>
-          <p>Email: info@yourdomain.com</p>
+          <p>
+            Campus Lost & Found
+          </p>
+
+          <p>
+            info@finditcampus.com
+          </p>
 
           <div className="home-socials">
+
             <span>𝕏</span>
+
             <span>f</span>
-            <span>◎</span>
-            <span>◉</span>
+
+            <span>in</span>
+
           </div>
 
         </div>
@@ -284,9 +431,19 @@ function Home() {
       </footer>
 
 
-      {/* COPYRIGHT */}
+
+      {/* ================= COPYRIGHT ================= */}
+
       <div className="home-copyright">
-        © Copyright 2026 I FOUND. All Rights Reserved.
+
+        <span>
+          © 2026 FINDIT
+        </span>
+
+        <span>
+          Built for a smarter campus community.
+        </span>
+
       </div>
 
     </div>
