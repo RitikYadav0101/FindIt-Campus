@@ -3,27 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 
 import BrandLogo from "../components/BrandLogo";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 
 import "./Profile.css";
 
 function Profile() {
   const navigate = useNavigate();
-
-
-  // ================= GET LOGGED IN USER =================
-
   const { user: savedUser, login } = useAuth();
+  const { t } = useLanguage();
+
+  const currentUser = savedUser || {};
 
   // ================= PROFILE DATA =================
 
   const [formData, setFormData] = useState({
-    username: savedUser.username || "",
-    rollNumber: savedUser.rollNumber || "",
-    name: savedUser.name || "",
-    phone: savedUser.phone || "",
-    studentEmail: savedUser.studentEmail || "",
-    parentName: savedUser.parentName || "",
-    parentEmail: savedUser.parentEmail || "",
+    username: currentUser.username || "",
+    rollNumber: currentUser.rollNumber || "",
+    name: currentUser.name || "",
+    phone: currentUser.phone || "",
+    studentEmail: currentUser.studentEmail || "",
+    parentName: currentUser.parentName || "",
+    parentEmail: currentUser.parentEmail || "",
   });
 
   const [editing, setEditing] = useState(false);
@@ -50,17 +50,16 @@ function Profile() {
   // ================= CANCEL EDIT =================
 
   const handleCancel = () => {
-    console.log("Cancel handeler executed");
-    const currentUser = savedUser || {};
+    const user = savedUser || {};
 
     setFormData({
-      username: currentUser.username || "",
-      rollNumber: currentUser.rollNumber || "",
-      name: currentUser.name || "",
-      phone: currentUser.phone || "",
-      studentEmail: currentUser.studentEmail || "",
-      parentName: currentUser.parentName || "",
-      parentEmail: currentUser.parentEmail || "",
+      username: user.username || "",
+      rollNumber: user.rollNumber || "",
+      name: user.name || "",
+      phone: user.phone || "",
+      studentEmail: user.studentEmail || "",
+      parentName: user.parentName || "",
+      parentEmail: user.parentEmail || "",
     });
 
     setEditing(false);
@@ -72,7 +71,7 @@ function Profile() {
     e.preventDefault();
 
     const updatedUser = {
-      ...savedUser,
+      ...(savedUser || {}),
       ...formData,
     };
 
@@ -91,186 +90,98 @@ function Profile() {
   const handleBack = () => {
     navigate("/");
   };
-  console.log("Editing state: ", editing);
 
   return (
     <div className="profile-page">
-
       {/* ================= BACKGROUND ================= */}
 
       <div className="profile-circle profile-circle-one"></div>
-
       <div className="profile-circle profile-circle-two"></div>
-
 
       {/* ================= HEADER ================= */}
 
       <header className="profile-header">
-
         {/* ================= CONSISTENT BRAND LOGO ================= */}
-
-        <Link to="/"
-          className="profile-brand">
+        <Link to="/" className="profile-brand">
           <BrandLogo small />
         </Link>
 
-
         {/* ================= BACK BUTTON ================= */}
-
-        <button
-          className="profile-back-button"
-          onClick={handleBack}
-        >
-          ← Back to Home
+        <button className="profile-back-button" onClick={handleBack}>
+          {t("nav.back", "← Back to Home")}
         </button>
-
       </header>
-
 
       {/* ================= MAIN ================= */}
 
       <main className="profile-main-container">
-
-
         {/* ================= LEFT SIDE ================= */}
 
         <section className="profile-intro-section">
-
           <div className="profile-small-label">
-            STUDENT PROFILE
+            {t("profile.title", "STUDENT PROFILE")}
           </div>
-
 
           <h2>
             Your
             <br />
-
-            <span>
-              Profile
-            </span>
+            <span>{t("nav.profile", "Profile")}</span>
           </h2>
 
-
           <p className="profile-intro-description">
-
-            View and manage your personal information
-            and contact details.
-
+            {t(
+              "profile.subtitle",
+              "View and manage your personal information and contact details."
+            )}
           </p>
-
 
           {/* ================= TIPS ================= */}
 
           <div className="profile-tips">
-
-
-            {/* TIP 1 */}
-
             <div className="profile-tip">
-
-              <div className="profile-tip-icon">
-                ✓
-              </div>
-
+              <div className="profile-tip-icon">✓</div>
               <div>
-
-                <h3>
-                  Student Details
-                </h3>
-
-                <p>
-                  Keep your contact information updated.
-                </p>
-
+                <h3>Student Details</h3>
+                <p>Keep your contact information updated.</p>
               </div>
-
             </div>
 
-
-            {/* TIP 2 */}
-
             <div className="profile-tip">
-
-              <div className="profile-tip-icon">
-                ✉
-              </div>
-
+              <div className="profile-tip-icon">✉</div>
               <div>
-
-                <h3>
-                  Email Information
-                </h3>
-
-                <p>
-                  Your email helps you receive important updates.
-                </p>
-
+                <h3>Email Information</h3>
+                <p>Your email helps you receive important updates.</p>
               </div>
-
             </div>
 
-
-            {/* TIP 3 */}
-
             <div className="profile-tip">
-
-              <div className="profile-tip-icon">
-                ⚡
-              </div>
-
+              <div className="profile-tip-icon">⚡</div>
               <div>
-
-                <h3>
-                  Contact Details
-                </h3>
-
-                <p>
-                  Keep your contact information up to date.
-                </p>
-
+                <h3>Contact Details</h3>
+                <p>Keep your contact information up to date.</p>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= PROFILE FORM ================= */}
 
         <section className="profile-form-section">
-
           <div className="profile-form-card">
-
-
             {/* ================= HEADING ================= */}
 
             <div className="profile-form-heading">
-
-              <h2>
-                Student Profile
-              </h2>
-
-              <p>
-                Your account and contact information.
-              </p>
-
+              <h2>{t("profile.title", "Student Profile")}</h2>
+              <p>{t("profile.subtitle", "Your account and contact information.")}</p>
             </div>
-
 
             {/* ================= SUCCESS MESSAGE ================= */}
 
             {saved && (
-
               <div className="profile-success-message">
-
-                ✓ Profile updated successfully!
-
+                {t("profile.savedSuccess", "✓ Profile updated successfully!")}
               </div>
-
             )}
-
 
             {/* ================= FORM ================= */}
 
@@ -278,21 +189,22 @@ function Profile() {
               onSubmit={(e) => {
                 e.preventDefault();
 
-                if (e.nativeEvent.submitter?.classList.contains("profile-edit-button")) {
+                if (
+                  e.nativeEvent.submitter?.classList.contains(
+                    "profile-edit-button"
+                  )
+                ) {
                   return;
                 }
 
                 handleSubmit(e);
               }}
             >
-
-
               {/* ================= NAME ================= */}
 
               <div className="profile-input-group">
-
                 <label htmlFor="name">
-                  Full Name
+                  {t("profile.name", "Full Name")}
                 </label>
 
                 <input
@@ -304,16 +216,13 @@ function Profile() {
                   onChange={handleChange}
                   readOnly={!editing}
                 />
-
               </div>
-
 
               {/* ================= USERNAME ================= */}
 
               <div className="profile-input-group">
-
                 <label htmlFor="username">
-                  Username
+                  {t("profile.username", "Username")}
                 </label>
 
                 <input
@@ -325,16 +234,13 @@ function Profile() {
                   onChange={handleChange}
                   readOnly={!editing}
                 />
-
               </div>
-
 
               {/* ================= ROLL NUMBER ================= */}
 
               <div className="profile-input-group">
-
                 <label htmlFor="rollNumber">
-                  Roll Number
+                  {t("profile.rollNumber", "Roll Number")}
                 </label>
 
                 <input
@@ -346,21 +252,15 @@ function Profile() {
                   onChange={handleChange}
                   readOnly={!editing}
                 />
-
               </div>
-
 
               {/* ================= PHONE + EMAIL ================= */}
 
               <div className="profile-two-column">
-
-
                 {/* PHONE */}
-
                 <div className="profile-input-group">
-
                   <label htmlFor="phone">
-                    Phone Number
+                    {t("profile.phone", "Phone Number")}
                   </label>
 
                   <input
@@ -372,16 +272,12 @@ function Profile() {
                     onChange={handleChange}
                     readOnly={!editing}
                   />
-
                 </div>
 
-
                 {/* EMAIL */}
-
                 <div className="profile-input-group">
-
                   <label htmlFor="studentEmail">
-                    Student Email
+                    {t("profile.studentEmail", "Student Email")}
                   </label>
 
                   <input
@@ -394,18 +290,14 @@ function Profile() {
                     onChange={handleChange}
                     readOnly={!editing}
                   />
-
                 </div>
-
               </div>
-
 
               {/* ================= PARENT NAME ================= */}
 
               <div className="profile-input-group">
-
                 <label htmlFor="parentName">
-                  Parent Name
+                  {t("profile.parentName", "Parent Name")}
                 </label>
 
                 <input
@@ -418,16 +310,13 @@ function Profile() {
                   onChange={handleChange}
                   readOnly={!editing}
                 />
-
               </div>
-
 
               {/* ================= PARENT EMAIL ================= */}
 
               <div className="profile-input-group">
-
                 <label htmlFor="parentEmail">
-                  Parent Email
+                  {t("profile.parentEmail", "Parent Email")}
                 </label>
 
                 <input
@@ -440,58 +329,42 @@ function Profile() {
                   onChange={handleChange}
                   readOnly={!editing}
                 />
-
               </div>
-
 
               {/* ================= BUTTONS ================= */}
 
               <div className="profile-buttons">
-
                 {!editing ? (
-
                   <button
                     type="button"
                     className="profile-edit-button"
                     onClick={handleEdit}
                   >
-                    Edit Profile
+                    {t("profile.editBtn", "Edit Profile")}
                   </button>
-
                 ) : (
-
                   <>
-
                     <button
                       type="submit"
                       className="profile-save-button"
                     >
-                      Save Changes
+                      {t("profile.saveBtn", "Save Changes")}
                     </button>
-
 
                     <button
                       type="button"
                       className="profile-cancel-button"
                       onClick={handleCancel}
                     >
-                      Cancel
+                      {t("profile.cancelBtn", "Cancel")}
                     </button>
-
                   </>
-
                 )}
-
               </div>
-
             </form>
-
           </div>
-
         </section>
-
       </main>
-
     </div>
   );
 }

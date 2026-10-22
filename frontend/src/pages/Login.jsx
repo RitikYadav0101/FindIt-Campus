@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import BrandLogo from "../components/BrandLogo";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 
 function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { t } = useLanguage();
 
   // ================= STATES =================
 
@@ -59,24 +61,20 @@ function Login() {
     // ================= CHECK CREDENTIALS =================
 
     if (
-      trimmedUsername !== userData.username ||
-      trimmedRollNumber !== userData.rollNumber ||
-      password !== userData.password
+      userData.username !== trimmedUsername ||
+      userData.rollNumber !== trimmedRollNumber ||
+      userData.password !== password
     ) {
-      setMessage("Invalid username, roll number, or password.");
+      setMessage("Invalid username, roll number or password.");
       setMessageType("error");
       return;
     }
 
-    // ================= LOADING =================
+    // ================= LOGIN SUCCESS =================
 
     setLoading(true);
 
     setTimeout(() => {
-      // Login status save
-      localStorage.setItem("isLoggedIn", "true");
-
-      // Current logged-in user
       const currentUser = {
         username: userData.username,
         rollNumber: userData.rollNumber,
@@ -124,278 +122,185 @@ function Login() {
 
   return (
     <div className="login-page">
-
       {/* ================= HEADER ================= */}
 
       <header className="login-header">
-
         <Link to="/" className="brand">
-
           <BrandLogo small />
-
         </Link>
 
-        <Link
-          to="/signup"
-          className="header-signup"
-        >
-          Create Account
+        <Link to="/signup" className="header-signup">
+          {t("auth.signupTitle", "Create Account")}
         </Link>
-
       </header>
-
 
       {/* ================= MAIN ================= */}
 
       <main className="login-main">
-
         {/* ================= LEFT HERO ================= */}
 
         <section className="hero-section">
-
           <div className="hero-content">
-
             <h2>
-              Smart Campus
+              {t("home.heroTitle1", "Smart Campus")}
               <br />
-              <span>Lost & Found</span>
+              <span>{t("home.heroTitle2", "Lost & Found")}</span>
             </h2>
 
             <p className="hero-description">
-              Find what's lost.
+              {t("home.heroDesc1", "Find what's lost.")}
               <br />
-              Return what's found.
+              {t("home.heroDesc2", "Return what's found.")}
             </p>
-
           </div>
-
 
           {/* ================= FEATURES ================= */}
 
           <div className="features">
-
             <div className="feature">
-
-              <div className="feature-icon secure-icon">
-                ♢
-              </div>
-
+              <div className="feature-icon secure-icon">♢</div>
               <div>
-                <h3>Secure & Reliable</h3>
-
-                <p>
-                  Your data is safe with us.
-                </p>
+                <h3>{t("home.feature1Title", "Secure & Reliable")}</h3>
+                <p>{t("home.feature1Desc", "Your data is safe with us.")}</p>
               </div>
-
             </div>
 
-
             <div className="feature">
-
-              <div className="feature-icon community-icon">
-                ♧
-              </div>
-
+              <div className="feature-icon community-icon">♧</div>
               <div>
-                <h3>Community Driven</h3>
-
-                <p>
-                  Helping each other, every day.
-                </p>
+                <h3>{t("home.feature2Title", "Community Driven")}</h3>
+                <p>{t("home.feature2Desc", "Helping each other, every day.")}</p>
               </div>
-
             </div>
 
-
             <div className="feature">
-
-              <div className="feature-icon quick-icon">
-                ⚡
-              </div>
-
+              <div className="feature-icon quick-icon">⚡</div>
               <div>
-                <h3>Quick & Easy</h3>
-
+                <h3>{t("home.feature3Title", "Quick & Easy")}</h3>
                 <p>
-                  Report, Search & Reclaim in minutes.
+                  {t(
+                    "home.feature3Desc",
+                    "Report, search and recover items in minutes."
+                  )}
                 </p>
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= LOGIN SECTION ================= */}
 
         <section className="login-section">
-
           <div className="login-card">
-
             {/* ================= HEADING ================= */}
 
             <div className="login-heading">
-
-              <h2>Welcome Back</h2>
-
-              <p>
-                Login to your campus account
-              </p>
-
+              <h2>{t("auth.welcomeBack", "Welcome Back")}</h2>
+              <p>{t("auth.loginTitle", "Login to your campus account")}</p>
             </div>
-
 
             {/* ================= MESSAGE ================= */}
 
             {message && (
-
-              <div
-                className={`login-message ${messageType}`}
-              >
-                {message}
-              </div>
-
+              <div className={`login-message ${messageType}`}>{message}</div>
             )}
-
 
             {/* ================= FORM ================= */}
 
             <form onSubmit={handleLogin}>
-
-
               {/* USERNAME */}
-
               <div className="input-group">
-
                 <label htmlFor="username">
-                  Username
+                  {t("auth.username", "Username")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    👤
-                  </span>
-
+                  <span className="input-icon">👤</span>
                   <input
                     type="text"
                     id="username"
-                    placeholder="Enter your username"
+                    placeholder={t(
+                      "auth.usernamePlaceholder",
+                      "Enter your username"
+                    )}
                     value={username}
-                    onChange={(e) =>
-                      setUsername(e.target.value)
-                    }
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                   />
-
                 </div>
-
               </div>
 
-
               {/* ROLL NUMBER */}
-
               <div className="input-group">
-
                 <label htmlFor="rollNumber">
-                  Roll Number
+                  {t("auth.rollNumber", "Roll Number")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    🎫
-                  </span>
-
+                  <span className="input-icon">🎫</span>
                   <input
                     type="text"
                     id="rollNumber"
-                    placeholder="Enter your roll number"
+                    placeholder={t(
+                      "auth.rollNumberPlaceholder",
+                      "Enter your roll number"
+                    )}
                     value={rollNumber}
-                    onChange={(e) =>
-                      setRollNumber(e.target.value)
-                    }
+                    onChange={(e) => setRollNumber(e.target.value)}
                     required
                   />
-
                 </div>
-
               </div>
 
-
               {/* PASSWORD */}
-
               <div className="input-group">
-
                 <label htmlFor="password">
-                  Password
+                  {t("auth.password", "Password")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    🔒
-                  </span>
-
+                  <span className="input-icon">🔒</span>
                   <input
                     type={showPassword ? "text" : "password"}
                     id="password"
-                    placeholder="Enter your password"
+                    placeholder={t(
+                      "auth.passwordPlaceholder",
+                      "Enter your password"
+                    )}
                     value={password}
-                    onChange={(e) =>
-                      setPassword(e.target.value)
-                    }
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
 
                   <button
                     type="button"
                     className="eye-button"
-                    onClick={() =>
-                      setShowPassword(!showPassword)
-                    }
+                    onClick={() => setShowPassword(!showPassword)}
                     aria-label={
                       showPassword
-                        ? "Hide password"
-                        : "Show password"
+                        ? t("auth.hidePassword", "Hide password")
+                        : t("auth.showPassword", "Show password")
                     }
                   >
                     {showPassword ? "🙈" : "👁"}
                   </button>
-
                 </div>
-
               </div>
-
 
               {/* ================= OPTIONS ================= */}
 
               <div className="login-options">
-
                 {/* REMEMBER ME */}
-
                 <label className="remember">
-
                   <input
                     type="checkbox"
                     checked={remember}
-                    onChange={(e) =>
-                      setRemember(e.target.checked)
-                    }
+                    onChange={(e) => setRemember(e.target.checked)}
                   />
-
-                  <span>
-                    Remember Me
-                  </span>
-
+                  <span>{t("auth.rememberMe", "Remember Me")}</span>
                 </label>
 
-
                 {/* FORGOT PASSWORD */}
-
                 <button
                   type="button"
                   className="forgot-password"
@@ -403,9 +308,7 @@ function Login() {
                 >
                   Forgot Password?
                 </button>
-
               </div>
-
 
               {/* ================= LOGIN BUTTON ================= */}
 
@@ -414,28 +317,19 @@ function Login() {
                 className="login-button"
                 disabled={loading}
               >
-
                 {loading
                   ? "Signing In..."
-                  : "Sign In"}
-
+                  : t("auth.loginBtn", "Sign In")}
               </button>
-
             </form>
-
 
             {/* ================= DIVIDER ================= */}
 
             <div className="divider">
-
               <span></span>
-
               <p>OR</p>
-
               <span></span>
-
             </div>
-
 
             {/* ================= UNIVERSITY LOGIN ================= */}
 
@@ -444,32 +338,21 @@ function Login() {
               className="university-button"
               onClick={universityLogin}
             >
-
               <span>🎓</span>
-
               Continue with University Account
-
             </button>
-
 
             {/* ================= SIGNUP ================= */}
 
             <p className="signup-text">
-
-              Don't have an account?{" "}
-
+              {t("auth.noAccount", "Don't have an account?")}{" "}
               <Link to="/signup">
-                Sign Up
+                {t("auth.signUpLink", "Sign Up")}
               </Link>
-
             </p>
-
           </div>
-
         </section>
-
       </main>
-
     </div>
   );
 }

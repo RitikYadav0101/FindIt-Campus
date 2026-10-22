@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BrandLogo from "../components/BrandLogo";
-
+import { useLanguage } from "../context/LanguageContext";
 import "./Found.css";
 
 function Found() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [foundItems, setFoundItems] = useState([]);
@@ -57,472 +58,293 @@ function Found() {
 
   return (
     <div className="found-page">
-
       {/* ================= HEADER ================= */}
 
       <header className="found-header">
-
         {/* BRAND */}
-
         <Link to="/" className="found-brand">
           <BrandLogo small={true} />
         </Link>
 
-
         {/* ================= NAVIGATION ================= */}
-
         <nav className="found-nav-links">
+          <Link to="/">{t("nav.home", "Home")}</Link>
 
-          <Link to="/">
-            Home
-          </Link>
-
-          <Link to="/lost">
-            Lost
-          </Link>
+          <Link to="/lost">{t("nav.lost", "Lost")}</Link>
 
           <Link to="/report-lost">
-            Report Lost
+            {t("nav.reportLost", "Report Lost")}
           </Link>
 
-          <Link
-            to="/found"
-            className="active"
-          >
-            Found
+          <Link to="/found" className="active">
+            {t("nav.found", "Found")}
           </Link>
 
           <Link to="/report-found">
-            Report Found
+            {t("nav.reportFound", "Report Found")}
           </Link>
 
           <Link to="/matches">
-            Matches
+            {t("nav.matches", "Matches")}
           </Link>
 
           <Link to="/profile">
-            Profile
+            {t("nav.profile", "Profile")}
           </Link>
-
         </nav>
 
-
         {/* ================= SIGN OUT ================= */}
-
         <button
           className="found-signout-btn"
           onClick={handleLogout}
         >
-          Sign Out
+          {t("nav.signOut", "Sign Out")}
         </button>
-
       </header>
-
 
       {/* ================= MAIN ================= */}
 
       <main className="found-main">
-
-
         {/* ================= PAGE HEADING ================= */}
 
         <section className="found-page-heading">
-
           <span className="found-eyebrow">
-            CAMPUS COMMUNITY
+            {t("found.eyebrow", "CAMPUS RECOVERY")}
           </span>
 
           <h2>
-            Found <span>Items</span>
+            {t("found.title1", "Found")}{" "}
+            <span>{t("found.title2", "Items")}</span>
           </h2>
 
           <p>
-            Browse items found around campus and help reconnect
-            them with their rightful owners.
+            {t(
+              "found.subtitle",
+              "Browse items found on campus and help return them to their rightful owners."
+            )}
           </p>
-
         </section>
-
 
         {/* ================= SEARCH ================= */}
 
         <section className="found-toolbar">
-
           <div className="found-search-wrapper">
-
-            <span className="found-search-icon">
-              🔍
-            </span>
+            <span className="found-search-icon">🔍</span>
 
             <input
               type="text"
-              placeholder="Search found items..."
+              placeholder={t("found.searchPlaceholder", "Search found items...")}
               value={searchTerm}
-              onChange={(e) =>
-                setSearchTerm(e.target.value)
-              }
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-
           </div>
 
-
-          <Link
-            to="/report-found"
-            className="found-report-btn"
-          >
-
-            <span className="found-report-plus">
-              +
-            </span>
-
-            Report Found
-
+          <Link to="/report-found" className="found-report-btn">
+            <span className="found-report-plus">+</span>
+            {t("found.reportBtn", "Report Found")}
           </Link>
-
         </section>
-
 
         {/* ================= RESULTS HEADER ================= */}
 
         <div className="found-results-header">
-
           <div>
-
-            <h3>
-              Recently Found
-            </h3>
-
+            <h3>{t("found.recentlyFound", "Recently Found")}</h3>
             <p>
-              {filteredItems.length} item(s) available
+              {filteredItems.length} {t("found.itemsFound", "item(s) found")}
             </p>
-
           </div>
-
 
           <div className="found-results-badge">
-            🔎 Browse Items
+            🔎 {t("found.title1", "Found")}
           </div>
-
         </div>
-
 
         {/* ================= FOUND ITEMS ================= */}
 
         <section className="found-items-grid">
-
           {filteredItems.length > 0 ? (
-
             filteredItems.map((item, index) => {
-
               const itemName =
                 item.item ||
                 item.itemName ||
                 item.title ||
-                "Unnamed Item";
+                t("found.unnamedItem", "Unnamed Item");
 
-              const image =
-                item.photo ||
-                item.image;
+              const image = item.photo || item.image;
 
-              const category =
-                item.category ||
-                "Found Item";
+              const category = item.category || "Found Item";
 
               const date =
                 item.date ||
                 item.dateFound ||
-                "Recently";
+                t("found.dateNotAvailable", "Recently");
 
               return (
-
                 <article
                   className="found-item-card"
                   key={item.id || index}
                 >
-
                   {/* ================= CARD TOP ================= */}
-
                   <div className="found-card-top">
-
-                    <span className="found-category">
-                      {category}
-                    </span>
-
-                    <span className="found-date">
-                      {date}
-                    </span>
-
+                    <span className="found-category">{category}</span>
+                    <span className="found-date">{date}</span>
                   </div>
 
-
                   {/* ================= IMAGE ================= */}
-
                   <div className="found-item-image">
-
                     {image ? (
-
                       <img
                         src={image}
                         alt={itemName}
                         className="found-uploaded-image"
                       />
-
                     ) : (
-
                       <div className="found-no-image">
-
-                        <div className="found-image-icon">
-                          📦
-                        </div>
-
-                        <span>
-                          Found Item
-                        </span>
-
+                        <div className="found-image-icon">📦</div>
+                        <span>Found Item</span>
                       </div>
-
                     )}
-
                   </div>
 
-
                   {/* ================= CONTENT ================= */}
-
                   <div className="found-card-content">
-
-                    <h3>
-                      {itemName}
-                    </h3>
-
+                    <h3>{itemName}</h3>
 
                     <p className="found-item-description">
-
                       {item.description ||
-                        "No description available for this item."}
-
+                        t(
+                          "found.noDescription",
+                          "No description available for this item."
+                        )}
                     </p>
 
-
                     {/* ================= LOCATION ================= */}
-
                     <div className="found-location">
-
-                      <span className="found-location-icon">
-                        📍
-                      </span>
-
+                      <span className="found-location-icon">📍</span>
                       <span>
                         {item.location ||
-                          "Location not available"}
+                          t(
+                            "found.locationNotAvailable",
+                            "Location not available"
+                          )}
                       </span>
-
                     </div>
 
-
                     {/* ================= VIEW BUTTON ================= */}
-
                     <button
                       className="found-view-btn"
                       onClick={() =>
                         alert(
                           `Item: ${itemName}\n\n` +
-                          `Found at: ${
-                            item.location ||
-                            "Not provided"
-                          }\n\n` +
-                          `Description: ${
-                            item.description ||
-                            "Not provided"
-                          }\n\n` +
-                          `Reported by: ${
-                            item.name ||
-                            item.reportedBy ||
-                            "Not provided"
-                          }`
+                            `Found at: ${
+                              item.location || "Not provided"
+                            }\n\n` +
+                            `Description: ${
+                              item.description || "Not provided"
+                            }\n\n` +
+                            `Reported by: ${
+                              item.name ||
+                              item.reportedBy ||
+                              item.contact ||
+                              "Not provided"
+                            }`
                         )
                       }
                     >
-                      View Details
-                      <span>→</span>
+                      {t("found.viewBtn", "View Details →")}
                     </button>
-
                   </div>
-
                 </article>
-
               );
             })
-
           ) : (
-
             <div className="found-no-items">
-
-              <div className="found-empty-icon">
-                🔎
-              </div>
-
-              <h3>
-                No Found Items
-              </h3>
-
+              <div className="found-empty-icon">🔎</div>
+              <h3>{t("found.noItemsTitle", "No Found Items Found")}</h3>
               <p>
-                No item matches your search. Try another keyword.
+                {t(
+                  "found.noItemsDesc",
+                  "No item matches your search. Try another keyword."
+                )}
               </p>
-
             </div>
-
           )}
-
         </section>
-
 
         {/* ================= BOTTOM MESSAGE ================= */}
 
         <section className="found-bottom-message">
-
-          <div className="found-bottom-icon">
-            ✓
-          </div>
-
+          <div className="found-bottom-icon">✓</div>
 
           <div className="found-bottom-content">
-
             <h3>
-              Found something around campus?
+              {t(
+                "found.cantFindTitle",
+                "Found something around campus?"
+              )}
             </h3>
 
             <p>
-              Help someone recover their belongings by reporting
-              the item you found.
+              {t(
+                "found.cantFindDesc",
+                "Help someone recover their belongings by reporting the item you found."
+              )}
             </p>
-
           </div>
 
-
-          <Link
-            to="/report-found"
-            className="found-bottom-link"
-          >
-            Report Found →
+          <Link to="/report-found" className="found-bottom-link">
+            {t("found.reportFoundArrow", "Report Found →")}
           </Link>
-
         </section>
-
       </main>
-
 
       {/* ================= FOOTER ================= */}
 
       <footer className="found-footer">
-
-
         {/* ================= BRAND ================= */}
-
         <div className="found-footer-brand">
           <BrandLogo small={true} />
         </div>
 
-
         {/* ================= QUICK LINKS ================= */}
-
         <div className="found-footer-section">
-
-          <h4>
-            Explore
-          </h4>
-
-          <Link to="/">
-            Home
-          </Link>
-
-          <Link to="/lost">
-            Lost Items
-          </Link>
-
-          <Link to="/found">
-            Found Items
-          </Link>
-
+          <h4>{t("home.exploreHeading", "Explore")}</h4>
+          <Link to="/">{t("nav.home", "Home")}</Link>
+          <Link to="/lost">{t("nav.lost", "Lost Items")}</Link>
+          <Link to="/found">{t("nav.found", "Found Items")}</Link>
         </div>
-
 
         {/* ================= REPORT ================= */}
-
         <div className="found-footer-section">
-
-          <h4>
-            Report
-          </h4>
-
-          <Link to="/report-lost">
-            Report Lost
-          </Link>
-
-          <Link to="/report-found">
-            Report Found
-          </Link>
-
-          <Link to="/matches">
-            Matches
-          </Link>
-
+          <h4>{t("home.reportHeading", "Report")}</h4>
+          <Link to="/report-lost">{t("nav.reportLost", "Report Lost")}</Link>
+          <Link to="/report-found">{t("nav.reportFound", "Report Found")}</Link>
+          <Link to="/matches">{t("nav.matches", "Matches")}</Link>
         </div>
-
 
         {/* ================= ACCOUNT ================= */}
-
         <div className="found-footer-section">
-
-          <h4>
-            Account
-          </h4>
-
-          <Link to="/profile">
-            My Profile
-          </Link>
-
-          <Link to="/login">
-            Login
-          </Link>
-
+          <h4>{t("nav.profile", "Profile")}</h4>
+          <Link to="/profile">{t("profile.title", "My Profile")}</Link>
+          <Link to="/login">{t("nav.login", "Login")}</Link>
         </div>
-
 
         {/* ================= CONTACT ================= */}
-
         <div className="found-footer-section">
-
-          <h4>
-            Contact
-          </h4>
-
-          <p>
-            Campus Lost & Found
-          </p>
-
-          <p>
-            Helping students reconnect.
-          </p>
-
+          <h4>{t("home.contactHeading", "Contact")}</h4>
+          <p>{t("home.campusOffice", "Campus Lost & Found")}</p>
+          <p>{t("home.heroDesc2", "Helping students reconnect.")}</p>
         </div>
-
       </footer>
 
-
       {/* ================= COPYRIGHT ================= */}
-
       <div className="found-copyright">
-
+        <span>{t("home.copyright", "© 2026 FINDIT")}</span>
         <span>
-          © 2026 FINDIT
+          {t("home.copyrightTag", "Made for the Campus Community")}
         </span>
-
-        <span>
-          Made for the Campus Community
-        </span>
-
       </div>
-
     </div>
   );
 }

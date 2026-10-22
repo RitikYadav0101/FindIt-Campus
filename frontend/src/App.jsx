@@ -11,133 +11,111 @@ import Profile from "./pages/Profile";
 import Matches from "./pages/Matches";
 import NotFound from "./pages/NotFound";
 
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
-
+import LanguageFloatingButton from "./components/LanguageFloatingButton";
 
 function App() {
   return (
-    <Routes>
+    <>
+      <Routes>
+        {/* ================= HOME ================= */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
 
-      {/* ================= HOME ================= */}
+        {/* ================= LOGIN ================= */}
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
 
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        }
-      />
+        {/* ================= SIGNUP ================= */}
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute>
+              <Signup />
+            </PublicRoute>
+          }
+        />
 
+        {/* ================= LOST ITEMS ================= */}
+        <Route
+          path="/lost"
+          element={
+            <ProtectedRoute>
+              <Lost />
+            </ProtectedRoute>
+          }
+        />
 
-      {/* ================= LOGIN ================= */}
+        {/* ================= FOUND ITEMS ================= */}
+        <Route
+          path="/found"
+          element={
+            <ProtectedRoute>
+              <Found />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/login"
-        element={
-          <PublicRoute>
-            <Login />
-          </PublicRoute>
-        }
-      />
+        {/* ================= REPORT LOST ================= */}
+        <Route
+          path="/report-lost"
+          element={
+            <ProtectedRoute>
+              <ReportLost />
+            </ProtectedRoute>
+          }
+        />
 
+        {/* ================= REPORT FOUND ================= */}
+        <Route
+          path="/report-found"
+          element={
+            <ProtectedRoute>
+              <ReportFound />
+            </ProtectedRoute>
+          }
+        />
 
-      {/* ================= SIGNUP ================= */}
+        {/* ================= MATCHES ================= */}
+        <Route
+          path="/matches"
+          element={
+            <ProtectedRoute>
+              <Matches />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/signup"
-        element={
-          <PublicRoute>
-            <Signup />
-          </PublicRoute>
-        }
-      />
+        {/* ================= PROFILE ================= */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
 
+        {/* ================= UNKNOWN ROUTE ================= */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
-      {/* ================= LOST ITEMS ================= */}
-
-      <Route
-        path="/lost"
-        element={
-          <ProtectedRoute>
-            <Lost />
-          </ProtectedRoute>
-        }
-      />
-
-
-      {/* ================= FOUND ITEMS ================= */}
-
-      <Route
-        path="/found"
-        element={
-          <ProtectedRoute>
-            <Found />
-          </ProtectedRoute>
-        }
-      />
-
-
-      {/* ================= REPORT LOST ================= */}
-
-      <Route
-        path="/report-lost"
-        element={
-          <ProtectedRoute>
-            <ReportLost />
-          </ProtectedRoute>
-        }
-      />
-
-
-      {/* ================= REPORT FOUND ================= */}
-
-      <Route
-        path="/report-found"
-        element={
-          <ProtectedRoute>
-            <ReportFound />
-          </ProtectedRoute>
-        }
-      />
-
-
-      {/* ================= MATCHES ================= */}
-
-      <Route
-        path="/matches"
-        element={
-          <ProtectedRoute>
-            <Matches />
-          </ProtectedRoute>
-        }
-      />
-
-
-      {/* ================= PROFILE ================= */}
-
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-
-
-      {/* ================= UNKNOWN ROUTE ================= */}
-
-      <Route
-        path="*"
-        element={
-          <NotFound />
-        }
-      />
-
-    </Routes>
+      {/* ================= FLOATING LANGUAGE SELECTOR ================= */}
+      <LanguageFloatingButton />
+    </>
   );
 }
 

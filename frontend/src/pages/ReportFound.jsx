@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BrandLogo from "../components/BrandLogo";
-
+import { useLanguage } from "../context/LanguageContext";
 import "./ReportFound.css";
 
 function ReportFound() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
     itemName: "",
@@ -55,12 +56,23 @@ function ReportFound() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const today = new Date().toISOString().split("T")[0];
+
+    if (formData.dateFound > today) {
+      alert(t("reportFound.alertFutureDate", "Date found cannot be in the future."));
+      return;
+    }
+
+    if (!formData.contact.trim()) {
+      alert(t("reportFound.alertContactRequired", "Please enter your contact information."));
+      return;
+    }
+
     const existingItems =
       JSON.parse(localStorage.getItem("foundItems")) || [];
 
     const newItem = {
       id: Date.now(),
-
       itemName: formData.itemName,
       category: formData.category,
       dateFound: formData.dateFound,
@@ -69,7 +81,6 @@ function ReportFound() {
       features: formData.features,
       contact: formData.contact,
       image: formData.image,
-
       status: "Found",
       createdAt: new Date().toISOString(),
     };
@@ -99,230 +110,156 @@ function ReportFound() {
 
   return (
     <div className="reportfound-page">
-
       {/* ================= BACKGROUND ================= */}
 
       <div className="reportfound-circle reportfound-circle-one"></div>
       <div className="reportfound-circle reportfound-circle-two"></div>
 
-
       {/* ================= HEADER ================= */}
 
       <header className="reportfound-header">
-
         {/* CONSISTENT BRAND LOGO */}
-
         <Link to="/" className="reportfound-brand">
           <BrandLogo small={true} />
         </Link>
 
-
         {/* BACK BUTTON */}
-
         <button
           className="reportfound-back-button"
           onClick={() => navigate(-1)}
         >
-          ← Back
+          {t("nav.back", "← Back")}
         </button>
-
       </header>
-
 
       {/* ================= MAIN ================= */}
 
       <main className="reportfound-main">
-
-
         {/* ================= LEFT SECTION ================= */}
 
         <section className="reportfound-intro-section">
-
-          <div className="reportfound-search-icon-container">
-            ✨
-          </div>
-
+          <div className="reportfound-search-icon-container">✨</div>
 
           <div className="reportfound-intro-content">
-
             <div className="reportfound-small-label">
-              FOUND SOMETHING?
+              {t("reportFound.eyebrow", "FOUND SOMETHING?")}
             </div>
 
-
             <h2>
-              Help Return
+              {t("reportFound.heroTitle1", "Report a")}
               <br />
-
-              <span>Found Items</span>
+              <span>{t("reportFound.heroTitle2", "Found Item")}</span>
             </h2>
 
-
             <p>
-              Report the item you found and help someone in the
-              campus community get their belongings back.
+              {t(
+                "reportFound.heroDesc",
+                "Help a fellow student by reporting an item you found on campus."
+              )}
             </p>
-
           </div>
-
 
           {/* ================= TIPS ================= */}
 
           <div className="reportfound-tips">
-
-
             <div className="reportfound-tip">
-
-              <div className="reportfound-tip-icon">
-                ✓
-              </div>
-
+              <div className="reportfound-tip-icon">✓</div>
               <div>
-
-                <h3>
-                  Be Specific
-                </h3>
-
+                <h3>{t("reportFound.tip1Title", "Safe Keeping")}</h3>
                 <p>
-                  Add clear details to help identify the owner.
+                  {t(
+                    "reportFound.tip1Desc",
+                    "Keep the item in a secure place or hand it to campus security."
+                  )}
                 </p>
-
               </div>
-
             </div>
 
-
             <div className="reportfound-tip">
-
-              <div className="reportfound-tip-icon reportfound-cyan">
-                📍
-              </div>
-
+              <div className="reportfound-tip-icon reportfound-cyan">📍</div>
               <div>
-
-                <h3>
-                  Add Location
-                </h3>
-
+                <h3>{t("reportFound.tip2Title", "Accurate Location")}</h3>
                 <p>
-                  Tell us exactly where you found the item.
+                  {t(
+                    "reportFound.tip2Desc",
+                    "Specify where the item was found."
+                  )}
                 </p>
-
               </div>
-
             </div>
 
-
             <div className="reportfound-tip">
-
-              <div className="reportfound-tip-icon reportfound-amber">
-                🤝
-              </div>
-
+              <div className="reportfound-tip-icon reportfound-amber">🤝</div>
               <div>
-
-                <h3>
-                  Help Someone
-                </h3>
-
+                <h3>{t("reportFound.tip3Title", "Check ID First")}</h3>
                 <p>
-                  Your report could help reunite someone with their item.
+                  {t(
+                    "reportFound.tip3Desc",
+                    "Verify ownership details before handing the item over."
+                  )}
                 </p>
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
 
         {/* ================= FORM ================= */}
 
         <section className="reportfound-form-section">
-
           <div className="reportfound-form-card">
-
-
             {/* FORM HEADING */}
-
             <div className="reportfound-form-heading">
-
-              <h2>
-                Report Found Item
-              </h2>
-
+              <h2>{t("reportFound.formHeading", "Report Found Item")}</h2>
               <p>
-                Provide the details below to create a found listing.
+                {t(
+                  "reportFound.formDesc",
+                  "Provide the details below to help locate the owner."
+                )}
               </p>
-
             </div>
 
-
             {/* SUCCESS MESSAGE */}
-
             {submitted && (
-
               <div className="reportfound-success-message">
-                ✓ Found item listed successfully!
+                {t(
+                  "reportFound.successMessage",
+                  "✓ Found item listed successfully!"
+                )}
               </div>
-
             )}
 
-
-            <form
-              className="reportfound-form"
-              onSubmit={handleSubmit}
-            >
-
-
+            <form className="reportfound-form" onSubmit={handleSubmit}>
               {/* ================= ITEM NAME ================= */}
-
               <div className="reportfound-input-group">
-
                 <label htmlFor="itemName">
-                  Item Name
+                  {t("reportFound.itemNameLabel", "Item Name")}
                 </label>
 
-
                 <div className="reportfound-input-wrapper">
-
-                  <span className="reportfound-input-icon">
-                    📦
-                  </span>
-
+                  <span className="reportfound-input-icon">📦</span>
                   <input
                     type="text"
                     id="itemName"
                     name="itemName"
-                    placeholder="e.g. Black Wallet"
+                    placeholder={t(
+                      "reportFound.itemNamePlaceholder",
+                      "e.g. Scientific Calculator"
+                    )}
                     value={formData.itemName}
                     onChange={handleChange}
                     required
                   />
-
                 </div>
-
               </div>
 
-
               {/* ================= CATEGORY ================= */}
-
               <div className="reportfound-input-group">
-
                 <label htmlFor="category">
-                  Category
+                  {t("reportFound.categoryLabel", "Category")}
                 </label>
 
-
                 <div className="reportfound-input-wrapper">
-
-                  <span className="reportfound-input-icon">
-                    🏷️
-                  </span>
-
-
+                  <span className="reportfound-input-icon">🏷️</span>
                   <select
                     id="category"
                     name="category"
@@ -330,68 +267,46 @@ function ReportFound() {
                     onChange={handleChange}
                     required
                   >
-
                     <option value="">
-                      Select a category
+                      {t("reportFound.selectCategory", "Select a category")}
                     </option>
-
                     <option value="Electronics">
-                      Electronics
+                      {t("reportFound.catElectronics", "Electronics")}
                     </option>
-
                     <option value="Wallet / Money">
-                      Wallet / Money
+                      {t("reportFound.catWallet", "Wallet / Money")}
                     </option>
-
                     <option value="ID / Documents">
-                      ID / Documents
+                      {t("reportFound.catId", "ID / Documents")}
                     </option>
-
                     <option value="Keys">
-                      Keys
+                      {t("reportFound.catKeys", "Keys")}
                     </option>
-
                     <option value="Clothing">
-                      Clothing
+                      {t("reportFound.catClothing", "Clothing")}
                     </option>
-
                     <option value="Books / Stationery">
-                      Books / Stationery
+                      {t("reportFound.catBooks", "Books / Stationery")}
                     </option>
-
                     <option value="Accessories">
-                      Accessories
+                      {t("reportFound.catAccessories", "Bottles / Accessories")}
                     </option>
-
                     <option value="Other">
-                      Other
+                      {t("reportFound.catOthers", "Other")}
                     </option>
-
                   </select>
-
                 </div>
-
               </div>
 
-
               {/* ================= DATE + LOCATION ================= */}
-
               <div className="reportfound-two-column">
-
-
                 <div className="reportfound-input-group">
-
                   <label htmlFor="dateFound">
-                    Date Found
+                    {t("reportFound.dateFoundLabel", "Date Found")}
                   </label>
 
-
                   <div className="reportfound-input-wrapper">
-
-                    <span className="reportfound-input-icon">
-                      📅
-                    </span>
-
+                    <span className="reportfound-input-icon">📅</span>
                     <input
                       type="date"
                       id="dateFound"
@@ -400,127 +315,101 @@ function ReportFound() {
                       onChange={handleChange}
                       required
                     />
-
                   </div>
-
                 </div>
 
-
                 <div className="reportfound-input-group">
-
                   <label htmlFor="location">
-                    Location Found
+                    {t("reportFound.locationLabel", "Location Found")}
                   </label>
 
-
                   <div className="reportfound-input-wrapper">
-
-                    <span className="reportfound-input-icon">
-                      📍
-                    </span>
-
+                    <span className="reportfound-input-icon">📍</span>
                     <input
                       type="text"
                       id="location"
                       name="location"
-                      placeholder="e.g. Central Library"
+                      placeholder={t(
+                        "reportFound.locationPlaceholder",
+                        "e.g. Room 204, Campus Grounds, Cafeteria"
+                      )}
                       value={formData.location}
                       onChange={handleChange}
                       required
                     />
-
                   </div>
-
                 </div>
-
               </div>
 
-
               {/* ================= DESCRIPTION ================= */}
-
               <div className="reportfound-input-group">
-
                 <label htmlFor="description">
-                  Description
+                  {t("reportFound.descriptionLabel", "Description")}
                 </label>
 
                 <textarea
                   id="description"
                   name="description"
-                  placeholder="Describe the item..."
+                  placeholder={t(
+                    "reportFound.descriptionPlaceholder",
+                    "Describe the item condition and where it's stored..."
+                  )}
                   value={formData.description}
                   onChange={handleChange}
                   rows="3"
                   required
                 />
-
               </div>
 
-
               {/* ================= FEATURES ================= */}
-
               <div className="reportfound-input-group">
-
                 <label htmlFor="features">
-                  Distinguishing Features
+                  {t("reportFound.featuresLabel", "Identifying Features")}
                 </label>
 
                 <textarea
                   id="features"
                   name="features"
-                  placeholder="Color, brand, stickers, scratches, etc."
+                  placeholder={t(
+                    "reportFound.featuresPlaceholder",
+                    "Brand, color, specific marks, stickers, etc."
+                  )}
                   value={formData.features}
                   onChange={handleChange}
                   rows="2"
                 />
-
               </div>
 
-
               {/* ================= CONTACT ================= */}
-
               <div className="reportfound-input-group">
-
                 <label htmlFor="contact">
-                  Contact Information
+                  {t("reportFound.contactLabel", "Your Contact / Pickup Location")}
                 </label>
 
-
                 <div className="reportfound-input-wrapper">
-
-                  <span className="reportfound-input-icon">
-                    📞
-                  </span>
-
+                  <span className="reportfound-input-icon">📞</span>
                   <input
                     type="text"
                     id="contact"
                     name="contact"
-                    placeholder="Email or phone number"
+                    placeholder={t(
+                      "reportFound.contactPlaceholder",
+                      "Your phone number, email or campus desk"
+                    )}
                     value={formData.contact}
                     onChange={handleChange}
                     required
                   />
-
                 </div>
-
               </div>
 
-
               {/* ================= IMAGE ================= */}
-
               <div className="reportfound-input-group">
-
                 <label htmlFor="image">
-                  Item Image <span>(Optional)</span>
+                  {t("reportFound.imageLabel", "Item Image (Optional)")}
                 </label>
 
-
-                <label
-                  htmlFor="image"
-                  className="reportfound-upload-box"
-                >
-
+                <label htmlFor="image" className="reportfound-upload-box">
                   <input
                     type="file"
                     id="image"
@@ -528,66 +417,36 @@ function ReportFound() {
                     onChange={handleImageChange}
                   />
 
-                  <div className="reportfound-upload-icon">
-                    ↑
-                  </div>
-
+                  <div className="reportfound-upload-icon">↑</div>
 
                   <div>
-
                     <strong>
                       {formData.image
-                        ? "Image selected ✓"
-                        : "Upload an image"}
+                        ? t("reportFound.successMessage", "Image selected ✓")
+                        : t("reportFound.chooseFile", "Upload an image")}
                     </strong>
-
-                    <p>
-                      PNG, JPG or JPEG
-                    </p>
-
+                    <p>PNG, JPG or JPEG</p>
                   </div>
-
                 </label>
 
-
                 {formData.image && (
-
                   <img
                     className="reportfound-preview"
                     src={formData.image}
                     alt="Preview"
                   />
-
                 )}
-
               </div>
 
-
               {/* ================= SUBMIT ================= */}
-
-              <button
-                type="submit"
-                className="reportfound-submit-button"
-              >
-
-                <span>
-                  List Found Item
-                </span>
-
-                <span>
-                  →
-                </span>
-
+              <button type="submit" className="reportfound-submit-button">
+                <span>{t("reportFound.submitBtn", "Submit Found Item")}</span>
+                <span>→</span>
               </button>
-
             </form>
-
           </div>
-
         </section>
-
       </main>
-
     </div>
   );
 }

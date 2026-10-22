@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import BrandLogo from "../components/BrandLogo";
+import { useLanguage } from "../context/LanguageContext";
 
 function Signup() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   // ================= STATES =================
 
@@ -25,7 +27,6 @@ function Signup() {
 
   const [loading, setLoading] = useState(false);
 
-
   // ================= SIGNUP FUNCTION =================
 
   const handleSignup = (event) => {
@@ -39,7 +40,6 @@ function Signup() {
     const trimmedName = name.trim();
     const trimmedUsername = username.trim();
     const trimmedRollNumber = rollNumber.trim();
-
 
     // ================= VALIDATION =================
 
@@ -55,407 +55,252 @@ function Signup() {
       return;
     }
 
-
     // Password match
-
     if (password !== confirmPassword) {
       setMessage("Passwords do not match.");
       setMessageType("error");
       return;
     }
 
-
     // Password length
-
     if (password.length < 6) {
       setMessage("Password must be at least 6 characters.");
       setMessageType("error");
       return;
     }
 
-
-    // Terms
-
+    // Terms validation
     if (!terms) {
-      setMessage("Please accept the Terms and Conditions.");
+      setMessage("Please agree to the Terms of Service and Privacy Policy.");
       setMessageType("error");
       return;
     }
 
-
-    // ================= CHECK EXISTING USER =================
-
-    const existingUser = localStorage.getItem("registeredUser");
-
-    if (existingUser) {
-      setMessage(
-        "Account already exists. Please login."
-      );
-
-      setMessageType("error");
-
-      return;
-    }
-
-
-    // ================= LOADING =================
+    // ================= SIMULATE SAVING USER =================
 
     setLoading(true);
 
-
-    // ================= CREATE USER DATA =================
-
-    const userData = {
-      name: trimmedName,
-      username: trimmedUsername,
-      rollNumber: trimmedRollNumber,
-      password: password,
-    };
-
-
-    // ================= TEMPORARY SIGNUP =================
-
     setTimeout(() => {
+      const newUser = {
+        name: trimmedName,
+        username: trimmedUsername,
+        rollNumber: trimmedRollNumber,
+        password: password,
+      };
 
-      // Save registered user
-
-      localStorage.setItem(
-        "registeredUser",
-        JSON.stringify(userData)
-      );
-
+      // Save user to LocalStorage
+      localStorage.setItem("registeredUser", JSON.stringify(newUser));
 
       setLoading(false);
 
-
-      // Success message
-
-      setMessage(
-        "Account created successfully! Redirecting to login..."
-      );
-
+      setMessage("Account created successfully! Redirecting to login...");
       setMessageType("success");
 
-
-      // Clear form
-
-      setName("");
-      setUsername("");
-      setRollNumber("");
-      setPassword("");
-      setConfirmPassword("");
-      setTerms(false);
-
-
-      // Redirect to Login
-
+      // Redirect to login page
       setTimeout(() => {
         navigate("/login");
       }, 1500);
-
     }, 1000);
   };
 
-
-  // ================= UNIVERSITY SIGNUP =================
+  // ================= UNIVERSITY SSO =================
 
   const universitySignup = () => {
     alert(
-      "University Single Sign-On will be added later."
+      "University Single Sign-On feature will be added later."
     );
   };
 
-
-  // ================= JSX =================
-
   return (
     <div className="signup-page">
+      {/* Background Decorative Blur */}
+      <div className="blur-circle blur-one"></div>
+      <div className="blur-circle blur-two"></div>
 
       <div className="signup-container">
-
-
         {/* ================= HEADER ================= */}
 
         <header className="signup-header">
-
-         <Link to="/login" className="brand">
+          <Link to="/" className="brand">
             <BrandLogo small />
-        </Link>
-
-
-          <Link
-            to="/login"
-            className="header-login-link"
-          >
-            Already have an account?
           </Link>
 
+          <Link to="/login" className="header-login">
+            {t("auth.loginLink", "Sign In")}
+          </Link>
         </header>
 
-
-        {/* ================= MAIN ================= */}
+        {/* ================= MAIN CARD ================= */}
 
         <main className="signup-main">
-
           <div className="signup-card">
-
-
             {/* Decorative Circles */}
-
             <div className="circle circle-top"></div>
-
             <div className="circle circle-bottom"></div>
-
 
             {/* ================= HEADING ================= */}
 
             <div className="signup-heading">
-
-              <h2>Create Account</h2>
-
-              <p>
-                Join your campus lost & found community
-              </p>
-
+              <h2>{t("auth.signupTitle", "Create Account")}</h2>
+              <p>{t("auth.signupSubtitle", "Join your campus lost & found community")}</p>
             </div>
-
 
             {/* ================= MESSAGE ================= */}
 
             {message && (
-
-              <div
-                className={`message ${messageType}`}
-              >
-                {message}
-              </div>
-
+              <div className={`message ${messageType}`}>{message}</div>
             )}
-
 
             {/* ================= FORM ================= */}
 
-            <form
-              onSubmit={handleSignup}
-              className="signup-form"
-            >
-
-
+            <form onSubmit={handleSignup} className="signup-form">
               {/* ================= FULL NAME ================= */}
 
               <div className="form-group">
-
                 <label htmlFor="name">
-                  Full Name
+                  {t("auth.name", "Full Name")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    👤
-                  </span>
-
+                  <span className="input-icon">👤</span>
                   <input
                     type="text"
                     id="name"
                     autoComplete="name"
-                    placeholder="Enter your full name"
+                    placeholder={t(
+                      "auth.namePlaceholder",
+                      "Enter your full name"
+                    )}
                     value={name}
-                    onChange={(e) =>
-                      setName(e.target.value)
-                    }
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
-
                 </div>
-
               </div>
-
 
               {/* ================= USERNAME ================= */}
 
               <div className="form-group">
-
                 <label htmlFor="username">
-                  Username
+                  {t("auth.username", "Username")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    👤
-                  </span>
-
+                  <span className="input-icon">👤</span>
                   <input
                     type="text"
                     id="username"
                     autoComplete="username"
-                    placeholder="Create a username"
+                    placeholder={t(
+                      "auth.usernamePlaceholder",
+                      "Create a username"
+                    )}
                     value={username}
-                    onChange={(e) =>
-                      setUsername(e.target.value)
-                    }
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                   />
-
                 </div>
-
               </div>
-
 
               {/* ================= ROLL NUMBER ================= */}
 
               <div className="form-group">
-
                 <label htmlFor="rollNumber">
-                  Roll Number
+                  {t("auth.rollNumber", "Roll Number")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    🎫
-                  </span>
-
+                  <span className="input-icon">🎫</span>
                   <input
                     type="text"
                     id="rollNumber"
                     autoComplete="rollNumber"
-                    placeholder="Enter your roll number"
+                    placeholder={t(
+                      "auth.rollNumberPlaceholder",
+                      "Enter your roll number"
+                    )}
                     value={rollNumber}
-                    onChange={(e) =>
-                      setRollNumber(e.target.value)
-                    }
+                    onChange={(e) => setRollNumber(e.target.value)}
                     required
                   />
-
                 </div>
-
               </div>
-
 
               {/* ================= PASSWORD ================= */}
 
               <div className="form-group">
-
                 <label htmlFor="password">
-                  Password
+                  {t("auth.password", "Password")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    🔒
-                  </span>
-
+                  <span className="input-icon">🔒</span>
                   <input
-                    type={
-                      showPassword
-                        ? "text"
-                        : "password"
-                    }
+                    type={showPassword ? "text" : "password"}
                     id="password"
-                    placeholder="Create a password"
+                    placeholder={t(
+                      "auth.passwordPlaceholder",
+                      "Create a password"
+                    )}
                     value={password}
-                    onChange={(e) =>
-                      setPassword(e.target.value)
-                    }
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                   />
 
                   <button
                     type="button"
                     className="password-toggle"
-                    onClick={() =>
-                      setShowPassword(!showPassword)
-                    }
+                    onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? "🙈" : "👁️"}
                   </button>
-
                 </div>
-
               </div>
-
 
               {/* ================= CONFIRM PASSWORD ================= */}
 
               <div className="form-group">
-
                 <label htmlFor="confirmPassword">
-                  Confirm Password
+                  {t("auth.confirmPassword", "Confirm Password")}
                 </label>
 
                 <div className="input-wrapper">
-
-                  <span className="input-icon">
-                    🔒
-                  </span>
-
+                  <span className="input-icon">🔒</span>
                   <input
-                    type={
-                      showConfirmPassword
-                        ? "text"
-                        : "password"
-                    }
+                    type={showConfirmPassword ? "text" : "password"}
                     id="confirmPassword"
-                    placeholder="Confirm your password"
+                    placeholder={t(
+                      "auth.confirmPasswordPlaceholder",
+                      "Confirm your password"
+                    )}
                     value={confirmPassword}
-                    onChange={(e) =>
-                      setConfirmPassword(e.target.value)
-                    }
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                   />
 
                   <button
                     type="button"
                     className="password-toggle"
-                    onClick={() =>
-                      setShowConfirmPassword(
-                        !showConfirmPassword
-                      )
-                    }
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   >
                     {showConfirmPassword ? "🙈" : "👁️"}
                   </button>
-
                 </div>
-
               </div>
-
 
               {/* ================= TERMS ================= */}
 
               <label className="terms">
-
                 <input
                   type="checkbox"
                   checked={terms}
-                  onChange={(e) =>
-                    setTerms(e.target.checked)
-                  }
+                  onChange={(e) => setTerms(e.target.checked)}
                 />
-
                 <span>
-
-                  I agree to the{" "}
-
-                  <a href="#">
-                    Terms of Service
-                  </a>
-
-                  {" "}and{" "}
-
-                  <a href="#">
-                    Privacy Policy
-                  </a>
-
-                  .
-
+                  I agree to the <a href="#">Terms of Service</a> and{" "}
+                  <a href="#">Privacy Policy</a>.
                 </span>
-
               </label>
-
 
               {/* ================= SUBMIT ================= */}
 
@@ -464,28 +309,19 @@ function Signup() {
                 disabled={loading}
                 className="signup-button"
               >
-
                 {loading
                   ? "Creating Account..."
-                  : "Create Account"}
-
+                  : t("auth.signupBtn", "Create Account")}
               </button>
-
             </form>
-
 
             {/* ================= DIVIDER ================= */}
 
             <div className="divider">
-
               <span></span>
-
               <p>OR</p>
-
               <span></span>
-
             </div>
-
 
             {/* ================= UNIVERSITY ACCOUNT ================= */}
 
@@ -494,30 +330,20 @@ function Signup() {
               onClick={universitySignup}
               className="university-button"
             >
-
               🎓 Continue with University Account
-
             </button>
-
 
             {/* ================= LOGIN ================= */}
 
             <p className="login-text">
-
-              Already have an account?{" "}
-
+              {t("auth.haveAccount", "Already have an account?")}{" "}
               <Link to="/login">
-                Sign In
+                {t("auth.loginLink", "Sign In")}
               </Link>
-
             </p>
-
           </div>
-
         </main>
-
       </div>
-
     </div>
   );
 }
